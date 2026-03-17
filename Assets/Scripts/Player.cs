@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,7 +7,10 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private bool canMove = true;
 
+    [Header("Fishing")]
+    [SerializeField] public bool canFish = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -24,10 +28,13 @@ public class Player : MonoBehaviour
         HandleHorizontalMovement();
         HandleAnimations();
         HandleFlip();
+        HandleFishingInput();
     }
 
     private void HandleHorizontalMovement()
     {
+        if (!canMove) return;
+
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.linearVelocityY);
         rb.linearVelocity = movement;
@@ -41,6 +48,8 @@ public class Player : MonoBehaviour
 
     private void HandleFlip()
     {
+        if (!canMove) return;
+
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput > 0 && transform.localScale.x < 0)
         {
@@ -58,4 +67,23 @@ public class Player : MonoBehaviour
         localScale.x *= -1f;
         transform.localScale = localScale;
     }
+
+    private void HandleFishingInput()
+{
+    if (canFish && Input.GetKeyDown(KeyCode.E))
+    {
+        if (canMove)
+        {
+            Debug.Log("Fishing action triggered!");
+            anim.SetBool("isFishing", true);
+            canMove = false;
+        }
+        else
+        {
+            Debug.Log("Stopped fishing!");
+            anim.SetBool("isFishing", false);
+            canMove = true;
+        }
+    }
+}
 }

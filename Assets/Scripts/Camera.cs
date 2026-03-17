@@ -6,10 +6,7 @@ public class Camera : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float smoothTime = 0.3f;
-    private Vector3 velocity = Vector3.zero;
-
-    // fixing z position to -10
-    
+    private Vector3 velocity = Vector3.zero;    
 
     void LateUpdate()
     {
