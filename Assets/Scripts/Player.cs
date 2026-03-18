@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+    private bool isCasting = false;
+
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
         HandleAnimations();
         HandleFlip();
         HandleFishingInput();
+
     }
 
     private void HandleHorizontalMovement()
@@ -69,21 +72,42 @@ public class Player : MonoBehaviour
     }
 
     private void HandleFishingInput()
-{
-    if (canFish && Input.GetKeyDown(KeyCode.E))
     {
-        if (canMove)
+        if (canFish && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Fishing action triggered!");
-            anim.SetBool("isFishing", true);
-            canMove = false;
+            if (canMove)
+            {
+                Debug.Log("Fishing action triggered!");
+                anim.SetBool("isFishing", true);
+                canMove = false;
+            }
+            else
+            {
+                Debug.Log("Stopped fishing!");
+                anim.SetBool("isFishing", false);
+                canMove = true;
+            }
         }
-        else
+
+        CheckForCastInput();
+    }
+
+    private void CheckForCastInput()
+    {
+        if (!canFish || canMove) return;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isCasting)
         {
-            Debug.Log("Stopped fishing!");
-            anim.SetBool("isFishing", false);
-            canMove = true;
+            Debug.Log("Casting action triggered!");
+            isCasting = true;
+            anim.SetBool("isPrepping", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0) && isCasting)
+        {
+            Debug.Log("Stopped casting!");
+            isCasting = false;
+            anim.SetBool("isPrepping", false);
+            anim.SetTrigger("Casting");
         }
     }
-}
 }
