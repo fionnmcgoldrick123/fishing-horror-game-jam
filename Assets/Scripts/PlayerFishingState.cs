@@ -44,10 +44,13 @@ public class PlayerFishingState : PlayerState
 
             case Phase.Casting:
                 AnimatorStateInfo info = player.Anim.GetCurrentAnimatorStateInfo(0);
-                if (info.IsName("CastingAnimation") && info.normalizedTime >= 1f)
+                bool inCastingClip = info.IsName("CastingAnimation");
+                bool finished = inCastingClip && info.normalizedTime >= 1f;
+
+                if (finished)
                 {
-                    player.Anim.enabled = false;
-                    player.Sr.sprite = player.FishingIdleSprite;
+                    // player.Anim.enabled = false;
+                    // player.Sr.sprite = player.FishingIdleSprite;
                     phase = Phase.Wait;
                 }
                 break;
@@ -55,6 +58,8 @@ public class PlayerFishingState : PlayerState
             case Phase.Wait:
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    player.Anim.enabled = false;
+                    player.Sr.sprite = player.FishingIdleSprite;
                     phase = Phase.Idle;
                 }
                 break;
