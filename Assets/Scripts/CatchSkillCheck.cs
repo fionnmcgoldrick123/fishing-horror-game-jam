@@ -5,41 +5,48 @@ using TMPro;
 public class CatchSkillCheck : MonoBehaviour
 {
     [Header("Arrow")]
-    [SerializeField] private RectTransform _arrow;
+    [SerializeField] private RectTransform arrow;
     [SerializeField] private float radius;
 
     [Header("Speed")]
-    [SerializeField] private float _minRotationSpeed;
-    [SerializeField] private float _maxRotationSpeed;
-    private float _rotationSpeed;
+    [SerializeField] private float minRotationSpeed;
+    [SerializeField] private float maxRotationSpeed;
+    private float rotationSpeed;
 
     [Header("Hit Zone")]
-    [SerializeField] private float _minHitSize;
-    [SerializeField] private float _maxHitSize;
+    [SerializeField] private float minHitSize;
+    [SerializeField] private float maxHitSize;
     [SerializeField] private Image _hitZoneImg;
 
     [Header("Score")]
-    [SerializeField] private int _minScore;
-    [SerializeField] private int _maxScore;
-    [SerializeField] private TextMeshProUGUI _requiredScoreTXT;
+    [SerializeField] private int minScore;
+    [SerializeField] private int maxScore;
+    [SerializeField] private TextMeshProUGUI requiredScoreTXT;
 
-    private int _direction = -1;
-    private float _randomStartHitZone;
-    private float _randomEndHitZone;
-    private float _hitZoneSize;
-    private float _currentAngle = 0f;
-    private bool _lock = false;
-    private int _requiredScore;
+    private int direction = -1;
+    private float randomStartHitZone;
+    private float randomEndHitZone;
+    private float hitZoneSize;
+    private float currentAngle = 0f;
+    private bool @lock = false;
+    private int requiredScore;
+
+    private PlayerController player;
+
+    void Awake()
+    {
+        player = FindFirstObjectByType<PlayerController>();
+    }
 
     void OnEnable()
     {
-        _lock = false;
-        _currentAngle = 90f;
-        _direction = Random.value > 0.5f ? 1 : -1;
+        @lock = false;
+        currentAngle = 90f;
+        direction = Random.value > 0.5f ? 1 : -1;
 
-        _hitZoneSize = Random.Range(_minHitSize, _maxHitSize);
-        _requiredScore = Random.Range(_minScore, _maxScore);
-        _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
+        hitZoneSize = Random.Range(minHitSize, maxHitSize);
+        requiredScore = Random.Range(minScore, maxScore);
+        rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
 
         // Force correct Image fill settings so the arc displays properly
         _hitZoneImg.type = Image.Type.Filled;
@@ -47,7 +54,7 @@ public class CatchSkillCheck : MonoBehaviour
         _hitZoneImg.fillOrigin = (int)Image.Origin360.Right;
         _hitZoneImg.fillClockwise = true;
 
-        _requiredScoreTXT.text = $"{_requiredScore}";
+        requiredScoreTXT.text = $"{requiredScore}";
         GetRandomHitZone();
     }
 
@@ -59,18 +66,18 @@ public class CatchSkillCheck : MonoBehaviour
 
     void CheckInput()
     {
-        if (Input.GetMouseButtonDown(0) && !_lock)
+        if (Input.GetMouseButtonDown(0) && !@lock)
         {
-            _lock = true;
+            @lock = true;
 
-            float normalised = _currentAngle % 360f;
+            float normalised = currentAngle % 360f;
             if (normalised < 0) normalised += 360f;
 
             bool inHitZone;
-            if (_randomEndHitZone < _randomStartHitZone)
-                inHitZone = (normalised >= _randomStartHitZone || normalised <= _randomEndHitZone);
+            if (randomEndHitZone < randomStartHitZone)
+                inHitZone = (normalised >= randomStartHitZone || normalised <= randomEndHitZone);
             else
-                inHitZone = (normalised >= _randomStartHitZone && normalised <= _randomEndHitZone);
+                inHitZone = (normalised >= randomStartHitZone && normalised <= randomEndHitZone);
 
             if (inHitZone)
                 HandleHit();
@@ -82,56 +89,58 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleMiss()
     {
         Debug.Log("Miss!");
+        player.ExitFishing();
         gameObject.SetActive(false);
     }
 
     void HandleHit()
     {
         Debug.Log("Hit!");
-        _requiredScore -= 1;
-        _requiredScoreTXT.text = $"{_requiredScore}";
+        requiredScore -= 1;
+        requiredScoreTXT.text = $"{requiredScore}";
 
-        if (_requiredScore <= 0)
+        if (requiredScore <= 0)
         {
             HandleWin();
-            return;
         }
 
-        _lock = false;
-        _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
-        _direction *= -1;
+        @lock = false;
+        rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
+        direction *= -1;
         GetRandomHitZone();
     }
 
     void HandleWin()
     {
+        Debug.Log("Win!");
+        player.ExitFishing();
         gameObject.SetActive(false);
     }
 
     void GetRandomHitZone()
     {
-        _randomStartHitZone = Random.Range(0f, 360f);
-        _randomEndHitZone = (_randomStartHitZone + _hitZoneSize) % 360f;
+        randomStartHitZone = Random.Range(0f, 360f);
+        randomEndHitZone = (randomStartHitZone + hitZoneSize) % 360f;
         UpdateHitZoneVisual();
     }
 
     void UpdateHitZoneVisual()
     {
-        _hitZoneImg.fillAmount = _hitZoneSize / 360f;
+        _hitZoneImg.fillAmount = hitZoneSize / 360f;
         // Rotate to the end angle so the clockwise fill sweeps back to _randomStartHitZone
-        _hitZoneImg.rectTransform.localRotation = Quaternion.Euler(0, 0, _randomStartHitZone + _hitZoneSize);
+        _hitZoneImg.rectTransform.localRotation = Quaternion.Euler(0, 0, randomStartHitZone + hitZoneSize);
     }
 
     void MoveArrow()
     {
-        _currentAngle += _rotationSpeed * Time.deltaTime * _direction;
-        _currentAngle %= 360f;
+        currentAngle += rotationSpeed * Time.deltaTime * direction;
+        currentAngle %= 360f;
 
-        float rad = _currentAngle * Mathf.Deg2Rad;
+        float rad = currentAngle * Mathf.Deg2Rad;
         float x = Mathf.Cos(rad) * radius;
         float y = Mathf.Sin(rad) * radius;
 
-        _arrow.localPosition = new Vector3(x, y, 0);
-        _arrow.localRotation = Quaternion.Euler(0, 0, _currentAngle - 90f);
+        arrow.localPosition = new Vector3(x, y, 0);
+        arrow.localRotation = Quaternion.Euler(0, 0, currentAngle - 90f);
     }
 }

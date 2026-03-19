@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponentInChildren<Animator>();
         Sr = GetComponentInChildren<SpriteRenderer>();
@@ -77,8 +79,6 @@ public class PlayerController : MonoBehaviour
         transform.localScale = scale;
     }
 
-    public void ExitFishing()
-    {
-        ChangeState(IdleState);
-    }
+    public void ExitFishing() => ChangeState(IdleState);
+
 }
