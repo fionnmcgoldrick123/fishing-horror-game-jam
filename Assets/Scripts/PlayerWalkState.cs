@@ -17,7 +17,7 @@ public class PlayerWalkState : PlayerState
 
         if (player.CanFish && Input.GetKeyDown(KeyCode.E))
         {
-            player.ChangeState(player.FishingIdleState);
+            player.ChangeState(player.FishingState);
             return;
         }
     }

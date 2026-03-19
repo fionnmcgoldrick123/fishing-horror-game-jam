@@ -5,20 +5,25 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
 
+    [Header("Fishing Sprites")]
+    [SerializeField] private Sprite fishingIdleSprite;
+    [SerializeField] private Sprite fishingPrepSprite;
+
     public Rigidbody2D Rb { get; private set; }
     public Animator Anim { get; private set; }
+    public SpriteRenderer Sr { get; private set; }
     public float MoveSpeed => moveSpeed;
     public float HorizontalInput { get; private set; }
     public bool CanFish { get; set; }
+
+    public Sprite FishingIdleSprite => fishingIdleSprite;
+    public Sprite FishingPrepSprite => fishingPrepSprite;
 
     // States
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
     public PlayerTalkState TalkState { get; private set; }
-    public PlayerFishingIdleState FishingIdleState { get; private set; }
-    public PlayerFishingPrepState FishingPrepState { get; private set; }
-    public PlayerFishingCastState FishingCastState { get; private set; }
-    public PlayerFishingWaitState FishingWaitState { get; private set; }
+    public PlayerFishingState FishingState { get; private set; }
 
     private PlayerState currentState;
 
@@ -26,14 +31,12 @@ public class PlayerController : MonoBehaviour
     {
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponentInChildren<Animator>();
+        Sr = GetComponentInChildren<SpriteRenderer>();
 
         IdleState = new PlayerIdleState(this);
         WalkState = new PlayerWalkState(this);
         TalkState = new PlayerTalkState(this);
-        FishingIdleState = new PlayerFishingIdleState(this);
-        FishingPrepState = new PlayerFishingPrepState(this);
-        FishingCastState = new PlayerFishingCastState(this);
-        FishingWaitState = new PlayerFishingWaitState(this);
+        FishingState = new PlayerFishingState(this);
     }
 
     void Start()
@@ -76,8 +79,7 @@ public class PlayerController : MonoBehaviour
 
     public void ExitFishing()
     {
-        Anim.SetBool("isFishing", false);
-        Anim.SetBool("isPrepping", false);
+        Anim.enabled = true;
         Anim.ResetTrigger("Casting");
         Anim.Play("Blend Tree");
         ChangeState(IdleState);
