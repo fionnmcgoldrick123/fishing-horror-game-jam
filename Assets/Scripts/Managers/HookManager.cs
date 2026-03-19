@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HookManager : MonoBehaviour
 {
     public static HookManager Instance { get; private set; }
+    [SerializeField] private GameObject fishingMinigameUI;
 
     private void Awake()
     {
@@ -16,5 +18,13 @@ public class HookManager : MonoBehaviour
         }
     }
 
-    
+    void Update()
+    {
+        //if q is pressed
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            // enable game object for fishing minigame
+            
+        }
+    }
 }

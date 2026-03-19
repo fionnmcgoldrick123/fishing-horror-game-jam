@@ -58,6 +58,12 @@ public class PlayerFishingState : PlayerState
             case Phase.Wait:
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    //    if (fishBite)
+                    //     {
+                    //         // trigger reel input prompt
+                    //     }
+
+
                     player.Anim.enabled = false;
                     player.Sr.sprite = player.FishingIdleSprite;
                     phase = Phase.Idle;
