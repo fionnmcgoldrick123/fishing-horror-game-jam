@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         HorizontalInput = Input.GetAxisRaw("Horizontal");
         currentState?.Update();
+        HandlePlayerInput();
     }
 
     void FixedUpdate()
@@ -83,5 +84,23 @@ public class PlayerController : MonoBehaviour
         Anim.ResetTrigger("Casting");
         Anim.Play("Blend Tree");
         ChangeState(IdleState);
+    }
+
+    public void DisablePlayerMovement()
+    {
+        Debug.Log("Player movement disabled");
+        HorizontalInput = 0f;
+        Rb.linearVelocity = new Vector2(0f, Rb.linearVelocityY);
+    }
+
+    private void HandlePlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (CanFish)
+            {
+                ChangeState(FishingState);
+            }
+        }
     }
 }

@@ -5,6 +5,10 @@ public class HookManager : MonoBehaviour
 {
     public static HookManager Instance { get; private set; }
     [SerializeField] private GameObject fishingMinigameUI;
+    [SerializeField] private PlayerFishingState fishingStateManager;
+
+    // event for fishing
+    public event System.Action OnCatchingStarted;
 
     private void Awake()
     {
@@ -20,11 +24,16 @@ public class HookManager : MonoBehaviour
 
     void Update()
     {
-        //if q is pressed
-        if (Keyboard.current.qKey.wasPressedThisFrame)
+        if(Input.GetKeyDown(KeyCode.Q) && fishingStateManager.isWaiting())
         {
-            // enable game object for fishing minigame
-            
+            TriggerFishBite();
         }
+    }
+
+    public void TriggerFishBite()
+    {
+        Debug.Log("Fish bite triggered!");
+        fishingMinigameUI.SetActive(true);
+        OnCatchingStarted?.Invoke();
     }
 }

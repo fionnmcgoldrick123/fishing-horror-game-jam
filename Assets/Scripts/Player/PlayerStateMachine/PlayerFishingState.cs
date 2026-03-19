@@ -1,11 +1,13 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerFishingState : PlayerState
 {
-    private enum Phase { Idle, Prep, Casting, Wait }
+    private enum Phase { Idle, Prep, Casting, Wait, Catching }
     private Phase phase;
 
     public PlayerFishingState(PlayerController player) : base(player) { }
+
 
     public override void Enter()
     {
@@ -13,6 +15,7 @@ public class PlayerFishingState : PlayerState
         player.Sr.sprite = player.FishingIdleSprite;
         player.Rb.linearVelocity = new Vector2(0f, player.Rb.linearVelocityY);
         phase = Phase.Idle;
+        HookManager.Instance.OnCatchingStarted += HandleFishBite;
     }
 
     public override void Update()
@@ -49,8 +52,6 @@ public class PlayerFishingState : PlayerState
 
                 if (finished)
                 {
-                    // player.Anim.enabled = false;
-                    // player.Sr.sprite = player.FishingIdleSprite;
                     phase = Phase.Wait;
                 }
                 break;
@@ -58,16 +59,18 @@ public class PlayerFishingState : PlayerState
             case Phase.Wait:
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    //    if (fishBite)
-                    //     {
-                    //         // trigger reel input prompt
-                    //     }
+                    // player.Anim.enabled = false;
+                    // player.Sr.sprite = player.FishingIdleSprite;
+                    // phase = Phase.Idle;
 
-
-                    player.Anim.enabled = false;
-                    player.Sr.sprite = player.FishingIdleSprite;
-                    phase = Phase.Idle;
+                    phase = Phase.Catching;
                 }
+                break;
+
+            case Phase.Catching:
+                // Handle catching logic here (e.g., show skill check UI, determine success/failure)
+                player.Anim.enabled = false;
+                player.DisablePlayerMovement();
                 break;
         }
     }
@@ -81,5 +84,12 @@ public class PlayerFishingState : PlayerState
     {
         player.Anim.enabled = true;
         player.Anim.ResetTrigger("Casting");
+        HookManager.Instance.OnCatchingStarted -= HandleFishBite;
     }
+
+    private void HandleFishBite() => phase = Phase.Catching;
+
+
+    // getter for state
+    public bool isWaiting() => phase == Phase.Wait || phase == Phase.Catching;
 }
