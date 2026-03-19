@@ -38,7 +38,8 @@ public class PlayerFishingState : PlayerState
                 if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
                     player.Anim.enabled = true;
-                    player.Anim.SetTrigger("Casting");
+                    player.Anim.Play("CastingAnimation", 0, 0f);
+                    player.Anim.Update(0f);
                     phase = Phase.Casting;
                 }
                 break;
@@ -51,15 +52,26 @@ public class PlayerFishingState : PlayerState
                 if (finished)
                 {
                     phase = Phase.Wait;
+                    HookManager.Instance.StartWaiting();
                 }
                 break;
 
             case Phase.Wait:
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    phase = Phase.Catching;
-                    player.Anim.enabled = false;
-                    HookManager.Instance.StartMiniGame();
+                    if (HookManager.Instance.TryHook())
+                    {
+                        phase = Phase.Catching;
+                        player.Anim.enabled = false;
+                    }
+                    else
+                    {
+                        // Clicked too early — reel in and go back to fishing idle
+                        HookManager.Instance.StopWaiting();
+                        player.Anim.enabled = false;
+                        player.Sr.sprite = player.FishingIdleSprite;
+                        phase = Phase.Idle;
+                    }
                 }
                 break;
 
@@ -78,6 +90,7 @@ public class PlayerFishingState : PlayerState
         player.Anim.enabled = true;
         player.Anim.ResetTrigger("Casting");
         player.Anim.Play("Blend Tree");
+        HookManager.Instance.StopWaiting();
         HookManager.Instance.StopMinigame();
     }
 

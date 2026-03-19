@@ -151,12 +151,12 @@ TextureImporter:
       name: PlayerCasting_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 17
-        height: 35
+        x: 15
+        y: 27
+        width: 30
+        height: 36
       alignment: 9
-      pivot: {x: 0.14701709, y: 0.0034664534}
+      pivot: {x: 0.082713254, y: -0.003621949}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: PlayerCasting_1
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
-        width: 15
-        height: 36
+        x: 45
+        y: 27
+        width: 25
+        height: 39
       alignment: 9
-      pivot: {x: 0.49480465, y: -0.002223901}
+      pivot: {x: 0.70029753, y: 0.001912386}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,12 +195,12 @@ TextureImporter:
       name: PlayerCasting_2
       rect:
         serializedVersion: 2
-        x: 72
-        y: 0
-        width: 15
-        height: 40
+        x: 94
+        y: 27
+        width: 18
+        height: 42
       alignment: 9
-      pivot: {x: 0.15710245, y: 0.0012396307}
+      pivot: {x: 0.74941295, y: 0.006656147}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -217,12 +217,12 @@ TextureImporter:
       name: PlayerCasting_3
       rect:
         serializedVersion: 2
-        x: 105
-        y: 0
-        width: 27
-        height: 32
+        x: 150
+        y: 27
+        width: 15
+        height: 43
       alignment: 9
-      pivot: {x: 0.072821155, y: 0.00075244496}
+      pivot: {x: 0.14890239, y: 0.0040748063}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,6 +231,28 @@ TextureImporter:
       bones: []
       spriteID: 5338e94566db1a5b0800000000000000
       internalID: -5358793834390191307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerCasting_4
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 0
+        width: 30
+        height: 70
+      alignment: 9
+      pivot: {x: 0.07983551, y: 0.39269766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97d34a011e63aed409327c7aad43857f
+      internalID: 1588499790
       vertices: []
       indices: 
       edges: []
@@ -253,6 +275,8 @@ TextureImporter:
       PlayerCasting_1: -2717669338859723181
       PlayerCasting_2: 3204821775337858356
       PlayerCasting_3: -5358793834390191307
+      PlayerCasting_4: 1588499790
+      PlayerCasting_5: 1576463196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
