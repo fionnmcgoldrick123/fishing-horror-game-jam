@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FishingZone : MonoBehaviour
@@ -12,10 +11,10 @@ public class FishingZone : MonoBehaviour
 
         if (((1 << collision.gameObject.layer) & playerLayer) != 0)
         {
-            Player player = collision.GetComponent<Player>();
+            PlayerController player = collision.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.canFish = true;
+                player.CanFish = true;
             }
 
         }
@@ -27,10 +26,10 @@ public class FishingZone : MonoBehaviour
 
         if (((1 << collision.gameObject.layer) & playerLayer) != 0)
         {
-            Player player = collision.GetComponent<Player>();
+            PlayerController player = collision.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.canFish = false;
+                player.CanFish = false;
             }
         }
     }
