@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerFishingState : PlayerState
@@ -15,7 +14,6 @@ public class PlayerFishingState : PlayerState
         player.Sr.sprite = player.FishingIdleSprite;
         player.Rb.linearVelocity = new Vector2(0f, player.Rb.linearVelocityY);
         phase = Phase.Idle;
-        HookManager.Instance.OnCatchingStarted += HandleFishBite;
     }
 
     public override void Update()
@@ -59,18 +57,13 @@ public class PlayerFishingState : PlayerState
             case Phase.Wait:
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    // player.Anim.enabled = false;
-                    // player.Sr.sprite = player.FishingIdleSprite;
-                    // phase = Phase.Idle;
-
                     phase = Phase.Catching;
+                    player.Anim.enabled = false;
+                    HookManager.Instance.StartMiniGame();
                 }
                 break;
 
             case Phase.Catching:
-                // Handle catching logic here (e.g., show skill check UI, determine success/failure)
-                player.Anim.enabled = false;
-                player.DisablePlayerMovement();
                 break;
         }
     }
@@ -84,10 +77,9 @@ public class PlayerFishingState : PlayerState
     {
         player.Anim.enabled = true;
         player.Anim.ResetTrigger("Casting");
-        HookManager.Instance.OnCatchingStarted -= HandleFishBite;
+        player.Anim.Play("Blend Tree");
+        HookManager.Instance.StopMinigame();
     }
-
-    private void HandleFishBite() => phase = Phase.Catching;
 
 
     // getter for state
