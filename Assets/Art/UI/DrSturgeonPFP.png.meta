@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: b452aa884d772f448be988d148d516b2
+guid: 3cadb61783a8ad44abb478954be17e5d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 978942612559604503
-    second: PlayerIdle_0
-  - first:
-      213: 3499389992042037492
-    second: PlayerIdle_1
+      213: 3568166119825799670
+    second: DrSturgeonPFP_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -142,45 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerIdle_0
+      name: DrSturgeonPFP_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3
+        y: 3
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71bab159e17e59d00800000000000000
-      internalID: 978942612559604503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayerIdle_1
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 0
-        width: 5
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edd5e695d80a8e54f81f6caaef996116
-      internalID: 3499389992042037492
+      spriteID: 6f9fcc75e2ca48130800000000000000
+      internalID: 3568166119825799670
       vertices: []
       indices: 
       edges: []
@@ -189,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fda1db9946dfab54db9f0b025e7c0bc0
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -199,8 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerIdle_0: 978942612559604503
-      PlayerIdle_1: 3499389992042037492
+      DrSturgeonPFP_0: 3568166119825799670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

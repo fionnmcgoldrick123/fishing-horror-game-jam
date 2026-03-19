@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: b452aa884d772f448be988d148d516b2
+guid: b93ee8c48c4de734b9158c95d89d6696
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 978942612559604503
-    second: PlayerIdle_0
+      213: -3147712603735726960
+    second: BackGround-SmallTree_0
   - first:
-      213: 3499389992042037492
-    second: PlayerIdle_1
+      213: -3285420171329169070
+    second: BackGround-SmallTree_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -142,45 +142,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerIdle_0
+      name: BackGround-SmallTree_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 5
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 57
+        width: 68
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71bab159e17e59d00800000000000000
-      internalID: 978942612559604503
+      spriteID: 094ef4f60141154d0800000000000000
+      internalID: -3147712603735726960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerIdle_1
+      name: BackGround-SmallTree_1
       rect:
         serializedVersion: 2
-        x: 5
+        x: 15
         y: 0
-        width: 5
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 37
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: edd5e695d80a8e54f81f6caaef996116
-      internalID: 3499389992042037492
+      spriteID: 2599506d2c7d762d0800000000000000
+      internalID: -3285420171329169070
       vertices: []
       indices: 
       edges: []
@@ -189,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fda1db9946dfab54db9f0b025e7c0bc0
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -199,8 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerIdle_0: 978942612559604503
-      PlayerIdle_1: 3499389992042037492
+      BackGround-SmallTree_0: -3147712603735726960
+      BackGround-SmallTree_1: -3285420171329169070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

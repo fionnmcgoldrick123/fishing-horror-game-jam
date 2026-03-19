@@ -13,4 +13,10 @@ public class PlayerTalkState : PlayerState
     {
         player.Rb.linearVelocity = new Vector2(0f, player.Rb.linearVelocityY);
     }
+
+    public override void Exit()
+    {
+        player.Anim.Play("Blend Tree");
+    }
 }
+

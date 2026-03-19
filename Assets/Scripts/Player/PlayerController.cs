@@ -81,4 +81,12 @@ public class PlayerController : MonoBehaviour
 
     public void ExitFishing() => ChangeState(IdleState);
 
+    public void EnterDialogue(DialogueData data)
+    {
+        ChangeState(TalkState);
+        DialogueManager.Instance.StartDialogue(data);
+    }
+
+    public void ExitDialogue() => ChangeState(IdleState);
+
 }

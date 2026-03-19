@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: b452aa884d772f448be988d148d516b2
+guid: d529c438083217e4e88f10a6f74917d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 978942612559604503
-    second: PlayerIdle_0
+      213: -3140644317828679835
+    second: dr-sturgeon_0
   - first:
-      213: 3499389992042037492
-    second: PlayerIdle_1
+      213: 7432905835032096369
+    second: dr-sturgeon_1
+  - first:
+      213: 140985037574351345
+    second: dr-sturgeon_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +145,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerIdle_0
+      name: dr-sturgeon_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 9
         y: 0
-        width: 5
-        height: 32
+        width: 17
+        height: 54
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,30 +160,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71bab159e17e59d00800000000000000
-      internalID: 978942612559604503
+      spriteID: 567f8fdf1a03a64d0800000000000000
+      internalID: -3140644317828679835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerIdle_1
+      name: dr-sturgeon_1
       rect:
         serializedVersion: 2
-        x: 5
+        x: 41
         y: 0
-        width: 5
-        height: 32
+        width: 17
+        height: 54
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: edd5e695d80a8e54f81f6caaef996116
-      internalID: 3499389992042037492
+      spriteID: 17e240ac97cf62760800000000000000
+      internalID: 7432905835032096369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dr-sturgeon_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 0
+        width: 17
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9a34b0521e4f100800000000000000
+      internalID: 140985037574351345
       vertices: []
       indices: 
       edges: []
@@ -189,7 +214,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fda1db9946dfab54db9f0b025e7c0bc0
+    spriteID: 214b56e96a99d6b4dbae9ec9e0f7d998
     internalID: 0
     vertices: []
     indices: 
@@ -199,8 +224,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerIdle_0: 978942612559604503
-      PlayerIdle_1: 3499389992042037492
+      dr-sturgeon_0: -3140644317828679835
+      dr-sturgeon_1: 7432905835032096369
+      dr-sturgeon_2: 140985037574351345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

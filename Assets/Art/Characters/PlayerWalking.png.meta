@@ -157,12 +157,12 @@ TextureImporter:
       name: PlayerWalking_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 34
-        height: 42
-      alignment: 9
-      pivot: {x: 0.27353153, y: -0.002864525}
+        width: 9
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,12 +179,12 @@ TextureImporter:
       name: PlayerWalking_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 13
         y: 0
-        width: 34
-        height: 42
-      alignment: 9
-      pivot: {x: 0.2593772, y: -0.00000001113044}
+        width: 6
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,12 +201,12 @@ TextureImporter:
       name: PlayerWalking_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 24
         y: 0
-        width: 34
-        height: 42
-      alignment: 9
-      pivot: {x: 0.25583872, y: -0.004162047}
+        width: 6
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -223,12 +223,12 @@ TextureImporter:
       name: PlayerWalking_3
       rect:
         serializedVersion: 2
-        x: 102
+        x: 34
         y: 0
-        width: 34
-        height: 42
-      alignment: 9
-      pivot: {x: 0.27707043, y: -0.015620321}
+        width: 9
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -245,12 +245,12 @@ TextureImporter:
       name: PlayerWalking_4
       rect:
         serializedVersion: 2
-        x: 136
+        x: 46
         y: 0
-        width: 34
-        height: 42
-      alignment: 9
-      pivot: {x: 0.2699935, y: -0.0012975329}
+        width: 6
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -267,12 +267,12 @@ TextureImporter:
       name: PlayerWalking_5
       rect:
         serializedVersion: 2
-        x: 170
+        x: 58
         y: 0
-        width: 34
-        height: 42
-      alignment: 9
-      pivot: {x: 0.26645482, y: -0.009891074}
+        width: 5
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

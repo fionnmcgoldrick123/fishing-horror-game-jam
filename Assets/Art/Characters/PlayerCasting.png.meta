@@ -153,10 +153,10 @@ TextureImporter:
         serializedVersion: 2
         x: 6
         y: 0
-        width: 19
-        height: 36
+        width: 17
+        height: 35
       alignment: 9
-      pivot: {x: 0.1789992, y: -0.0015636603}
+      pivot: {x: 0.14701709, y: 0.0034664534}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: PlayerCasting_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 33
         y: 0
-        width: 17
-        height: 37
+        width: 15
+        height: 36
       alignment: 9
-      pivot: {x: 0.50472033, y: -0.0010213314}
+      pivot: {x: 0.49480465, y: -0.002223901}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,12 +195,12 @@ TextureImporter:
       name: PlayerCasting_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 72
         y: 0
-        width: 17
-        height: 41
+        width: 15
+        height: 40
       alignment: 9
-      pivot: {x: 0.50472033, y: -0.0010744557}
+      pivot: {x: 0.15710245, y: 0.0012396307}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -217,12 +217,12 @@ TextureImporter:
       name: PlayerCasting_3
       rect:
         serializedVersion: 2
-        x: 108
+        x: 105
         y: 0
-        width: 28
-        height: 33
+        width: 27
+        height: 32
       alignment: 9
-      pivot: {x: 0.10448074, y: 0.0014760873}
+      pivot: {x: 0.072821155, y: 0.00075244496}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
