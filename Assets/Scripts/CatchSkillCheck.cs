@@ -23,6 +23,10 @@ public class CatchSkillCheck : MonoBehaviour
     [SerializeField] private int maxScore;
     [SerializeField] private TextMeshProUGUI requiredScoreTXT;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip reelingClip;
+
     private int direction = -1;
     private float randomStartHitZone;
     private float randomEndHitZone;
@@ -54,6 +58,14 @@ public class CatchSkillCheck : MonoBehaviour
 
         requiredScoreTXT.text = $"{requiredScore}";
         GetRandomHitZone();
+
+        // Start reeling loop
+        if (audioSource != null && reelingClip != null)
+        {
+            audioSource.clip = reelingClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
 
     void Update()
@@ -87,6 +99,7 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleMiss()
     {
         Debug.Log("Miss!");
+        StopReelingAudio();
         HookManager.Instance.OnMinigameLost();
         player.ExitFishing();
     }
@@ -113,8 +126,20 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleWin()
     {
         Debug.Log("Win!");
+        StopReelingAudio();
         HookManager.Instance.OnMinigameWon();
-        player.ExitFishing();
+        // Don't call player.ExitFishing() here — FishCatchDisplay freezes the player
+        // and will unfreeze them when the catch panel is dismissed.
+    }
+
+    void StopReelingAudio()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+            audioSource.loop = false;
+            audioSource.clip = null;
+        }
     }
 
     void GetRandomHitZone()

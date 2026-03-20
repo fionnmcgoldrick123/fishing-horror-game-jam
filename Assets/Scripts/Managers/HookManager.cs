@@ -113,7 +113,6 @@ public class HookManager : MonoBehaviour
         if (currentFish != null)
         {
             FishCatchDisplay.Instance.ShowCatch(currentFish);
-            Debug.Log($"Caught: {currentFish.fishName} ({currentFish.rarity}) worth {currentFish.value}g");
         }
 
         currentFish = null;

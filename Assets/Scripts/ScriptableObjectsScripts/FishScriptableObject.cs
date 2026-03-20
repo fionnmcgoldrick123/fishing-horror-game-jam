@@ -21,6 +21,7 @@ public enum Rarity
 public class FishScriptableObject : ScriptableObject
 {
     public string fishName;
+    [TextArea(2, 4)] public string fishDescription;
     public Sprite fishSprite;
     public int value;
     public Rarity rarity;
