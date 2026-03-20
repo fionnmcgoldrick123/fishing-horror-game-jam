@@ -192,6 +192,10 @@ public class FishCatchDisplay : MonoBehaviour
 
         catchPanel.SetActive(false);
         phase = DisplayPhase.Inactive;
+
+        if (currentFish != null)
+            FishInventory.Instance.AddFish(currentFish);
+
         currentFish = null;
 
         if (player != null)
