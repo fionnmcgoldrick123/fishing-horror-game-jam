@@ -105,6 +105,7 @@ public class CatchSkillCheck : MonoBehaviour
         }
 
         @lock = false;
+        hitZoneSize = Random.Range(minHitSize, maxHitSize);
         rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
         direction *= -1;
         GetRandomHitZone();
