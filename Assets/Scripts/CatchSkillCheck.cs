@@ -8,17 +8,17 @@ public class CatchSkillCheck : MonoBehaviour
     [SerializeField] private RectTransform arrow;
     [SerializeField] private float radius;
 
-    [Header("Speed")]
+    [Header("Speed (fallback if no DifficultyManager)")]
     [SerializeField] private float minRotationSpeed;
     [SerializeField] private float maxRotationSpeed;
     private float rotationSpeed;
 
-    [Header("Hit Zone")]
+    [Header("Hit Zone (fallback if no DifficultyManager)")]
     [SerializeField] private float minHitSize;
     [SerializeField] private float maxHitSize;
     [SerializeField] private Image _hitZoneImg;
 
-    [Header("Score")]
+    [Header("Score (fallback if no DifficultyManager)")]
     [SerializeField] private int minScore;
     [SerializeField] private int maxScore;
     [SerializeField] private TextMeshProUGUI requiredScoreTXT;
@@ -44,9 +44,7 @@ public class CatchSkillCheck : MonoBehaviour
         currentAngle = 90f;
         direction = Random.value > 0.5f ? 1 : -1;
 
-        hitZoneSize = Random.Range(minHitSize, maxHitSize);
-        requiredScore = Random.Range(minScore, maxScore);
-        rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
+        ApplyDifficulty();
 
         // Force correct Image fill settings so the arc displays properly
         _hitZoneImg.type = Image.Type.Filled;
@@ -89,8 +87,8 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleMiss()
     {
         Debug.Log("Miss!");
+        HookManager.Instance.OnMinigameLost();
         player.ExitFishing();
-        gameObject.SetActive(false);
     }
 
     void HandleHit()
@@ -102,6 +100,7 @@ public class CatchSkillCheck : MonoBehaviour
         if (requiredScore <= 0)
         {
             HandleWin();
+            return;
         }
 
         @lock = false;
@@ -114,8 +113,8 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleWin()
     {
         Debug.Log("Win!");
+        HookManager.Instance.OnMinigameWon();
         player.ExitFishing();
-        gameObject.SetActive(false);
     }
 
     void GetRandomHitZone()
@@ -130,6 +129,31 @@ public class CatchSkillCheck : MonoBehaviour
         _hitZoneImg.fillAmount = hitZoneSize / 360f;
         // Rotate to the end angle so the clockwise fill sweeps back to _randomStartHitZone
         _hitZoneImg.rectTransform.localRotation = Quaternion.Euler(0, 0, randomStartHitZone + hitZoneSize);
+    }
+
+    void ApplyDifficulty()
+    {
+        float usedMinHitSize = minHitSize;
+        float usedMaxHitSize = maxHitSize;
+        int usedMinScore = minScore;
+        int usedMaxScore = maxScore;
+        float usedMinSpeed = minRotationSpeed;
+        float usedMaxSpeed = maxRotationSpeed;
+
+        if (DifficultyManager.Instance != null && HookManager.Instance.CurrentFish != null)
+        {
+            DifficultySettings settings = DifficultyManager.Instance.GetSettings(HookManager.Instance.CurrentFish.rarity);
+            usedMinScore = settings.MinScore;
+            usedMaxScore = settings.MaxScore;
+            usedMinHitSize = settings.MinHitSize;
+            usedMaxHitSize = settings.MaxHitSize;
+            usedMinSpeed = settings.MinSpeed;
+            usedMaxSpeed = settings.MaxSpeed;
+        }
+
+        hitZoneSize = Random.Range(usedMinHitSize, usedMaxHitSize);
+        requiredScore = Random.Range(usedMinScore, usedMaxScore + 1);
+        rotationSpeed = Random.Range(usedMinSpeed, usedMaxSpeed);
     }
 
     void MoveArrow()

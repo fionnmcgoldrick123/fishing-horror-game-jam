@@ -1417,6 +1417,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92973265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &609524610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609524611}
+  - component: {fileID: 609524612}
+  m_Layer: 0
+  m_Name: FishCatchDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &609524611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609524610}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1239637825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609524612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609524610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6c7fbe1df627846822c6d2acf767b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catchPanel: {fileID: 348781083}
+  fishPortrait: {fileID: 1470028621}
+  fishNameText: {fileID: 1894468854}
+  fishValueText: {fileID: 2091283512}
+  starImages:
+  - {fileID: 257868893}
+  - {fileID: 555945962}
+  - {fileID: 2145372850}
+  - {fileID: 950922953}
+  activeStarColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveStarColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1792,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419970073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &753496173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753496174}
+  - component: {fileID: 753496175}
+  m_Layer: 0
+  m_Name: FishingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753496174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753496173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1239637825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &753496175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753496173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c6fdc5fcc60434bbc1a2df50aef025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishList:
+  - {fileID: 11400000, guid: cff1d3ca09b64a04e98774d3797dd892, type: 2}
 --- !u!1 &800548642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
+  fishingSystem: {fileID: 0}
   minWaitTime: 2
   maxWaitTime: 8
   alertDuration: 1.5
@@ -2041,7 +2143,7 @@ GameObject:
   - component: {fileID: 950922954}
   - component: {fileID: 950922953}
   m_Layer: 0
-  m_Name: Image
+  m_Name: LegendaryStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2231,6 +2333,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1239637825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &995851237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995851238}
+  - component: {fileID: 995851239}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995851238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995851237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1239637825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995851239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995851237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2410b36591f3b746a22d46b927b2f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonMinScore: 1
+  commonMaxScore: 2
+  commonMinHitSize: 80
+  commonMaxHitSize: 120
+  commonMinSpeed: 100
+  commonMaxSpeed: 150
+  rareMinScore: 2
+  rareMaxScore: 3
+  rareMinHitSize: 60
+  rareMaxHitSize: 90
+  rareMinSpeed: 140
+  rareMaxSpeed: 200
+  epicMinScore: 3
+  epicMaxScore: 5
+  epicMinHitSize: 40
+  epicMaxHitSize: 70
+  epicMinSpeed: 180
+  epicMaxSpeed: 260
+  legendaryMinScore: 4
+  legendaryMaxScore: 6
+  legendaryMinHitSize: 25
+  legendaryMaxHitSize: 50
+  legendaryMinSpeed: 220
+  legendaryMaxSpeed: 320
 --- !u!1 &1034957338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,6 +2603,9 @@ Transform:
   m_Children:
   - {fileID: 927404862}
   - {fileID: 962113065}
+  - {fileID: 995851238}
+  - {fileID: 609524611}
+  - {fileID: 753496174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1278945589

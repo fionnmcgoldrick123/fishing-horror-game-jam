@@ -5,6 +5,7 @@ public class HookManager : MonoBehaviour
     public static HookManager Instance { get; private set; }
 
     [SerializeField] private GameObject fishingMinigameUI;
+    [SerializeField] private FishingSystem fishingSystem;
 
     [Header("Wait Timer")]
     [SerializeField] private float minWaitTime = 3f;
@@ -22,6 +23,8 @@ public class HookManager : MonoBehaviour
     private HookState state = HookState.Idle;
     private float timer;
 
+    private FishScriptableObject currentFish;
+    public FishScriptableObject CurrentFish => currentFish;
     public bool IsAlerting => state == HookState.Alerting;
 
     private void Awake()
@@ -60,6 +63,7 @@ public class HookManager : MonoBehaviour
     {
         state = HookState.Waiting;
         timer = Random.Range(minWaitTime, maxWaitTime);
+        currentFish = null;
         if (alertUI != null) alertUI.SetActive(false);
     }
 
@@ -70,6 +74,7 @@ public class HookManager : MonoBehaviour
     {
         state = HookState.Idle;
         timer = 0f;
+        currentFish = null;
         if (alertUI != null) alertUI.SetActive(false);
     }
 
@@ -81,11 +86,15 @@ public class HookManager : MonoBehaviour
     {
         if (state != HookState.Alerting) return false;
 
+
+
+
         state = HookState.Minigame;
         if (alertUI != null) alertUI.SetActive(false);
         fishingMinigameUI.SetActive(true);
         return true;
     }
+
 
     public void StopMinigame()
     {
@@ -93,10 +102,41 @@ public class HookManager : MonoBehaviour
         state = HookState.Idle;
     }
 
+    /// <summary>
+    /// Called by CatchSkillCheck when the player wins the minigame.
+    /// </summary>
+    public void OnMinigameWon()
+    {
+        fishingMinigameUI.SetActive(false);
+        state = HookState.Idle;
+
+        if (currentFish != null)
+        {
+            FishCatchDisplay.Instance.ShowCatch(currentFish);
+            Debug.Log($"Caught: {currentFish.fishName} ({currentFish.rarity}) worth {currentFish.value}g");
+        }
+
+        currentFish = null;
+    }
+
+    /// <summary>
+    /// Called by CatchSkillCheck when the player fails the minigame.
+    /// </summary>
+    public void OnMinigameLost()
+    {
+        fishingMinigameUI.SetActive(false);
+        state = HookState.Idle;
+        Debug.Log(currentFish != null ? $"Lost: {currentFish.fishName} got away!" : "Fish got away!");
+        currentFish = null;
+    }
+
     private void BeginAlert()
     {
         state = HookState.Alerting;
         timer = alertDuration;
+
+        // Determine which fish is on the line
+        currentFish = fishingSystem.GetRandomFish();
 
         if (alertUI != null) alertUI.SetActive(true);
         if (audioSource != null && hookAlertClip != null)
