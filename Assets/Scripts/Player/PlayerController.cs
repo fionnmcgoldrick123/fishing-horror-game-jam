@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     public float HorizontalInput { get; private set; }
     public bool CanFish { get; set; }
+    public bool CanExitShop { get; set; }
 
     public Sprite FishingIdleSprite => fishingIdleSprite;
     public Sprite FishingPrepSprite => fishingPrepSprite;
@@ -50,6 +51,15 @@ public class PlayerController : MonoBehaviour
     {
         HorizontalInput = Input.GetAxisRaw("Horizontal");
         currentState?.Update();
+        CheckExitShopInput();
+    }
+
+    private void CheckExitShopInput()
+    {
+        if (CanExitShop && Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.Instance.LoadScene("World");
+        }
     }
 
     void FixedUpdate()
