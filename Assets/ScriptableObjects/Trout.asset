@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trout
   m_EditorClassIdentifier: 
   fishName: Trout
-  fishDescription: Wow. Nice, a trout! dwiohdwuodhwauidhawuihuisawhdawdwa
+  fishDescription: It's a boring trout.
   fishSprite: {fileID: 0}
-  value: 1000
-  rarity: 3
+  value: 150
+  rarity: 0
