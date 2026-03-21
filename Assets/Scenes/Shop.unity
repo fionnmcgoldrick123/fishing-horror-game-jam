@@ -167,11 +167,11 @@ Transform:
   m_GameObject: {fileID: 34158103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.31057322, y: 0.1948365, z: -9.906638}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 901979509}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &34158105
 MonoBehaviour:
@@ -419,9 +419,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 576567552}
     - target: {fileID: 639228615189795605, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
+      propertyPath: panelPopDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 639228615189795605, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
       propertyPath: characterPortrait
       value: 
       objectReference: {fileID: 74922303}
+    - target: {fileID: 639228615189795605, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
+      propertyPath: dialoguePanelRect
+      value: 
+      objectReference: {fileID: 1035448903}
     - target: {fileID: 4503408406927568609, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
       propertyPath: m_Name
       value: DialogueManager
@@ -485,11 +493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4590288725667944224, guid: 59080a347066ae5429f40b85d4b6d77a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4658943
+      value: -1.192
       objectReference: {fileID: 0}
     - target: {fileID: 4590288725667944224, guid: 59080a347066ae5429f40b85d4b6d77a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.69094104
+      value: -2.063
       objectReference: {fileID: 0}
     - target: {fileID: 4590288725667944224, guid: 59080a347066ae5429f40b85d4b6d77a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -594,7 +602,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 34158104}
   - {fileID: 854195142}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -690,6 +697,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+--- !u!224 &1035448903 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9155306205239745759, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+  m_PrefabInstance: {fileID: 1035448902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1145643226
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,9 +804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3223d1551037663438bd5097ff469d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!111 &1145643230
 Animation:
   m_ObjectHideFlags: 0
@@ -1091,6 +1100,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 1
   sceneName: World
+  exitSpawnPosition: {x: 5, y: -3.4, z: 0}
 --- !u!1 &1530560475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,3 +1516,4 @@ SceneRoots:
   - {fileID: 901979509}
   - {fileID: 1227744304}
   - {fileID: 308335666}
+  - {fileID: 34158104}

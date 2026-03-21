@@ -423,6 +423,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5248903266311805507, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
   m_PrefabInstance: {fileID: 6977206164367490333}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &245171809 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9155306205239745759, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+  m_PrefabInstance: {fileID: 6977206164367490333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &257868891
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &348781084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2438,6 +2443,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 0
   sceneName: Shop
+  exitSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &995851237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,12 +2683,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072172066}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 266.92673, y: 231.22627, z: -3.2844176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1239637825}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1072172068
 MonoBehaviour:
@@ -2996,7 +3002,6 @@ Transform:
   - {fileID: 609524611}
   - {fileID: 753496174}
   - {fileID: 1754305292}
-  - {fileID: 1072172067}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1278945589
@@ -4667,6 +4672,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 2
   sceneName: World
+  exitSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2091283510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,7 +4730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
   m_sharedMaterial: {fileID: 2993087047706068046, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
@@ -4751,8 +4757,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5114,9 +5120,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 245171808}
     - target: {fileID: 639228615189795605, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
+      propertyPath: panelPopDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 639228615189795605, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
       propertyPath: characterPortrait
       value: 
       objectReference: {fileID: 954519525}
+    - target: {fileID: 639228615189795605, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
+      propertyPath: dialoguePanelRect
+      value: 
+      objectReference: {fileID: 245171809}
     - target: {fileID: 4503408406927568609, guid: 386f27c57335ded40b1d3dd05e1a87c1, type: 3}
       propertyPath: m_Name
       value: DialogueManager
@@ -5325,3 +5339,4 @@ SceneRoots:
   - {fileID: 1564913807}
   - {fileID: 1239637825}
   - {fileID: 1034957339}
+  - {fileID: 1072172067}

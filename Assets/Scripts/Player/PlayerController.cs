@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public bool CanExitShop { get; set; }
     public string ShopSceneName { get; set; }
 
+    private Vector3 _exitSpawnPosition;
+
     public Sprite FishingIdleSprite => fishingIdleSprite;
     public Sprite FishingPrepSprite => fishingPrepSprite;
 
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (CanExitShop)
         {
-            SceneManager.Instance.LoadScene("World");
+            SceneManager.Instance.LoadSceneWithSpawn("World", _exitSpawnPosition);
         }
     }
 
@@ -96,6 +98,8 @@ public class PlayerController : MonoBehaviour
         scale.x *= -1f;
         transform.localScale = scale;
     }
+
+    public void SetExitSpawnPosition(Vector3 position) => _exitSpawnPosition = position;
 
     public void ExitFishing() => ChangeState(IdleState);
 

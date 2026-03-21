@@ -13,6 +13,11 @@ public class InteractionZone : MonoBehaviour
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private string sceneName;
 
+    [Header("Exit Shop Spawn (only used for ExitShop type)")]
+    [SerializeField] private Vector3 exitSpawnPosition;
+
+    public Vector3 ExitSpawnPosition => exitSpawnPosition;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (((1 << collision.gameObject.layer) & playerLayer) == 0) return;
@@ -28,6 +33,7 @@ public class InteractionZone : MonoBehaviour
                 break;
             case InteractionType.ExitShop:
                 player.CanExitShop = true;
+                player.SetExitSpawnPosition(exitSpawnPosition);
                 break;
             case InteractionType.FishingZone:
                 player.CanFish = true;

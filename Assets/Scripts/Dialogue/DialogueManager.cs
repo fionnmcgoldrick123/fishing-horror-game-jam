@@ -8,18 +8,24 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
 
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private RectTransform dialoguePanelRect;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip typingSound;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private UnityEngine.UI.Image characterPortrait;
 
+    [Header("Animation")]
+    [SerializeField] private float panelPopDuration = 0.3f;
+
     private PlayerController player;
 
     private DialogueData _currentData;
     private int _lineIndex;
     private Coroutine _typingCoroutine;
+    private Coroutine _panelPopCoroutine;
     private bool _isTyping;
+    private bool _isPanelAnimating;
     private bool _isActive;
 
     void Awake()
@@ -37,8 +43,16 @@ public class DialogueManager : MonoBehaviour
         _currentData = data;
         _lineIndex = 0;
         _isActive = true;
+        dialogueText.text = "";
         dialoguePanel.SetActive(true);
-        ShowLine();
+
+        _isPanelAnimating = true;
+        _panelPopCoroutine = UIAnimations.PopInPanel(this, dialoguePanelRect, panelPopDuration, () =>
+        {
+            _isPanelAnimating = false;
+            _panelPopCoroutine = null;
+            ShowLine();
+        });
     }
 
     void Update()
@@ -47,7 +61,16 @@ public class DialogueManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (_isTyping)
+            if (_isPanelAnimating)
+            {
+                // Skip panel pop-in animation
+                if (_panelPopCoroutine != null) StopCoroutine(_panelPopCoroutine);
+                _panelPopCoroutine = null;
+                dialoguePanelRect.localScale = Vector3.one;
+                _isPanelAnimating = false;
+                ShowLine();
+            }
+            else if (_isTyping)
             {
                 // First click: skip to end of current line
                 SkipTyping();
@@ -108,6 +131,10 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        if (_panelPopCoroutine != null) StopCoroutine(_panelPopCoroutine);
+        _panelPopCoroutine = null;
+        _isPanelAnimating = false;
+
         _isActive = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
