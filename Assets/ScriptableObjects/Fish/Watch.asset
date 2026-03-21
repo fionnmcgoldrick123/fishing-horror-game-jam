@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b86c20ff5804d8344941563467cb3b4e, type: 3}
-  m_Name: Trout
+  m_Name: Watch
   m_EditorClassIdentifier: 
-  fishName: Trout
-  fishDescription: It's a boring trout.
-  fishSprite: {fileID: 21300000, guid: 0066aea19a3df474fb6c786bebce2af4, type: 3}
-  value: 150
+  fishName: Watch
+  fishDescription: Oh damn a watch. Looks valuable. Wasn't Dr. Sturgeon looking for
+    one?
+  fishSprite: {fileID: 21300000, guid: 010f0461827be5f47970558d12448d0d, type: 3}
+  value: 600
   rarity: 0
