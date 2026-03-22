@@ -23,10 +23,6 @@ public class CatchSkillCheck : MonoBehaviour
     [SerializeField] private int maxScore;
     [SerializeField] private TextMeshProUGUI requiredScoreTXT;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip reelingClip;
-
     private int direction = -1;
     private float randomStartHitZone;
     private float randomEndHitZone;
@@ -60,12 +56,7 @@ public class CatchSkillCheck : MonoBehaviour
         GetRandomHitZone();
 
         // Start reeling loop
-        if (audioSource != null && reelingClip != null)
-        {
-            audioSource.clip = reelingClip;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
+        AudioManager.Instance?.StartReeling();
     }
 
     void Update()
@@ -99,7 +90,8 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleMiss()
     {
         Debug.Log("Miss!");
-        StopReelingAudio();
+        AudioManager.Instance?.StopReeling();
+        AudioManager.Instance?.PlayMinigameMiss();
         HookManager.Instance.OnMinigameLost();
         player.ExitFishing();
     }
@@ -107,6 +99,7 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleHit()
     {
         Debug.Log("Hit!");
+        AudioManager.Instance?.PlayMinigameHit();
         requiredScore -= 1;
         requiredScoreTXT.text = $"{requiredScore}";
 
@@ -126,20 +119,10 @@ public class CatchSkillCheck : MonoBehaviour
     void HandleWin()
     {
         Debug.Log("Win!");
-        StopReelingAudio();
+        AudioManager.Instance?.StopReeling();
         HookManager.Instance.OnMinigameWon();
         // Don't call player.ExitFishing() here — FishCatchDisplay freezes the player
         // and will unfreeze them when the catch panel is dismissed.
-    }
-
-    void StopReelingAudio()
-    {
-        if (audioSource != null && audioSource.isPlaying)
-        {
-            audioSource.Stop();
-            audioSource.loop = false;
-            audioSource.clip = null;
-        }
     }
 
     void GetRandomHitZone()

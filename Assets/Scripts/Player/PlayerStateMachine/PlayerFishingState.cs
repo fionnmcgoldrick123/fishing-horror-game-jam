@@ -51,6 +51,7 @@ public class PlayerFishingState : PlayerState
 
                 if (finished)
                 {
+                    AudioManager.Instance?.PlayBobberLand();
                     phase = Phase.Wait;
                     HookManager.Instance.StartWaiting();
                 }

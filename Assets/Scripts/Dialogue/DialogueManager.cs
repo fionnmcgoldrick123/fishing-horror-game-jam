@@ -10,8 +10,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private RectTransform dialoguePanelRect;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip typingSound;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private UnityEngine.UI.Image characterPortrait;
 
@@ -101,8 +99,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += c;
 
-            if (_currentData.typingSound != null && audioSource != null)
-                audioSource.PlayOneShot(_currentData.typingSound);
+            AudioManager.Instance?.PlayDialogueTyping(_currentData.typingSound);
 
 
             yield return new WaitForSeconds(delay);

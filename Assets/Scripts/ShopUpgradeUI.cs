@@ -23,11 +23,6 @@ public class ShopUpgradeUI : MonoBehaviour
     [SerializeField] private Color litStarColor = Color.yellow;
     [SerializeField] private Color unlitStarColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip purchaseClip;
-    [SerializeField] private AudioClip failClip;
-
     void OnEnable()
     {
         RefreshAll();
@@ -52,12 +47,12 @@ public class ShopUpgradeUI : MonoBehaviour
     {
         if (UpgradeManager.TryPurchase(type))
         {
-            PlayClip(purchaseClip);
+            AudioManager.Instance?.PlayUpgradePurchase();
             RefreshAll();
         }
         else
         {
-            PlayClip(failClip);
+            AudioManager.Instance?.PlayUpgradeFail();
         }
     }
 
@@ -81,11 +76,5 @@ public class ShopUpgradeUI : MonoBehaviour
     {
         if (eyeballCountText != null && FishInventory.Instance != null)
             eyeballCountText.text = FishInventory.Instance.EyeballCount.ToString();
-    }
-
-    private void PlayClip(AudioClip clip)
-    {
-        if (audioSource != null && clip != null)
-            audioSource.PlayOneShot(clip);
     }
 }

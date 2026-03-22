@@ -11,8 +11,6 @@ public class FishInventory : MonoBehaviour
 
     [Header("Count-Up Animation")]
     [SerializeField] private float countUpDuration = 0.6f;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip scoreTickClip;
 
     private readonly List<FishScriptableObject> caughtFish = new List<FishScriptableObject>();
     private int totalValue;
@@ -111,8 +109,8 @@ public class FishInventory : MonoBehaviour
                 if (scoreText != null)
                     scoreText.text = $"${current}";
 
-                if (current > from && audioSource != null && scoreTickClip != null)
-                    audioSource.PlayOneShot(scoreTickClip);
+                if (current > from)
+                    AudioManager.Instance?.PlayScoreTick();
 
                 lastValue = current;
             }

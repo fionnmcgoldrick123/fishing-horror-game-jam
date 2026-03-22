@@ -15,8 +15,6 @@ public class ShopButtonManager : MonoBehaviour
     [Header("Sell Feedback")]
     [SerializeField] private TextMeshProUGUI sellTotalText;
     [SerializeField] private float countUpDuration = 0.8f;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip sellClip;
 
     public static bool IsOpen { get; private set; }
 
@@ -68,8 +66,7 @@ public class ShopButtonManager : MonoBehaviour
         int earnings = FishInventory.Instance.SellAll();
         if (earnings <= 0) return;
 
-        if (audioSource != null && sellClip != null)
-            audioSource.PlayOneShot(sellClip);
+        AudioManager.Instance?.PlaySellFish();
 
         if (sellTotalText != null)
             UIAnimations.CountUp(this, sellTotalText, earnings, countUpDuration);

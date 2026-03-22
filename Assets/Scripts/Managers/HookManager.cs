@@ -15,10 +15,6 @@ public class HookManager : MonoBehaviour
     [SerializeField] private float alertDuration = 1.5f;
     [SerializeField] private GameObject alertUI;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip hookAlertClip;
-
     private enum HookState { Idle, Waiting, Alerting, Minigame }
     private HookState state = HookState.Idle;
     private float timer;
@@ -139,8 +135,7 @@ public class HookManager : MonoBehaviour
         currentFish = fishingSystem.GetRandomFish();
 
         if (alertUI != null) alertUI.SetActive(true);
-        if (audioSource != null && hookAlertClip != null)
-            audioSource.PlayOneShot(hookAlertClip);
+        AudioManager.Instance?.PlayHookAlert();
     }
 
     private void ExpireAlert()

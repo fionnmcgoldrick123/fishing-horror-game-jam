@@ -28,13 +28,6 @@ public class FishCatchDisplay : MonoBehaviour
     [SerializeField] private float starInterval = 0.25f;
     [SerializeField] private float starPunchDuration = 0.2f;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip preDelayClip;
-    [SerializeField] private AudioClip fishCaughtClip;
-    [SerializeField] private AudioClip moneyTickClip;
-    [SerializeField] private AudioClip starPopClip;
-
     private enum DisplayPhase { PreDelay, PanelPop, TypingDescription, CountingValue, PoppingStars, WaitingToClose, Inactive }
     private DisplayPhase phase = DisplayPhase.Inactive;
 
@@ -75,7 +68,7 @@ public class FishCatchDisplay : MonoBehaviour
 
         // Start the pre-delay phase (panel stays hidden)
         phase = DisplayPhase.PreDelay;
-        PlayClip(preDelayClip);
+        AudioManager.Instance?.PlayPreDelay();
         activeCoroutine = StartCoroutine(PreDelayRoutine());
     }
 
@@ -101,7 +94,7 @@ public class FishCatchDisplay : MonoBehaviour
         }
 
         catchPanel.SetActive(true);
-        PlayClip(fishCaughtClip);
+        AudioManager.Instance?.PlayFishCaught();
 
         phase = DisplayPhase.PanelPop;
         activeCoroutine = UIAnimations.PopInPanel(this, catchPanelRect, panelPopDuration, OnPanelPopComplete);
@@ -141,7 +134,7 @@ public class FishCatchDisplay : MonoBehaviour
             return;
         }
 
-        activeCoroutine = UIAnimations.CountUp(this, fishValueText, currentFish.value, countUpDuration, OnCountUpComplete, () => PlayClip(moneyTickClip));
+        activeCoroutine = UIAnimations.CountUp(this, fishValueText, currentFish.value, countUpDuration, OnCountUpComplete, () => AudioManager.Instance?.PlayMoneyTick());
     }
 
     private void OnCountUpComplete()
@@ -153,7 +146,7 @@ public class FishCatchDisplay : MonoBehaviour
     private void BeginStars()
     {
         phase = DisplayPhase.PoppingStars;
-        activeCoroutine = UIAnimations.PopInSequence(this, starImages, currentStarCount, activeStarColor, inactiveStarColor, starInterval, starPunchDuration, OnStarsComplete, () => PlayClip(starPopClip));
+        activeCoroutine = UIAnimations.PopInSequence(this, starImages, currentStarCount, activeStarColor, inactiveStarColor, starInterval, starPunchDuration, OnStarsComplete, () => AudioManager.Instance?.PlayStarPop());
     }
 
     private void OnStarsComplete()
@@ -208,12 +201,6 @@ public class FishCatchDisplay : MonoBehaviour
 
         if (player != null)
             player.ExitFishing();
-    }
-
-    private void PlayClip(AudioClip clip)
-    {
-        if (audioSource != null && clip != null)
-            audioSource.PlayOneShot(clip);
     }
 
     private int GetStarCount(Rarity rarity)
