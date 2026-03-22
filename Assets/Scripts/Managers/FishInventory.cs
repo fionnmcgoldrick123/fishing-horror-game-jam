@@ -49,6 +49,15 @@ public class FishInventory : MonoBehaviour
 
     public int GetFishCount() => caughtFish.Count;
 
+    public int SellAll()
+    {
+        int sold = totalValue;
+        caughtFish.Clear();
+        totalValue = 0;
+        UpdateScoreText();
+        return sold;
+    }
+
     private IEnumerator CountUpRoutine(int from, int to)
     {
         float elapsed = 0f;
