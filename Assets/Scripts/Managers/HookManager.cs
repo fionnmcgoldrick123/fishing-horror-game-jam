@@ -62,7 +62,8 @@ public class HookManager : MonoBehaviour
     public void StartWaiting()
     {
         state = HookState.Waiting;
-        timer = Random.Range(minWaitTime, maxWaitTime);
+        float multiplier = UpgradeManager.GetWaitTimeMultiplier();
+        timer = Random.Range(minWaitTime, maxWaitTime) * multiplier;
         currentFish = null;
         if (alertUI != null) alertUI.SetActive(false);
     }

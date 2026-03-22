@@ -25,6 +25,7 @@ public class FishScriptableObject : ScriptableObject
     public Sprite fishSprite;
     public int value;
     public Rarity rarity;
+    public bool isUpgradeCurrency;
 
     public int rarityWeight => rarity switch
     {

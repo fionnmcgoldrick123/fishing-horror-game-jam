@@ -16,7 +16,7 @@ public class NPCDialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        if (_playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (_playerInRange && !ShopButtonManager.IsOpen && Input.GetKeyDown(KeyCode.E))
         {
             player.EnterDialogue(dialogueData);
         }

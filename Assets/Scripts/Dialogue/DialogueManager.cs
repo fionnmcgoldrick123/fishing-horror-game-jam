@@ -28,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     private bool _isPanelAnimating;
     private bool _isActive;
 
+    public bool IsActive => _isActive;
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -127,6 +129,15 @@ public class DialogueManager : MonoBehaviour
         }
 
         ShowLine();
+    }
+
+    public void ForceClose()
+    {
+        if (!_isActive) return;
+        if (_typingCoroutine != null) StopCoroutine(_typingCoroutine);
+        _typingCoroutine = null;
+        _isTyping = false;
+        EndDialogue();
     }
 
     private void EndDialogue()

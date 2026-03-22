@@ -44,7 +44,7 @@ public class DifficultyManager : MonoBehaviour
 
     public DifficultySettings GetSettings(Rarity rarity)
     {
-        return rarity switch
+        DifficultySettings settings = rarity switch
         {
             Rarity.Common => new DifficultySettings(commonMinScore, commonMaxScore, commonMinHitSize, commonMaxHitSize, commonMinSpeed, commonMaxSpeed),
             Rarity.Rare => new DifficultySettings(rareMinScore, rareMaxScore, rareMinHitSize, rareMaxHitSize, rareMinSpeed, rareMaxSpeed),
@@ -52,6 +52,20 @@ public class DifficultyManager : MonoBehaviour
             Rarity.Legendary => new DifficultySettings(legendaryMinScore, legendaryMaxScore, legendaryMinHitSize, legendaryMaxHitSize, legendaryMinSpeed, legendaryMaxSpeed),
             _ => new DifficultySettings(commonMinScore, commonMaxScore, commonMinHitSize, commonMaxHitSize, commonMinSpeed, commonMaxSpeed)
         };
+
+        // Apply ease upgrades
+        float hitBonus = UpgradeManager.GetEaseHitSizeBonus();
+        float speedReduction = UpgradeManager.GetEaseSpeedReduction();
+        int scoreReduction = UpgradeManager.GetEaseScoreReduction();
+
+        settings.MinHitSize += hitBonus;
+        settings.MaxHitSize += hitBonus;
+        settings.MinSpeed = Mathf.Max(50f, settings.MinSpeed - speedReduction);
+        settings.MaxSpeed = Mathf.Max(60f, settings.MaxSpeed - speedReduction);
+        settings.MinScore = Mathf.Max(1, settings.MinScore - scoreReduction);
+        settings.MaxScore = Mathf.Max(1, settings.MaxScore - scoreReduction);
+
+        return settings;
     }
 }
 

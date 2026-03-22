@@ -21,6 +21,17 @@ public class FishInventory : MonoBehaviour
     public IReadOnlyList<FishScriptableObject> CaughtFish => caughtFish;
     public int TotalValue => totalValue;
 
+    public int EyeballCount
+    {
+        get
+        {
+            int count = 0;
+            foreach (var f in caughtFish)
+                if (f.isUpgradeCurrency) count++;
+            return count;
+        }
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -51,11 +62,38 @@ public class FishInventory : MonoBehaviour
 
     public int SellAll()
     {
-        int sold = totalValue;
-        caughtFish.Clear();
-        totalValue = 0;
+        int sold = 0;
+        for (int i = caughtFish.Count - 1; i >= 0; i--)
+        {
+            if (!caughtFish[i].isUpgradeCurrency)
+            {
+                sold += caughtFish[i].value;
+                caughtFish.RemoveAt(i);
+            }
+        }
+        totalValue = RecalculateValue();
         UpdateScoreText();
         return sold;
+    }
+
+    public void SpendEyeball()
+    {
+        for (int i = caughtFish.Count - 1; i >= 0; i--)
+        {
+            if (caughtFish[i].isUpgradeCurrency)
+            {
+                caughtFish.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    private int RecalculateValue()
+    {
+        int val = 0;
+        foreach (var f in caughtFish)
+            val += f.value;
+        return val;
     }
 
     private IEnumerator CountUpRoutine(int from, int to)

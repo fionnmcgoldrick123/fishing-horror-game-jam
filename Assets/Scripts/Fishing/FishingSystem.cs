@@ -7,24 +7,32 @@ public class FishingSystem : MonoBehaviour
 
     public FishScriptableObject GetRandomFish()
     {
-        int totalWeight = 0;
+        float luckMultiplier = UpgradeManager.GetLuckMultiplier();
+
+        float totalWeight = 0;
         foreach (var fish in fishList)
         {
-            totalWeight += fish.rarityWeight;
+            float weight = fish.rarityWeight;
+            if (fish.rarity != Rarity.Common)
+                weight *= luckMultiplier;
+            totalWeight += weight;
         }
 
-        int randomWeight = Random.Range(0, totalWeight);
-        int currentWeight = 0;
+        float randomWeight = Random.Range(0f, totalWeight);
+        float currentWeight = 0;
 
         foreach (var fish in fishList)
         {
-            currentWeight += fish.rarityWeight;
+            float weight = fish.rarityWeight;
+            if (fish.rarity != Rarity.Common)
+                weight *= luckMultiplier;
+            currentWeight += weight;
             if (randomWeight < currentWeight)
             {
                 return fish;
             }
         }
 
-        return null; // Should never reach here
+        return fishList[fishList.Count - 1];
     }
 }

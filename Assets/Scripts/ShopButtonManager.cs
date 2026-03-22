@@ -5,10 +5,12 @@ public class ShopButtonManager : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private RectTransform shopPanel;
+    [SerializeField] private CanvasGroup shopBackground;
 
     [Header("Animation")]
     [SerializeField] private float popInDuration = 0.3f;
     [SerializeField] private float popOutDuration = 0.15f;
+    [SerializeField] private float backgroundFadeDuration = 0.2f;
 
     [Header("Sell Feedback")]
     [SerializeField] private TextMeshProUGUI sellTotalText;
@@ -16,19 +18,30 @@ public class ShopButtonManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip sellClip;
 
+    public static bool IsOpen { get; private set; }
+
     private Coroutine animCoroutine;
+    private Coroutine bgCoroutine;
     private bool isOpen;
 
-    /// <summary>
-    /// Hook this up to your "Open Shop" button OnClick.
-    /// </summary>
     public void OpenShop()
     {
-
-        Debug.Log("OpenShop called");
-        
         if (isOpen) return;
+
+        // Close dialogue first if it's active
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsActive)
+            DialogueManager.Instance.ForceClose();
+
         isOpen = true;
+        IsOpen = true;
+
+        if (shopBackground != null)
+        {
+            shopBackground.gameObject.SetActive(true);
+            shopBackground.alpha = 0f;
+            if (bgCoroutine != null) StopCoroutine(bgCoroutine);
+            bgCoroutine = StartCoroutine(FadeBackground(0f, 1f, backgroundFadeDuration));
+        }
 
         shopPanel.gameObject.SetActive(true);
 
@@ -38,21 +51,16 @@ public class ShopButtonManager : MonoBehaviour
         UpdateSellPreview();
     }
 
-    /// <summary>
-    /// Hook this up to your "Back / Close" button OnClick.
-    /// </summary>
     public void CloseShop()
     {
         if (!isOpen) return;
         isOpen = false;
+        IsOpen = false;
 
         if (animCoroutine != null) StopCoroutine(animCoroutine);
         animCoroutine = StartCoroutine(PopOutRoutine());
     }
 
-    /// <summary>
-    /// Hook this up to your "Sell All Fish" button OnClick.
-    /// </summary>
     public void SellAllFish()
     {
         if (FishInventory.Instance == null) return;
@@ -77,8 +85,10 @@ public class ShopButtonManager : MonoBehaviour
 
     private System.Collections.IEnumerator PopOutRoutine()
     {
+        if (bgCoroutine != null) StopCoroutine(bgCoroutine);
+        bgCoroutine = StartCoroutine(FadeBackground(1f, 0f, popOutDuration));
+
         float elapsed = 0f;
-        Vector3 startScale = shopPanel.localScale;
         while (elapsed < popOutDuration)
         {
             elapsed += Time.deltaTime;
@@ -89,5 +99,21 @@ public class ShopButtonManager : MonoBehaviour
         }
         shopPanel.localScale = Vector3.zero;
         shopPanel.gameObject.SetActive(false);
+
+        if (shopBackground != null)
+            shopBackground.gameObject.SetActive(false);
+    }
+
+    private System.Collections.IEnumerator FadeBackground(float from, float to, float duration)
+    {
+        if (shopBackground == null) yield break;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            shopBackground.alpha = Mathf.Lerp(from, to, Mathf.Clamp01(elapsed / duration));
+            yield return null;
+        }
+        shopBackground.alpha = to;
     }
 }
