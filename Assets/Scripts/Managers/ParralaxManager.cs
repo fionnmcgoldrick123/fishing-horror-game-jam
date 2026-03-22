@@ -9,11 +9,8 @@ public class ParralaxManager : MonoBehaviour
         public Transform layerTransform;
 
         [Range(0f, 1f)]
-        [Tooltip("How much this layer moves relative to the camera.\n" +
-                 "0 = fixed in world (no movement).\n" +
-                 "1 = moves exactly with camera (glued to screen).\n" +
-                 "Distant layers (sky, moon) should be very low (0.02–0.1).\n" +
-                 "Closer layers should be higher (0.2–0.5).")]
+        [Tooltip("Per-layer speed. Cubed internally and scaled down, so the full\\n" +
+                 "0-1 range is very gentle. 0 = no movement, 1 = subtle drift.")]
         public float parallaxFactor = 0.05f;
     }
 
@@ -26,6 +23,7 @@ public class ParralaxManager : MonoBehaviour
     {
         new ParallaxLayer { label = "Sky / Stars",        parallaxFactor = 0.02f },
         new ParallaxLayer { label = "Moon",               parallaxFactor = 0.05f },
+        new ParallaxLayer { label = "Clouds",             parallaxFactor = 0.08f },
         new ParallaxLayer { label = "Far Background",     parallaxFactor = 0.12f },
         new ParallaxLayer { label = "Mid Background",     parallaxFactor = 0.25f },
         new ParallaxLayer { label = "Near Background",    parallaxFactor = 0.45f },
@@ -56,8 +54,11 @@ public class ParralaxManager : MonoBehaviour
         {
             if (layer.layerTransform == null) continue;
 
+            // Cube the factor and scale down so even 1.0 is gentle
+            float effective = layer.parallaxFactor * layer.parallaxFactor * layer.parallaxFactor * 0.1f;
+
             Vector3 pos = layer.layerTransform.position;
-            pos.x -= deltaX * layer.parallaxFactor;
+            pos.x -= deltaX * effective;
             layer.layerTransform.position = pos;
         }
 
