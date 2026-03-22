@@ -40,6 +40,7 @@ public class FishInventory : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -99,17 +100,22 @@ public class FishInventory : MonoBehaviour
     private IEnumerator CountUpRoutine(int from, int to)
     {
         float elapsed = 0f;
+        int lastValue = from - 1;
         while (elapsed < countUpDuration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / countUpDuration);
             int current = (int)Mathf.Lerp(from, to, t);
-            if (scoreText != null)
-                scoreText.text = $"${current}";
+            if (current != lastValue)
+            {
+                if (scoreText != null)
+                    scoreText.text = $"${current}";
 
-            if (audioSource != null && scoreTickClip != null)
-                audioSource.PlayOneShot(scoreTickClip);
+                if (current > from && audioSource != null && scoreTickClip != null)
+                    audioSource.PlayOneShot(scoreTickClip);
 
+                lastValue = current;
+            }
             yield return null;
         }
 

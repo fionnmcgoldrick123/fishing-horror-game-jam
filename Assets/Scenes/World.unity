@@ -119,6 +119,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5611682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5611683}
+  - component: {fileID: 5611684}
+  m_Layer: 0
+  m_Name: FishingSystemTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5611683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1239637825}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5611684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c6fdc5fcc60434bbc1a2df50aef025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishList:
+  - {fileID: 11400000, guid: 06946d4143c3b1242b36abd58cae42c4, type: 2}
+  - {fileID: 11400000, guid: c5ed60d5525a8994d901f7cfdea75198, type: 2}
 --- !u!1 &82061934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &753496174
 Transform:
   m_ObjectHideFlags: 0
@@ -2093,6 +2140,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 637b8126fc8102240a2052a6d877cdd6, type: 2}
   - {fileID: 11400000, guid: cff1d3ca09b64a04e98774d3797dd892, type: 2}
   - {fileID: 11400000, guid: 02bdffd0366e7e5498cf96c9a701e66c, type: 2}
+  - {fileID: 11400000, guid: 06946d4143c3b1242b36abd58cae42c4, type: 2}
+  - {fileID: 11400000, guid: c5ed60d5525a8994d901f7cfdea75198, type: 2}
 --- !u!1 &896187815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,7 +2338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
-  fishingSystem: {fileID: 753496175}
+  fishingSystem: {fileID: 5611684}
   minWaitTime: 2
   maxWaitTime: 8
   alertDuration: 1.5
@@ -2639,11 +2688,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2410b36591f3b746a22d46b927b2f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonMinScore: 1
-  commonMaxScore: 2
+  commonMinScore: 3
+  commonMaxScore: 5
   commonMinHitSize: 80
   commonMaxHitSize: 120
-  commonMinSpeed: 100
+  commonMinSpeed: 120
   commonMaxSpeed: 150
   rareMinScore: 2
   rareMaxScore: 3
@@ -3152,7 +3201,7 @@ Transform:
   - {fileID: 995851238}
   - {fileID: 609524611}
   - {fileID: 753496174}
-  - {fileID: 1754305292}
+  - {fileID: 5611683}
   - {fileID: 655066108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4334,12 +4383,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754305291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 266.92673, y: 231.22627, z: -3.2844176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1239637825}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1754305293
 MonoBehaviour:
@@ -5965,3 +6014,4 @@ SceneRoots:
   - {fileID: 1239637825}
   - {fileID: 1034957339}
   - {fileID: 1072172067}
+  - {fileID: 1754305292}

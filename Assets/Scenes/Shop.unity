@@ -853,7 +853,7 @@ MonoBehaviour:
   - {fileID: 1998072061}
   - {fileID: 2038584532}
   - {fileID: 254507969}
-  litStarColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  litStarColor: {r: 1, g: 1, b: 1, a: 1}
   unlitStarColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
   audioSource: {fileID: 0}
   purchaseClip: {fileID: 0}
@@ -1132,9 +1132,9 @@ RectTransform:
   - {fileID: 1341486759}
   m_Father: {fileID: 240574939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -46.3, y: 15.8}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 16.87}
   m_SizeDelta: {x: 82, y: 23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &458286883
@@ -1842,7 +1842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f36fbf6dee429ca41a4cab3318474059, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 294e71e358c2dfb45b5c51fb16a10c47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2159,6 +2159,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7231286564288060219, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231286564288060219, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7420636266873680524, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
       propertyPath: m_Name
       value: DialogueUI
@@ -2166,6 +2174,14 @@ PrefabInstance:
     - target: {fileID: 7420636266873680524, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902488674256154092, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 32.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902488674256154092, guid: 0f4e69457405bfc4388c40cbc2195277, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3078,7 +3094,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 1
   sceneName: World
-  exitSpawnPosition: {x: 5, y: -3.4, z: 0}
+  exitSpawnPosition: {x: 2, y: -3.3, z: 0}
 --- !u!1 &1479231680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3885,7 +3901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Catch Speed
+  m_text: Ease
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
   m_sharedMaterial: {fileID: 2993087047706068046, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
@@ -4432,7 +4448,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Catch Speed
+  m_text: 'Luck
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
   m_sharedMaterial: {fileID: 2993087047706068046, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}

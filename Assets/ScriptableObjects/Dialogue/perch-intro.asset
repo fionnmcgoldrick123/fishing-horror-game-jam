@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: perch-intro
   m_EditorClassIdentifier: 
   characterName: Perch
-  characterPortrait: {fileID: 21300000, guid: 3cadb61783a8ad44abb478954be17e5d, type: 3}
+  characterPortrait: {fileID: 21300000, guid: 294e71e358c2dfb45b5c51fb16a10c47, type: 3}
   lines:
   - MMMMMMMM....
   - YOU LOOK LIKE YOU WILL DO NICELY.

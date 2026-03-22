@@ -133,6 +133,14 @@ public class FishCatchDisplay : MonoBehaviour
     private void BeginCountUp()
     {
         phase = DisplayPhase.CountingValue;
+
+        if (currentFish.value == 0)
+        {
+            fishValueText.text = "0";
+            OnCountUpComplete();
+            return;
+        }
+
         activeCoroutine = UIAnimations.CountUp(this, fishValueText, currentFish.value, countUpDuration, OnCountUpComplete, () => PlayClip(moneyTickClip));
     }
 
