@@ -7,6 +7,9 @@ public class ShopUpgradeUI : MonoBehaviour
     [Header("Eyeball Currency")]
     [SerializeField] private TextMeshProUGUI eyeballCountText;
 
+    [Header("Money Display")]
+    [SerializeField] private TextMeshProUGUI moneyText;
+
     [Header("Luck Upgrade")]
     [SerializeField] private Button luckButton;
     [SerializeField] private Image[] luckStars = new Image[5];
@@ -62,6 +65,7 @@ public class ShopUpgradeUI : MonoBehaviour
         UpdateStars(catchSpeedStars, UpgradeManager.CatchSpeedLevel);
         UpdateStars(easeStars, UpgradeManager.EaseLevel);
         UpdateEyeballCount();
+        UpdateMoneyText();
     }
 
     private void UpdateStars(Image[] stars, int level)
@@ -76,5 +80,11 @@ public class ShopUpgradeUI : MonoBehaviour
     {
         if (eyeballCountText != null && FishInventory.Instance != null)
             eyeballCountText.text = FishInventory.Instance.EyeballCount.ToString();
+    }
+
+    private void UpdateMoneyText()
+    {
+        if (moneyText != null && FishInventory.Instance != null)
+            moneyText.text = $"${FishInventory.Instance.TotalValue}";
     }
 }

@@ -830,7 +830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &240574939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -911,6 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeballCountText: {fileID: 465974546}
+  moneyText: {fileID: 0}
   luckButton: {fileID: 211820256}
   luckStars:
   - {fileID: 73848168}
