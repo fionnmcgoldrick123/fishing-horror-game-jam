@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     private bool _isTyping;
     private bool _isPanelAnimating;
     private bool _isActive;
+    private bool _justEnded;
 
     public bool IsActive => _isActive;
 
@@ -57,9 +58,12 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+        // Reset the just-ended flag each frame
+        _justEnded = false;
+
         if (!_isActive) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
         {
             if (_isPanelAnimating)
             {
@@ -72,12 +76,12 @@ public class DialogueManager : MonoBehaviour
             }
             else if (_isTyping)
             {
-                // First click: skip to end of current line
+                // First click/E: skip to end of current line
                 SkipTyping();
             }
             else
             {
-                // Second click: advance to next line
+                // Second click/E: advance to next line
                 AdvanceLine();
             }
         }
@@ -144,8 +148,11 @@ public class DialogueManager : MonoBehaviour
         _isPanelAnimating = false;
 
         _isActive = false;
+        _justEnded = true;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
         player.ExitDialogue();
     }
+
+    public bool JustEnded() => _justEnded;
 }
