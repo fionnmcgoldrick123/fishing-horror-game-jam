@@ -53,7 +53,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HorizontalInput = Input.GetAxisRaw("Horizontal");
+        // Zero out movement while shop panel is open
+        HorizontalInput = ShopButtonManager.IsOpen ? 0f : Input.GetAxisRaw("Horizontal");
         currentState?.Update();
         CheckInteractionInput();
     }
@@ -61,6 +62,10 @@ public class PlayerController : MonoBehaviour
     private void CheckInteractionInput()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
+
+        // Don't process scene/shop transitions while shop panel or dialogue is active
+        if (ShopButtonManager.IsOpen) return;
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsActive) return;
 
         if (CanEnterShop && !string.IsNullOrEmpty(ShopSceneName))
         {

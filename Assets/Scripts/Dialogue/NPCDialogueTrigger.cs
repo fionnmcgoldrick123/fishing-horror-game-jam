@@ -16,11 +16,14 @@ public class NPCDialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        // Don't trigger if dialogue is active or just ended from previous E press
-        if (_playerInRange && !ShopButtonManager.IsOpen && !DialogueManager.Instance.IsActive && !DialogueManager.Instance.JustEnded() && Input.GetKeyDown(KeyCode.E))
-        {
-            player.EnterDialogue(dialogueData);
-        }
+        if (!_playerInRange) return;
+        if (ShopButtonManager.IsOpen) return;
+        if (DialogueManager.Instance == null) return;
+        if (DialogueManager.Instance.IsActive) return;
+        if (DialogueManager.Instance.JustEnded()) return;
+        if (!Input.GetKeyDown(KeyCode.E)) return;
+
+        player.EnterDialogue(dialogueData);
     }
 
     void OnTriggerEnter2D(Collider2D other)

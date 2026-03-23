@@ -16,11 +16,25 @@ public class ShopButtonManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI sellTotalText;
     [SerializeField] private float countUpDuration = 0.8f;
 
+    [Header("Quota")]
+    [SerializeField] private GameObject meetQuotaButton;
+
     public static bool IsOpen { get; private set; }
 
     private Coroutine animCoroutine;
     private Coroutine bgCoroutine;
     private bool isOpen;
+
+    void Update()
+    {
+        // If shop is already open and quota visit kicks in (player was in shop when day ended),
+        // lock it immediately by showing the quota button and hiding the ability to close.
+        if (isOpen && meetQuotaButton != null && TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit)
+        {
+            if (!meetQuotaButton.activeSelf)
+                meetQuotaButton.SetActive(true);
+        }
+    }
 
     public void OpenShop()
     {
@@ -46,12 +60,20 @@ public class ShopButtonManager : MonoBehaviour
         if (animCoroutine != null) StopCoroutine(animCoroutine);
         animCoroutine = UIAnimations.PopInPanel(this, shopPanel, popInDuration);
 
+        // Show or hide quota button based on whether this is an end-of-day visit
+        if (meetQuotaButton != null)
+            meetQuotaButton.SetActive(TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit);
+
         UpdateSellPreview();
     }
 
     public void CloseShop()
     {
         if (!isOpen) return;
+
+        // Block closing if this is a quota visit — must press Meet Quota instead
+        if (TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit) return;
+
         isOpen = false;
         IsOpen = false;
 
@@ -78,6 +100,18 @@ public class ShopButtonManager : MonoBehaviour
     {
         if (sellTotalText == null || FishInventory.Instance == null) return;
         sellTotalText.text = $"${FishInventory.Instance.TotalValue}";
+    }
+
+    /// <summary>
+    /// Called by the Meet Quota button. Closes the shop, advances the day, returns to world.
+    /// </summary>
+    public void OnMeetQuotaPressed()
+    {
+        isOpen = false;
+        IsOpen = false;
+
+        if (TimeOfDayManager.Instance != null)
+            TimeOfDayManager.Instance.MeetQuota();
     }
 
     private System.Collections.IEnumerator PopOutRoutine()
