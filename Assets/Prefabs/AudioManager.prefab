@@ -190,6 +190,8 @@ MonoBehaviour:
   sellFish: {fileID: 0}
   upgradePurchase: {fileID: 0}
   upgradeFail: {fileID: 8300000, guid: 162dad78bd7d0c54b8a7c0eedee4a89f, type: 3}
+  quotaFail: {fileID: 0}
+  openingDoor: {fileID: 0}
   dialogueTyping: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}
 --- !u!1 &8984234274865595117
 GameObject:
