@@ -69,10 +69,12 @@ public class PlayerController : MonoBehaviour
 
         if (CanEnterShop && !string.IsNullOrEmpty(ShopSceneName))
         {
+            AudioManager.Instance.PlayOpeningDoor();
             SceneManager.Instance.LoadScene(ShopSceneName);
         }
         else if (CanExitShop)
         {
+            AudioManager.Instance.PlayOpeningDoor();
             SceneManager.Instance.LoadSceneWithSpawn("World", _exitSpawnPosition);
         }
     }
