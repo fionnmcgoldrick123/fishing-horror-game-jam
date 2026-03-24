@@ -1462,6 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: dd850fa3c17458a44b519d6d91201c45, type: 2}
+  opensShopOnEnd: 0
 --- !u!61 &699806682
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1626,7 +1627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &753496174
 Transform:
   m_ObjectHideFlags: 0
@@ -1869,7 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
-  fishingSystem: {fileID: 5611684}
+  fishingSystem: {fileID: 753496175}
   minWaitTime: 2
   maxWaitTime: 8
   alertDuration: 1.5
@@ -3672,6 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: 91c46afc3e703c34dbb4db50f83b7da1, type: 2}
+  opensShopOnEnd: 0
 --- !u!61 &1768948934
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5112,13 +5114,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 720567657143445168}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
+      propertyPath: dayEndDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
+    - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
+      objectReference: {fileID: 11400000, guid: 8526096970e9ad844b580ceee776a90e, type: 2}
     - target: {fileID: 7489032667363756735, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 397.50003

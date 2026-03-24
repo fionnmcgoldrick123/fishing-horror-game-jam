@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopPanel: {fileID: 240574939}
-  shopBackground: {fileID: 0}
+  shopBackground: {fileID: 240574938}
   popInDuration: 0.1
   popOutDuration: 0.15
   backgroundFadeDuration: 0.2
@@ -3784,6 +3784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
+  opensShopOnEnd: 1
 --- !u!61 &1530560481
 BoxCollider2D:
   m_ObjectHideFlags: 0

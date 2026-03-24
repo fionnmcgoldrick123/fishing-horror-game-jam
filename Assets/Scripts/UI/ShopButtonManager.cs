@@ -5,7 +5,7 @@ public class ShopButtonManager : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private RectTransform shopPanel;
-    [SerializeField] private CanvasGroup shopBackground;
+    [SerializeField] private GameObject shopBackground;
 
     [Header("Animation")]
     [SerializeField] private float popInDuration = 0.3f;
@@ -43,7 +43,6 @@ public class ShopButtonManager : MonoBehaviour
         TimeOfDayManager.Instance?.PauseDay();
         {
             shopBackground.gameObject.SetActive(true);
-            shopBackground.alpha = 0f;
             if (bgCoroutine != null) StopCoroutine(bgCoroutine);
             bgCoroutine = StartCoroutine(FadeBackground(0f, 1f, backgroundFadeDuration));
         }
@@ -117,9 +116,7 @@ public class ShopButtonManager : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            shopBackground.alpha = Mathf.Lerp(from, to, Mathf.Clamp01(elapsed / duration));
             yield return null;
         }
-        shopBackground.alpha = to;
     }
 }

@@ -4,21 +4,45 @@ public class PlayerFishingState : PlayerState
 {
     private enum Phase { Idle, Prep, Casting, Wait, Catching }
     private Phase phase;
+    private Phase previousPhase;
+    private bool minigameActive;
 
     public PlayerFishingState(PlayerController player) : base(player) { }
 
-
     public override void Enter()
     {
-        TimeOfDayManager.Instance?.PauseDay();
         player.Anim.enabled = false;
         player.Sr.sprite = player.FishingIdleSprite;
         player.Rb.linearVelocity = new Vector2(0f, player.Rb.linearVelocityY);
         phase = Phase.Idle;
+        previousPhase = Phase.Idle;
+        minigameActive = false;
     }
 
     public override void Update()
     {
+        // Track phase transitions and pause/resume accordingly
+        if (phase != previousPhase)
+        {
+            bool wasMinigameActive = IsMinigamePhase(previousPhase);
+            bool isMinigameActive = IsMinigamePhase(phase);
+
+            // Pause if transitioning INTO a minigame phase
+            if (!wasMinigameActive && isMinigameActive)
+            {
+                TimeOfDayManager.Instance?.PauseDay();
+                minigameActive = true;
+            }
+            // Resume if transitioning OUT of a minigame phase
+            else if (wasMinigameActive && !isMinigameActive)
+            {
+                TimeOfDayManager.Instance?.ResumeDay();
+                minigameActive = false;
+            }
+
+            previousPhase = phase;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             player.ExitFishing();
@@ -82,6 +106,11 @@ public class PlayerFishingState : PlayerState
         }
     }
 
+    private bool IsMinigamePhase(Phase p)
+    {
+        return p == Phase.Prep || p == Phase.Casting || p == Phase.Catching;
+    }
+
     public override void FixedUpdate()
     {
         player.Rb.linearVelocity = new Vector2(0f, player.Rb.linearVelocityY);
@@ -89,7 +118,10 @@ public class PlayerFishingState : PlayerState
 
     public override void Exit()
     {
-        TimeOfDayManager.Instance?.ResumeDay();
+        // Resume if currently in a minigame phase
+        if (minigameActive)
+            TimeOfDayManager.Instance?.ResumeDay();
+
         player.Anim.enabled = true;
         player.Anim.ResetTrigger("Casting");
         player.Anim.Play("Blend Tree");
