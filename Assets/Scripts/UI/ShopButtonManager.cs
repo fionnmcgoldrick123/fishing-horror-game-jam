@@ -29,7 +29,7 @@ public class ShopButtonManager : MonoBehaviour
     {
         quotaAmountText.text = QuotaManager.Instance != null ? QuotaManager.Instance.currentQuota.ToString("F0") : "N/A";
     }
-    
+
     public void OpenShop()
     {
         if (isOpen) return;
@@ -40,8 +40,7 @@ public class ShopButtonManager : MonoBehaviour
 
         isOpen = true;
         IsOpen = true;
-
-        if (shopBackground != null)
+        TimeOfDayManager.Instance?.PauseDay();
         {
             shopBackground.gameObject.SetActive(true);
             shopBackground.alpha = 0f;
@@ -66,24 +65,10 @@ public class ShopButtonManager : MonoBehaviour
 
         isOpen = false;
         IsOpen = false;
+        TimeOfDayManager.Instance?.ResumeDay();
 
         if (animCoroutine != null) StopCoroutine(animCoroutine);
         animCoroutine = StartCoroutine(PopOutRoutine());
-    }
-
-    public void SellAllFish()
-    {
-        if (FishInventory.Instance == null) return;
-
-        int earnings = FishInventory.Instance.SellAll();
-        if (earnings <= 0) return;
-
-        AudioManager.Instance?.PlaySellFish();
-
-        if (sellTotalText != null)
-            UIAnimations.CountUp(this, sellTotalText, earnings, countUpDuration);
-
-        UpdateSellPreview();
     }
 
     private void UpdateSellPreview()

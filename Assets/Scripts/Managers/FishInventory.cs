@@ -7,7 +7,7 @@ public class FishInventory : MonoBehaviour
 {
     public static FishInventory Instance { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     [Header("Count-Up Animation")]
     [SerializeField] private float countUpDuration = 0.6f;
@@ -19,16 +19,7 @@ public class FishInventory : MonoBehaviour
     public IReadOnlyList<FishScriptableObject> CaughtFish => caughtFish;
     public int TotalValue => totalValue;
 
-    public int EyeballCount
-    {
-        get
-        {
-            int count = 0;
-            foreach (var f in caughtFish)
-                if (f.isUpgradeCurrency) count++;
-            return count;
-        }
-    }
+
 
     private void Awake()
     {
@@ -41,8 +32,26 @@ public class FishInventory : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public int EyeballCount
+    {
+        get
+        {
+            int count = 0;
+            foreach (var f in caughtFish)
+                if (f.isUpgradeCurrency) count++;
+            return count;
+        }
+    }
+
     private void Start()
     {
+        UpdateScoreText();
+    }
+
+    /// <summary>Called by DayUI each scene load to re-bind the scene's money text.</summary>
+    public void SetMoneyText(TextMeshProUGUI text)
+    {
+        moneyText = text;
         UpdateScoreText();
     }
 
@@ -59,20 +68,14 @@ public class FishInventory : MonoBehaviour
 
     public int GetFishCount() => caughtFish.Count;
 
-    public int SellAll()
+    public void SpendMoney(int amount)
     {
-        int sold = 0;
-        for (int i = caughtFish.Count - 1; i >= 0; i--)
-        {
-            if (!caughtFish[i].isUpgradeCurrency)
-            {
-                sold += caughtFish[i].value;
-                caughtFish.RemoveAt(i);
-            }
-        }
-        totalValue = RecalculateValue();
-        UpdateScoreText();
-        return sold;
+        int previousValue = totalValue;
+        totalValue = Mathf.Max(0, totalValue - amount);
+
+        if (countUpCoroutine != null)
+            StopCoroutine(countUpCoroutine);
+        countUpCoroutine = StartCoroutine(CountUpRoutine(previousValue, totalValue));
     }
 
     public void SpendEyeball()
@@ -87,13 +90,13 @@ public class FishInventory : MonoBehaviour
         }
     }
 
-    private int RecalculateValue()
-    {
-        int val = 0;
-        foreach (var f in caughtFish)
-            val += f.value;
-        return val;
-    }
+    // private int RecalculateValue()
+    // {
+    //     int val = 0;
+    //     foreach (var f in caughtFish)
+    //         val += f.value;
+    //     return val;
+    // }
 
     private IEnumerator CountUpRoutine(int from, int to)
     {
@@ -106,8 +109,8 @@ public class FishInventory : MonoBehaviour
             int current = (int)Mathf.Lerp(from, to, t);
             if (current != lastValue)
             {
-                if (scoreText != null)
-                    scoreText.text = $"${current}";
+                if (moneyText != null)
+                    moneyText.text = $"${current}";
 
                 if (current > from)
                     AudioManager.Instance?.PlayScoreTick();
@@ -117,14 +120,14 @@ public class FishInventory : MonoBehaviour
             yield return null;
         }
 
-        if (scoreText != null)
-            scoreText.text = $"${to}";
+        if (moneyText != null)
+            moneyText.text = $"${to}";
         countUpCoroutine = null;
     }
 
     private void UpdateScoreText()
     {
-        if (scoreText != null)
-            scoreText.text = $"${totalValue}";
+        if (moneyText != null)
+            moneyText.text = $"${totalValue}";
     }
 }

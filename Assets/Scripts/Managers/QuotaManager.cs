@@ -32,4 +32,28 @@ public class QuotaManager : MonoBehaviour
     {
         currentQuota = startingQuota;
     }
+
+    public bool CanAffordQuota()
+    {
+        return FishInventory.Instance != null && FishInventory.Instance.TotalValue >= currentQuota;
+    }
+
+    public void PayQuota()
+    {
+        if (FishInventory.Instance != null)
+            FishInventory.Instance.SpendMoney((int)currentQuota);
+    }
+
+    public void CheckIfQuotaMet()
+    {
+        if (FishInventory.Instance.TotalValue >= currentQuota)
+        {
+            Debug.Log("Quota met! Advancing to next day.");
+        }
+        else
+        {
+            // Player failed to meet the quota, trigger game over
+            GameOverManager.Instance.TriggerGameOver();
+        }
+    }
 }

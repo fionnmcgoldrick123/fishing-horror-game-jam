@@ -10,6 +10,7 @@ public class PlayerFishingState : PlayerState
 
     public override void Enter()
     {
+        TimeOfDayManager.Instance?.PauseDay();
         player.Anim.enabled = false;
         player.Sr.sprite = player.FishingIdleSprite;
         player.Rb.linearVelocity = new Vector2(0f, player.Rb.linearVelocityY);
@@ -88,6 +89,7 @@ public class PlayerFishingState : PlayerState
 
     public override void Exit()
     {
+        TimeOfDayManager.Instance?.ResumeDay();
         player.Anim.enabled = true;
         player.Anim.ResetTrigger("Casting");
         player.Anim.Play("Blend Tree");

@@ -18,6 +18,7 @@ public class DayManager : MonoBehaviour
 
     public void AdvanceDay()
     {
+        QuotaManager.Instance.IncreaseQuota();
         CurrentDay++;
     }
 }

@@ -16,8 +16,6 @@ public class DialogueManager : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private float panelPopDuration = 0.3f;
 
-    private PlayerController player;
-
     private DialogueData _currentData;
     private int _lineIndex;
     private Coroutine _typingCoroutine;
@@ -33,12 +31,16 @@ public class DialogueManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-
-        player = FindFirstObjectByType<PlayerController>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void StartDialogue(DialogueData data)
     {
+        if (dialoguePanel == null || dialogueText == null || nameText == null)
+        {
+            Debug.LogError("DialogueManager: UI references are missing. Ensure all UI is a child of the DialogueManager GameObject.");
+            return;
+        }
         nameText.text = data.characterName;
         characterPortrait.sprite = data.characterPortrait;
         _currentData = data;
@@ -151,7 +153,9 @@ public class DialogueManager : MonoBehaviour
         _justEnded = true;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        player.ExitDialogue();
+
+        PlayerController p = FindFirstObjectByType<PlayerController>();
+        p?.ExitDialogue();
     }
 
     public bool JustEnded() => _justEnded;

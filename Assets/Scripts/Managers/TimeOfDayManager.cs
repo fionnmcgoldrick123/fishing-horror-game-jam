@@ -42,6 +42,8 @@ public class TimeOfDayManager : MonoBehaviour
     [Header("Day End")]
     [Tooltip("Dialogue to play when the day ends")]
     [SerializeField] private DialogueData dayEndDialogue;
+    [Tooltip("Dialogue to play when the player can't afford the quota")]
+    [SerializeField] private DialogueData cantAffordQuotaDialogue;
     [Tooltip("Scene to load after day-end dialogue")]
     [SerializeField] private string shopSceneName = "Shop";
     [Tooltip("Disable this object when the player is locked in the shop at end of day (e.g. the exit door/button)")]
@@ -60,6 +62,7 @@ public class TimeOfDayManager : MonoBehaviour
     private int TotalInGameMinutes => (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
 
     public bool IsDayActive => _dayActive;
+    public bool DayEndTriggered => _dayEndTriggered;
     public float NormalizedTime => Mathf.Clamp01(_elapsed / dayDurationSeconds);
 
     /// <summary>Current in-game hour (e.g. 14 for 2 PM)</summary>
@@ -158,18 +161,19 @@ public class TimeOfDayManager : MonoBehaviour
         bool alreadyInShop = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == shopSceneName;
         if (alreadyInShop)
         {
-            // Player is already in the shop — play dialogue then disable the exit
+            // Player is already in the shop — play day-end dialogue, then check quota
             if (dayEndDialogue != null)
             {
                 PlayerController player = FindFirstObjectByType<PlayerController>();
                 if (player != null)
                 {
                     player.EnterDialogue(dayEndDialogue);
-                    StartCoroutine(WaitForDialogueThenDisableExit());
+                    StartCoroutine(WaitForDialogueThenCheckQuota());
                     return;
                 }
             }
-            DisableShopExit();
+            // No dialogue — check quota immediately
+            HandleQuotaCheckInShop();
             return;
         }
 
@@ -189,12 +193,45 @@ public class TimeOfDayManager : MonoBehaviour
         LoadShopForQuota();
     }
 
-    private System.Collections.IEnumerator WaitForDialogueThenDisableExit()
+    private System.Collections.IEnumerator WaitForDialogueThenCheckQuota()
     {
         yield return null;
         while (DialogueManager.Instance != null && DialogueManager.Instance.IsActive)
             yield return null;
-        DisableShopExit();
+        HandleQuotaCheckInShop();
+    }
+
+    /// <summary>
+    /// After day-end dialogue finishes while already in the shop,
+    /// check if the player can afford the quota.
+    /// </summary>
+    private void HandleQuotaCheckInShop()
+    {
+        bool canAfford = QuotaManager.Instance != null && QuotaManager.Instance.CanAffordQuota();
+        if (canAfford)
+        {
+            DisableShopExit();
+        }
+        else
+        {
+            // Can't afford — play "can't afford" dialogue, leave exit enabled
+            PlayCantAffordDialogue();
+        }
+    }
+
+    /// <summary>Plays the can't-afford-quota dialogue. Exit stays enabled.</summary>
+    public void PlayCantAffordDialogue()
+    {
+        if (cantAffordQuotaDialogue == null) return;
+        PlayerController player = FindFirstObjectByType<PlayerController>();
+        if (player != null)
+            player.EnterDialogue(cantAffordQuotaDialogue);
+    }
+
+    private void EnableShopExit()
+    {
+        if (shopExitObject != null)
+            shopExitObject.SetActive(true);
     }
 
     private System.Collections.IEnumerator WaitForDialogueThenLoadShop()
@@ -232,7 +269,12 @@ public class TimeOfDayManager : MonoBehaviour
     /// </summary>
     public void MeetQuota()
     {
+        // Deduct quota cost from player money
+        if (QuotaManager.Instance != null)
+            QuotaManager.Instance.PayQuota();
+
         IsQuotaVisit = false;
+        _dayEndTriggered = false;
         DayManager.Instance.AdvanceDay();
         SceneManager.Instance.LoadScene("World");
 
