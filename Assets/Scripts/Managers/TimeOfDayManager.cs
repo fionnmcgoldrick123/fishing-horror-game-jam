@@ -44,6 +44,8 @@ public class TimeOfDayManager : MonoBehaviour
     [SerializeField] private DialogueData dayEndDialogue;
     [Tooltip("Scene to load after day-end dialogue")]
     [SerializeField] private string shopSceneName = "Shop";
+    [Tooltip("Disable this object when the player is locked in the shop at end of day (e.g. the exit door/button)")]
+    private GameObject shopExitObject;
 
     /// <summary>Fired when the day timer runs out.</summary>
     public event Action OnDayEnded;
@@ -121,6 +123,12 @@ public class TimeOfDayManager : MonoBehaviour
         UpdateClockDisplay();
     }
 
+    /// <summary>Called by ShopExitRegistrar when the shop scene loads.</summary>
+    public void RegisterShopExit(GameObject obj)
+    {
+        shopExitObject = obj;
+    }
+
     private void UpdateClockDisplay()
     {
         if (clockText == null) return;
@@ -147,9 +155,23 @@ public class TimeOfDayManager : MonoBehaviour
         // Set quota flag immediately so shop locks if player is already there
         IsQuotaVisit = true;
 
-        // If player is already in the shop scene, just lock the open panel
         bool alreadyInShop = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == shopSceneName;
-        if (alreadyInShop) return;
+        if (alreadyInShop)
+        {
+            // Player is already in the shop — play dialogue then disable the exit
+            if (dayEndDialogue != null)
+            {
+                PlayerController player = FindFirstObjectByType<PlayerController>();
+                if (player != null)
+                {
+                    player.EnterDialogue(dayEndDialogue);
+                    StartCoroutine(WaitForDialogueThenDisableExit());
+                    return;
+                }
+            }
+            DisableShopExit();
+            return;
+        }
 
         // Play day-end dialogue, then load shop
         if (dayEndDialogue != null)
@@ -167,6 +189,14 @@ public class TimeOfDayManager : MonoBehaviour
         LoadShopForQuota();
     }
 
+    private System.Collections.IEnumerator WaitForDialogueThenDisableExit()
+    {
+        yield return null;
+        while (DialogueManager.Instance != null && DialogueManager.Instance.IsActive)
+            yield return null;
+        DisableShopExit();
+    }
+
     private System.Collections.IEnumerator WaitForDialogueThenLoadShop()
     {
         // Wait one frame for dialogue to actually start
@@ -176,6 +206,12 @@ public class TimeOfDayManager : MonoBehaviour
             yield return null;
 
         LoadShopForQuota();
+    }
+
+    private void DisableShopExit()
+    {
+        if (shopExitObject != null)
+            shopExitObject.SetActive(false);
     }
 
     private void LoadShopForQuota()
