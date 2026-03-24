@@ -85,6 +85,6 @@ public class ShopUpgradeUI : MonoBehaviour
     private void UpdateMoneyText()
     {
         if (moneyText != null && FishInventory.Instance != null)
-            moneyText.text = $"${FishInventory.Instance.TotalValue}";
+            moneyText.text = FishInventory.Instance.TotalValue.ToString();
     }
 }

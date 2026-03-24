@@ -110,7 +110,7 @@ public class FishInventory : MonoBehaviour
             if (current != lastValue)
             {
                 if (moneyText != null)
-                    moneyText.text = $"${current}";
+                    moneyText.text = $"{current}";
 
                 if (current > from)
                     AudioManager.Instance?.PlayScoreTick();
@@ -121,13 +121,13 @@ public class FishInventory : MonoBehaviour
         }
 
         if (moneyText != null)
-            moneyText.text = $"${to}";
+            moneyText.text = $"{to}";
         countUpCoroutine = null;
     }
 
     private void UpdateScoreText()
     {
         if (moneyText != null)
-            moneyText.text = $"${totalValue}";
+            moneyText.text = $"{totalValue}";
     }
 }

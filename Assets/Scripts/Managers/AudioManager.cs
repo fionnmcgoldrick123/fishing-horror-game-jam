@@ -30,9 +30,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip sellFish;
     [SerializeField] private AudioClip upgradePurchase;
     [SerializeField] private AudioClip upgradeFail;
+    [SerializeField] private AudioClip quotaFail;
     [SerializeField] private AudioClip openingDoor;
 
     public void PlayOpeningDoor() => Play(openingDoor);
+    public void PlayQuotaFail() => Play(quotaFail);
 
     [Header("Dialogue")]
     [SerializeField] private AudioClip dialogueTyping;

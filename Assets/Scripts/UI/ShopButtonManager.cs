@@ -59,12 +59,13 @@ public class ShopButtonManager : MonoBehaviour
     {
         if (!isOpen) return;
 
-        // Block closing if this is a quota visit — must press Meet Quota instead
-        if (TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit) return;
+        // Block closing only when this is a quota visit AND the player can still afford to pay.
+        // If they cannot afford it, allow closing (shop exit stays available for the fail state).
+        if (TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit
+            && QuotaManager.Instance != null && QuotaManager.Instance.CanAffordQuota()) return;
 
         isOpen = false;
         IsOpen = false;
-        TimeOfDayManager.Instance?.ResumeDay();
 
         if (animCoroutine != null) StopCoroutine(animCoroutine);
         animCoroutine = StartCoroutine(PopOutRoutine());
@@ -73,14 +74,22 @@ public class ShopButtonManager : MonoBehaviour
     private void UpdateSellPreview()
     {
         if (sellTotalText == null || FishInventory.Instance == null) return;
-        sellTotalText.text = $"${FishInventory.Instance.TotalValue}";
+        sellTotalText.text = FishInventory.Instance.TotalValue.ToString();
     }
 
     /// <summary>
-    /// Called by the Meet Quota button. Closes the shop, advances the day, returns to world.
+    /// Called by the Meet Quota button. Checks if the player can afford the quota,
+    /// then closes the shop, deducts money, advances the day, and returns to world.
+    /// Plays a fail sound if the player cannot afford it.
     /// </summary>
     public void OnMeetQuotaPressed()
     {
+        if (QuotaManager.Instance == null || !QuotaManager.Instance.CanAffordQuota())
+        {
+            AudioManager.Instance?.PlayQuotaFail();
+            return;
+        }
+
         isOpen = false;
         IsOpen = false;
 
@@ -107,6 +116,9 @@ public class ShopButtonManager : MonoBehaviour
 
         if (shopBackground != null)
             shopBackground.gameObject.SetActive(false);
+
+        // Resume time AFTER the closing animation so it doesn't tick during the pop-out.
+        TimeOfDayManager.Instance?.ResumeDay();
     }
 
     private System.Collections.IEnumerator FadeBackground(float from, float to, float duration)

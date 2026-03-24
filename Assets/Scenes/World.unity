@@ -5357,6 +5357,10 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 6662523633311539443, guid: 98362c35472ab784682579852ce2949b, type: 3}
+      propertyPath: quotaFail
+      value: 
+      objectReference: {fileID: 8300000, guid: 162dad78bd7d0c54b8a7c0eedee4a89f, type: 3}
+    - target: {fileID: 6662523633311539443, guid: 98362c35472ab784682579852ce2949b, type: 3}
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1026435445}
@@ -5531,7 +5535,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
-      value: 1000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue

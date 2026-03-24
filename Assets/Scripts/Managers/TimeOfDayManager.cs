@@ -117,7 +117,13 @@ public class TimeOfDayManager : MonoBehaviour
     public void PauseDay() => _dayActive = false;
 
     /// <summary>Call to resume a paused timer.</summary>
-    public void ResumeDay() => _dayActive = true;
+    public void ResumeDay()
+    {
+        // Do not resume if the day has already ended — prevents the timer from
+        // accidentally restarting when CloseShop is called from the end-of-day shop scene.
+        if (!_dayEndTriggered)
+            _dayActive = true;
+    }
 
     /// <summary>Assign a clock text from the current scene's UI.</summary>
     public void SetClockText(TextMeshProUGUI text)
