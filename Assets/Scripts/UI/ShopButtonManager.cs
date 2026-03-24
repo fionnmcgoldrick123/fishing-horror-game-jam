@@ -17,7 +17,7 @@ public class ShopButtonManager : MonoBehaviour
     [SerializeField] private float countUpDuration = 0.8f;
 
     [Header("Quota")]
-    [SerializeField] private GameObject meetQuotaButton;
+    [SerializeField] private TextMeshProUGUI quotaAmountText;
 
     public static bool IsOpen { get; private set; }
 
@@ -25,17 +25,11 @@ public class ShopButtonManager : MonoBehaviour
     private Coroutine bgCoroutine;
     private bool isOpen;
 
-    void Update()
+    private void Start()
     {
-        // If shop is already open and quota visit kicks in (player was in shop when day ended),
-        // lock it immediately by showing the quota button and hiding the ability to close.
-        if (isOpen && meetQuotaButton != null && TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit)
-        {
-            if (!meetQuotaButton.activeSelf)
-                meetQuotaButton.SetActive(true);
-        }
+        quotaAmountText.text = QuotaManager.Instance != null ? QuotaManager.Instance.currentQuota.ToString("F0") : "N/A";
     }
-
+    
     public void OpenShop()
     {
         if (isOpen) return;
@@ -59,10 +53,6 @@ public class ShopButtonManager : MonoBehaviour
 
         if (animCoroutine != null) StopCoroutine(animCoroutine);
         animCoroutine = UIAnimations.PopInPanel(this, shopPanel, popInDuration);
-
-        // Show or hide quota button based on whether this is an end-of-day visit
-        if (meetQuotaButton != null)
-            meetQuotaButton.SetActive(TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit);
 
         UpdateSellPreview();
     }

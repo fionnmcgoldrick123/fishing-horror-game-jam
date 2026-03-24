@@ -3824,6 +3824,52 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!1 &1818468030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818468032}
+  - component: {fileID: 1818468031}
+  m_Layer: 0
+  m_Name: QuotaManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1818468031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818468030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingQuota: 2000
+  quotaIncreaseRate: 2
+--- !u!4 &1818468032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818468030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.85370445, y: 1.252017, z: 3.021842}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1838173225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5789,6 +5835,10 @@ PrefabInstance:
       propertyPath: clockText
       value: 
       objectReference: {fileID: 720567657143445168}
+    - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
+      propertyPath: dayDurationSeconds
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7489032667363756735, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 397.50003
@@ -5939,3 +5989,4 @@ SceneRoots:
   - {fileID: 3338570041668519391}
   - {fileID: 4982224507635928167}
   - {fileID: 8516463465143080508}
+  - {fileID: 1818468032}

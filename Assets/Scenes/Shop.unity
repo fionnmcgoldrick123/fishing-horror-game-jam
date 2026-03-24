@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeballCountText: {fileID: 465974546}
-  moneyText: {fileID: 0}
+  moneyText: {fileID: 1472953490}
   luckButton: {fileID: 211820256}
   luckStars:
   - {fileID: 73848168}
@@ -1352,6 +1352,7 @@ MonoBehaviour:
   sellTotalText: {fileID: 0}
   countUpDuration: 0.8
   meetQuotaButton: {fileID: 458286881}
+  quotaAmountText: {fileID: 1706508032}
 --- !u!1 &334418914
 GameObject:
   m_ObjectHideFlags: 0
@@ -5876,6 +5877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeOfDayManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
+      propertyPath: clockText
+      value: 
+      objectReference: {fileID: 1307061589}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: shopExitObject
       value: 
