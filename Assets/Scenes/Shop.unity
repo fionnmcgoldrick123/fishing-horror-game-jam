@@ -3783,6 +3783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5160a18a0a88dfd479494cfeaad198d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterId: 1
   dialogueData: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
   opensShopOnEnd: 1
 --- !u!61 &1530560481

@@ -651,6 +651,57 @@ MonoBehaviour:
   playerTransform: {fileID: 1948004906}
   offset: {x: 0, y: 4, z: 0}
   smoothTime: 0
+--- !u!1 &530340586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 530340588}
+  - component: {fileID: 530340587}
+  m_Layer: 0
+  m_Name: DialogueSwappingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &530340587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530340586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938587d0cf29bd1449281247d954f285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayEntries:
+  - day: 1
+    drSturgeonDialogue: {fileID: 11400000, guid: 91c46afc3e703c34dbb4db50f83b7da1, type: 2}
+    perchDialogue: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
+  - day: 2
+    drSturgeonDialogue: {fileID: 11400000, guid: 91c46afc3e703c34dbb4db50f83b7da1, type: 2}
+    perchDialogue: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
+--- !u!4 &530340588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530340586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 137.28992, y: 195.22202, z: -1.4977858}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &555945960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5160a18a0a88dfd479494cfeaad198d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterId: 0
   dialogueData: {fileID: 11400000, guid: dd850fa3c17458a44b519d6d91201c45, type: 2}
   opensShopOnEnd: 0
 --- !u!61 &699806682
@@ -4064,6 +4116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5160a18a0a88dfd479494cfeaad198d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterId: 0
   dialogueData: {fileID: 11400000, guid: 91c46afc3e703c34dbb4db50f83b7da1, type: 2}
   opensShopOnEnd: 0
 --- !u!61 &1768948934
@@ -4249,7 +4302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 2000
+  startingQuota: 0
   quotaIncreaseRate: 2
 --- !u!4 &1818468032
 Transform:
@@ -5535,7 +5588,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue
@@ -5615,3 +5668,4 @@ SceneRoots:
   - {fileID: 8516463465143080508}
   - {fileID: 1818468032}
   - {fileID: 588960173}
+  - {fileID: 530340588}
