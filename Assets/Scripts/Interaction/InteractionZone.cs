@@ -31,14 +31,17 @@ public class InteractionZone : MonoBehaviour
         {
             case InteractionType.EnterShop:
                 player.CanEnterShop = true;
+                player.ShowInteractionPrompt();
                 player.ShopSceneName = sceneName;
                 break;
             case InteractionType.ExitShop:
                 player.CanExitShop = true;
                 player.SetExitSpawnPosition(exitSpawnPosition);
+                player.ShowInteractionPrompt();
                 break;
             case InteractionType.FishingZone:
                 player.CanFish = true;
+                player.ShowInteractionPromptBlack();
                 break;
         }
     }
@@ -55,12 +58,15 @@ public class InteractionZone : MonoBehaviour
             case InteractionType.EnterShop:
                 player.CanEnterShop = false;
                 player.ShopSceneName = null;
+                player.HideInteractionPrompt();
                 break;
             case InteractionType.ExitShop:
                 player.CanExitShop = false;
+                player.HideInteractionPrompt();
                 break;
             case InteractionType.FishingZone:
                 player.CanFish = false;
+                player.HideInteractionPrompt();
                 break;
         }
     }

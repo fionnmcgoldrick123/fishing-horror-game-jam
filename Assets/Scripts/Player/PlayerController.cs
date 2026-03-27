@@ -129,7 +129,25 @@ public class PlayerController : MonoBehaviour
 
     public void ExitDialogue() => ChangeState(IdleState);
 
-    public void ShowInteractionPrompt() => interactionPrompt.SetActive(true);
+    public void ShowInteractionPrompt()
+    {
+        // Set text color to white for non-fishing zones
+        if (interactionPrompt.TryGetComponent(out TextMeshProUGUI tmp))
+        {
+            tmp.color = Color.white;
+        }
+        interactionPrompt.SetActive(true);
+    }
+
+    public void ShowInteractionPromptBlack()
+    {
+        // Set text color to black for fishing zones
+        if (interactionPrompt.TryGetComponent(out TextMeshProUGUI tmp))
+        {
+            tmp.color = Color.black;
+        }
+        interactionPrompt.SetActive(true);
+    }
 
     public void HideInteractionPrompt() => interactionPrompt.SetActive(false);
 
