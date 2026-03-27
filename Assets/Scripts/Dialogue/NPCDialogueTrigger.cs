@@ -50,12 +50,14 @@ public class NPCDialogueTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+            player.ShowInteractionPrompt();
             _playerInRange = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+            player.HideInteractionPrompt();
             _playerInRange = false;
     }
 }

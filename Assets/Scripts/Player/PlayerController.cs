@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public PlayerWalkState WalkState { get; private set; }
     public PlayerTalkState TalkState { get; private set; }
     public PlayerFishingState FishingState { get; private set; }
+
+    [SerializeField] private GameObject interactionPrompt;
 
     private PlayerState currentState;
 
@@ -104,6 +107,14 @@ public class PlayerController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1f;
         transform.localScale = scale;
+
+        // Counter-flip the interaction prompt so it always faces forward
+        if (interactionPrompt != null)
+        {
+            Vector3 promptScale = interactionPrompt.transform.localScale;
+            promptScale.x *= -1f;
+            interactionPrompt.transform.localScale = promptScale;
+        }
     }
 
     public void SetExitSpawnPosition(Vector3 position) => _exitSpawnPosition = position;
@@ -117,5 +128,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ExitDialogue() => ChangeState(IdleState);
+
+    public void ShowInteractionPrompt() => interactionPrompt.SetActive(true);
+
+    public void HideInteractionPrompt() => interactionPrompt.SetActive(false);
 
 }
