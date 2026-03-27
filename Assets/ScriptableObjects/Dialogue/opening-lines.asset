@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
+  m_Name: opening-lines
+  m_EditorClassIdentifier: 
+  characterName: You.
+  characterPortrait: {fileID: 21300000, guid: f36fbf6dee429ca41a4cab3318474059, type: 3}
+  lines:
+  - I am taking a road trip to [Town Name] today.
+  - '[Town Name] used to be a huge fishing town off the coast of Ireland.'
+  - Something happened a good few years back and the town went silent.
+  - But recently something has changed. I heard rumours about fish that can be found
+    there that are unlike any other.
+  - I am going to go and stay there a couple days and see how true these rumours
+    are.
+  - What is the worst that can happen.
+  textSpeed: 30
+  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}
