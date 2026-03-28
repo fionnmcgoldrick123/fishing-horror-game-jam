@@ -43,7 +43,7 @@ public class PlayerFishingState : PlayerState
             previousPhase = phase;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !minigameActive)
         {
             player.ExitFishing();
             return;

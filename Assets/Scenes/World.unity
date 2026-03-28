@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishList:
-  - {fileID: 11400000, guid: 942d7b97b786fdc43b16360690ed0dff, type: 2}
+  - {fileID: 11400000, guid: 982cd4933bf3c0442a293ba405a79839, type: 2}
 --- !u!1 &92973264
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +700,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2280,30 +2280,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2410b36591f3b746a22d46b927b2f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonMinScore: 3
-  commonMaxScore: 5
+  commonMinScore: 5
+  commonMaxScore: 10
   commonMinHitSize: 80
   commonMaxHitSize: 120
-  commonMinSpeed: 120
-  commonMaxSpeed: 150
-  rareMinScore: 2
-  rareMaxScore: 3
-  rareMinHitSize: 60
-  rareMaxHitSize: 90
-  rareMinSpeed: 140
-  rareMaxSpeed: 200
-  epicMinScore: 3
-  epicMaxScore: 5
+  commonMinSpeed: 150
+  commonMaxSpeed: 200
+  rareMinScore: 10
+  rareMaxScore: 15
+  rareMinHitSize: 70
+  rareMaxHitSize: 110
+  rareMinSpeed: 200
+  rareMaxSpeed: 250
+  epicMinScore: 15
+  epicMaxScore: 25
   epicMinHitSize: 40
   epicMaxHitSize: 70
-  epicMinSpeed: 180
-  epicMaxSpeed: 260
-  legendaryMinScore: 4
-  legendaryMaxScore: 6
+  epicMinSpeed: 250
+  epicMaxSpeed: 300
+  legendaryMinScore: 25
+  legendaryMaxScore: 35
   legendaryMinHitSize: 25
-  legendaryMaxHitSize: 50
-  legendaryMinSpeed: 220
-  legendaryMaxSpeed: 320
+  legendaryMaxHitSize: 30
+  legendaryMinSpeed: 300
+  legendaryMaxSpeed: 380
 --- !u!1 &1034957338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5264,7 +5264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056447758588372815, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.26
+      value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 5056447758588372815, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
       propertyPath: m_LocalPosition.y

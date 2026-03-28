@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Note999
   m_EditorClassIdentifier: 
   fishName: Note #999
-  fishDescription: 'I can''t breathe, I''m waiting for the exhale,
+  fishDescription: 'I can''t breathe, I''m waiting for the exhale, Toss my pain with
+    my wishes in a wishing well.
 
-    Toss my pain
-    with my wishes in a wishing well.'
+'
   fishSprite: {fileID: 21300000, guid: 9775ff0903dc42644a4c0f6f9fd17c3f, type: 3}
   value: 0
-  rarity: 0
+  rarity: 3
   isUpgradeCurrency: 0
