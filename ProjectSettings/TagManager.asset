@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - DrSturgeon
   layers:
   - Default
   - TransparentFX
@@ -41,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 977890999
+    locked: 0
   - name: Trees
     uniqueID: 1269054905
     locked: 0
@@ -49,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2658326483
+    locked: 0
+  - name: Clouds
+    uniqueID: 3119712435
     locked: 0
   - name: Ground
     uniqueID: 799212559
