@@ -27,7 +27,10 @@ public class ShopExitRegistrar : MonoBehaviour
         }
         else
         {
-            // Can't afford — play dialogue, leave exit enabled so they can go
+            // Can't afford — arm the game-over sequence and play the fail dialogue.
+            // PlayCantAffordDialogue also sets GameOverPending internally, but we set
+            // it here explicitly too in case the call order ever changes.
+            TimeOfDayManager.Instance.SetGameOverPending();
             TimeOfDayManager.Instance.PlayCantAffordDialogue();
         }
     }

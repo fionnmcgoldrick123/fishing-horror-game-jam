@@ -99,4 +99,15 @@ public class AudioManager : MonoBehaviour
         if (sfxSource != null && clip != null)
             sfxSource.PlayOneShot(clip);
     }
+
+    /// <summary>
+    /// Plays a clip as a one-shot and returns its length in seconds (0 if unavailable).
+    /// Use the returned value to wait until playback is finished.
+    /// </summary>
+    public float PlayClipGetLength(AudioClip clip)
+    {
+        if (sfxSource == null || clip == null) return 0f;
+        sfxSource.PlayOneShot(clip);
+        return clip.length;
+    }
 }

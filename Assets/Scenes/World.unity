@@ -965,10 +965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a858cfb8523d3534a91534d1d6e1c819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverDialogue: {fileID: 11400000, guid: dd850fa3c17458a44b519d6d91201c45, type: 2}
-  newDrSturgeonPosition: {x: 0, y: 0, z: 0}
-  drSturgeonNPC: {fileID: 0}
-  gameOverSound: {fileID: 0}
+  gameOverSound: {fileID: 8300000, guid: 5e34646bf0bd0f14183819b06bc93b54, type: 3}
+  pauseAfterSound: 1.5
+  worldSceneName: World
+  gameOverSceneName: GameOver
 --- !u!4 &588960173
 Transform:
   m_ObjectHideFlags: 0
@@ -2124,6 +2124,11 @@ MonoBehaviour:
   interactionType: 0
   sceneName: Shop
   exitSpawnPosition: {x: 0, y: 0, z: 0}
+--- !u!1 &985430599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4237229196351543713, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
+  m_PrefabInstance: {fileID: 7527448862318544944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995851237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3594,6 +3599,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5056447758588372815, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
   m_PrefabInstance: {fileID: 7527448862318544944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1768948937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985430599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c21e2d6f9b631743b5dde6accd1e382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpscarePosition: {x: -2, y: -1.54, z: 0}
 --- !u!1 &1818468030
 GameObject:
   m_ObjectHideFlags: 0
@@ -3623,7 +3641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 0
+  startingQuota: 10000
   quotaIncreaseRate: 2
 --- !u!4 &1818468032
 Transform:
@@ -4837,7 +4855,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4237229196351543713, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1768948937}
   m_SourcePrefab: {fileID: 100100000, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
 --- !u!1001 &8516463465143080508
 PrefabInstance:

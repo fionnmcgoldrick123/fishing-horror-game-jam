@@ -220,14 +220,25 @@ public class TimeOfDayManager : MonoBehaviour
         }
         else
         {
-            // Can't afford — play "can't afford" dialogue, leave exit enabled
+            // Can't afford — flag game over and play fail dialogue; exit stays enabled
+            GameOverPending = true;
             PlayCantAffordDialogue();
         }
     }
 
-    /// <summary>Plays the can't-afford-quota dialogue. Exit stays enabled.</summary>
+    /// <summary>True when the player failed the quota and must face game-over on returning to World.</summary>
+    public bool GameOverPending { get; private set; }
+
+    public void ClearGameOverPending() => GameOverPending = false;
+
+    /// <summary>Marks game-over as pending (e.g. called from legacy code paths).</summary>
+    public void SetGameOverPending() => GameOverPending = true;
+
+    /// <summary>Plays the can't-afford-quota dialogue and marks game-over as pending.</summary>
     public void PlayCantAffordDialogue()
     {
+        // Always stamp the flag here so any caller automatically arms the game-over sequence.
+        GameOverPending = true;
         if (cantAffordQuotaDialogue == null) return;
         PlayerController player = FindFirstObjectByType<PlayerController>();
         if (player != null)

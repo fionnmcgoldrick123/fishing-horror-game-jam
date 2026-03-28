@@ -124,10 +124,18 @@ public class PlayerController : MonoBehaviour
     public void EnterDialogue(DialogueData data)
     {
         ChangeState(TalkState);
+        TimeOfDayManager.Instance?.PauseDay();
         DialogueManager.Instance.StartDialogue(data);
     }
 
-    public void ExitDialogue() => ChangeState(IdleState);
+    public void ExitDialogue()
+    {
+        ChangeState(IdleState);
+        TimeOfDayManager.Instance?.ResumeDay();
+    }
+
+    /// <summary>Locks the player in place (e.g. during a cutscene or game-over sequence).</summary>
+    public void LockMovement() => ChangeState(TalkState);
 
     public void ShowInteractionPrompt()
     {
