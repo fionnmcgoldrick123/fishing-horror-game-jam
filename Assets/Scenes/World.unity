@@ -599,7 +599,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6.7
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -677,11 +677,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayEntries:
   - day: 1
-    drSturgeonDialogue: {fileID: 11400000, guid: 91c46afc3e703c34dbb4db50f83b7da1, type: 2}
+    drSturgeonDialogue: {fileID: 11400000, guid: bdda25a81ee9d13499b5b810fbe5281b, type: 2}
     perchDialogue: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
   - day: 2
-    drSturgeonDialogue: {fileID: 11400000, guid: dd850fa3c17458a44b519d6d91201c45, type: 2}
-    perchDialogue: {fileID: 11400000, guid: dd850fa3c17458a44b519d6d91201c45, type: 2}
+    drSturgeonDialogue: {fileID: 11400000, guid: 7a1236b1bb842f343abe3091a4b5a802, type: 2}
+    perchDialogue: {fileID: 11400000, guid: 00006523817d5e742b6bf4b2e8a14148, type: 2}
+  - day: 3
+    drSturgeonDialogue: {fileID: 11400000, guid: 626ffe0f7ebd9364a8634329912469b0, type: 2}
+    perchDialogue: {fileID: 11400000, guid: 14d063b9a49f69c43a7e7135d59a59b7, type: 2}
+  - day: 4
+    drSturgeonDialogue: {fileID: 11400000, guid: a86a999fd16fa1546a10037d4cc499a3, type: 2}
+    perchDialogue: {fileID: 11400000, guid: 43762f4b449d07345aec6dc0531ef4c2, type: 2}
+  - day: 5
+    drSturgeonDialogue: {fileID: 11400000, guid: 695fa2d37cc17a4458e82aea22c64ff2, type: 2}
+    perchDialogue: {fileID: 11400000, guid: f7ba9d4048635f14db59f75532ea04ff, type: 2}
 --- !u!4 &530340588
 Transform:
   m_ObjectHideFlags: 0
@@ -3614,7 +3623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 100
+  startingQuota: 0
   quotaIncreaseRate: 2
 --- !u!4 &1818468032
 Transform:
@@ -4852,7 +4861,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue

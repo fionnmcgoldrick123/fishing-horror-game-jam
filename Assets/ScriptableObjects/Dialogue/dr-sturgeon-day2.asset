@@ -10,15 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
-  m_Name: test
+  m_Name: dr-sturgeon-day2
   m_EditorClassIdentifier: 
   characterName: Dr. Sturgeon
   characterPortrait: {fileID: 21300000, guid: 3cadb61783a8ad44abb478954be17e5d, type: 3}
   lines:
-  - Oh, the new fisherman. Welcome.
-  - You smell real good.
-  - 'Give me those toes. Good Boy
-
-'
+  - GOD THAT ASS DON'T LIE!
+  - You remind me of my sister.
+  - Congrats. Your second day here.
+  - Between me and you, I look forward to the day you can't make that quota.
+  - Anyway, I heard Perch didn't like the look of that handsome face.
+  - No wonder he needs you to give him those eye balls. Maybe he is looking for ones
+    that actually work.
+  - Oh you didn't know? Give Perch eye balls you find and he will upgrade your rod.
+  - Speaking of rods, I would give an arm and a leg to get a good look at yours.
+  - And I am not talking about fishing.
   textSpeed: 30
   typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}

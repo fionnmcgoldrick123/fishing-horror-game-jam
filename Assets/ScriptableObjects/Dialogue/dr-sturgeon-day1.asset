@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
+  m_Name: dr-sturgeon-day1
+  m_EditorClassIdentifier: 
+  characterName: Dr. Sturgeon
+  characterPortrait: {fileID: 21300000, guid: 3cadb61783a8ad44abb478954be17e5d, type: 3}
+  lines:
+  - '*sniff*'
+  - Mmmmmm...
+  - MMMMMmmmmmmm....
+  - MmmmmmMMMMmmmmUghhh..
+  - You smell good. Too good.
+  - Way too good for your own good.
+  - You got a fine pair of cheeks on you too. Your getting me excited over here Mr.
+  - Your making me feel...
+  - Inspired.
+  - My name is Dr. Sturgeon. I am the surgeon here in Westport.
+  - If your here to fish go talk to Perch in his shop.
+  - I sure hope you fish as good as you look. Wouldn't want to miss Perch's daily
+    quotas.
+  - Hop those shiny white cheeks down to Perch before I lose control of good nature.
+  textSpeed: 30
+  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}

@@ -15,13 +15,15 @@ MonoBehaviour:
   characterName: You.
   characterPortrait: {fileID: 21300000, guid: f36fbf6dee429ca41a4cab3318474059, type: 3}
   lines:
-  - I am taking a road trip to [Town Name] today.
-  - '[Town Name] used to be a huge fishing town off the coast of Ireland.'
-  - Something happened a good few years back and the town went silent.
-  - But recently something has changed. I heard rumours about fish that can be found
-    there that are unlike any other.
-  - I am going to go and stay there a couple days and see how true these rumours
-    are.
-  - What is the worst that can happen.
+  - Westport was once a huge fishing town off the coast of Ireland.
+  - But something happened a few years ago and the town went silent.
+  - No fishing, no tourists, no trade...
+  - Nothing.
+  - 'However, recently something has changed. '
+  - Rumours have been spreading around about the fish that can be found there.
+  - 'Unique specimen that are being sold for fortunes on the market. '
+  - The rich are paying thousands to taste and display them.
+  - 'Either way, I have kids and a sick wife who are counting on me. '
+  - 'I am going to Westport for a few days to see if these rumours are true. '
   textSpeed: 30
   typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}
