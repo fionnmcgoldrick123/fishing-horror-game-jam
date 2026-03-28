@@ -1736,6 +1736,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd55fdca2ada2f24e89b05f9abce04bb, type: 2}
   - {fileID: 11400000, guid: fbf789323e3790f4eaf92dbc0197735c, type: 2}
   - {fileID: 11400000, guid: 8e7ae408feef89243b67556c4014d3c8, type: 2}
+  - {fileID: 11400000, guid: b434c37086d40334290f27cb61b27379, type: 2}
 --- !u!1 &896187815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,7 +1933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
-  fishingSystem: {fileID: 5611684}
+  fishingSystem: {fileID: 753496175}
   minWaitTime: 2
   maxWaitTime: 8
   alertDuration: 1.5
@@ -3872,8 +3873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 10000
-  quotaIncreaseRate: 2
+  startingQuota: 20000
+  quotaIncreaseRate: 1.25
 --- !u!4 &1818468032
 Transform:
   m_ObjectHideFlags: 0
@@ -5332,7 +5333,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
-      value: 1000
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue

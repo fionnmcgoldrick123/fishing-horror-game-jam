@@ -16,4 +16,5 @@ MonoBehaviour:
   fishDescription: This reminds me of someone. Someone very special to me.
   fishSprite: {fileID: 21300000, guid: b58ff0a6f5795df4ba0ae37640f10545, type: 3}
   value: 10000
-  rarity: 0
+  rarity: 3
+  isUpgradeCurrency: 0

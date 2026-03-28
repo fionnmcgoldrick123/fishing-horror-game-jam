@@ -16,6 +16,6 @@ MonoBehaviour:
   fishDescription: Ew. This one looks like it's trying to communicate to me with
     its antenna. Too bad I don't speak angler.
   fishSprite: {fileID: 21300000, guid: 2241e31f52881bb4497ed20558a257b5, type: 3}
-  value: 1300
-  rarity: 0
+  value: 2300
+  rarity: 2
   isUpgradeCurrency: 0

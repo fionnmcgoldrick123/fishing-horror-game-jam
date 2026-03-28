@@ -15,5 +15,6 @@ MonoBehaviour:
   fishName: Octopus
   fishDescription: Wow an Octopus. Is he flipping me off?
   fishSprite: {fileID: 21300000, guid: 9774d1aedee7c374aa2b7cdea7b8573b, type: 3}
-  value: 300
-  rarity: 0
+  value: 1200
+  rarity: 1
+  isUpgradeCurrency: 0

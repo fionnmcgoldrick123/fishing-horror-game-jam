@@ -16,6 +16,6 @@ MonoBehaviour:
   fishDescription: A teddy. It has the text 'For Teddy' written on the bottom. I
     think I will call it Freddy.
   fishSprite: {fileID: 21300000, guid: 5b49b77728113974cb98a7c9f2de0a7f, type: 3}
-  value: 200
+  value: 500
   rarity: 0
   isUpgradeCurrency: 0

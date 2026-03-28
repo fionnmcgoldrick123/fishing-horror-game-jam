@@ -15,5 +15,6 @@ MonoBehaviour:
   fishName: Perch
   fishDescription: 'Wicked! Selling Perch to Perch. '
   fishSprite: {fileID: 21300000, guid: 59fcf8e9e8260f14eb32a71ac682d661, type: 3}
-  value: 400
+  value: 500
   rarity: 0
+  isUpgradeCurrency: 0

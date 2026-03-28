@@ -15,5 +15,6 @@ MonoBehaviour:
   fishName: Sturgeon
   fishDescription: Should I tell Dr. Sturgeon about this?
   fishSprite: {fileID: 21300000, guid: 367af930ed91a3548b8898b4a1c6a3d0, type: 3}
-  value: 300
-  rarity: 0
+  value: 2500
+  rarity: 2
+  isUpgradeCurrency: 0

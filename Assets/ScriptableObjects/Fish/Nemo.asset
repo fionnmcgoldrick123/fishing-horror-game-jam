@@ -15,5 +15,6 @@ MonoBehaviour:
   fishName: Nemo
   fishDescription: Found Nemo! Like most fish in this lake, he seems depressed.
   fishSprite: {fileID: 21300000, guid: 333167d56f5f5cc4dbb1ac82a44544da, type: 3}
-  value: 700
+  value: 500
   rarity: 0
+  isUpgradeCurrency: 0

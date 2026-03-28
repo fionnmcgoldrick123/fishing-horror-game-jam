@@ -16,6 +16,6 @@ MonoBehaviour:
   fishDescription: He looks pissed off. I would be pissed off too if I lived in water
     that smelt this bad too.
   fishSprite: {fileID: 21300000, guid: 22384334276cd0743a2193359ec42387, type: 3}
-  value: 700
-  rarity: 0
+  value: 1600
+  rarity: 2
   isUpgradeCurrency: 0

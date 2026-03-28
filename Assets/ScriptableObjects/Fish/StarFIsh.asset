@@ -15,6 +15,6 @@ MonoBehaviour:
   fishName: Star Fish
   fishDescription: Oh hell yea! Nike Air Force 1's. He got that shit on though.
   fishSprite: {fileID: 21300000, guid: 973b90e025b0ba0439d3bcc2eceb57ca, type: 3}
-  value: 1000
-  rarity: 0
+  value: 1300
+  rarity: 1
   isUpgradeCurrency: 0

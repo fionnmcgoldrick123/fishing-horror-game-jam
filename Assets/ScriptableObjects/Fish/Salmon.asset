@@ -15,5 +15,6 @@ MonoBehaviour:
   fishName: Salmon
   fishDescription: It's just a plain old salmon. Nice.
   fishSprite: {fileID: 21300000, guid: 90989c52483031444940e866db74e384, type: 3}
-  value: 150
+  value: 300
   rarity: 0
+  isUpgradeCurrency: 0
