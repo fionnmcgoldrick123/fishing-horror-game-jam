@@ -29,6 +29,18 @@ public class GameOverScreenManager : MonoBehaviour
     [Tooltip("Duration of the button pop-in animation.")]
     [SerializeField] private float buttonPopDuration = 0.4f;
 
+    [Header("Circle Flicker")]
+    [Tooltip("The circle Image to flicker. Leave empty if you don't want flickering.")]
+    [SerializeField] private Image circleImage;
+    [Tooltip("Colors to cycle through (at least 2).")]
+    [SerializeField] private Color[] flickerColors = new Color[] { Color.white, Color.red };
+    [Tooltip("Seconds per color before switching.")]
+    [SerializeField] private float flickerDuration = 0.2f;
+    [Tooltip("Start flickering automatically when the scene loads.")]
+    [SerializeField] private bool startFlickering = true;
+
+    private Coroutine _flickerCoroutine;
+
     [Header("Scene")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
@@ -48,6 +60,9 @@ public class GameOverScreenManager : MonoBehaviour
                 btnRect.localScale = Vector3.zero;
             mainMenuButton.onClick.AddListener(GoToMainMenu);
         }
+
+        if (startFlickering && circleImage != null && flickerColors.Length > 0)
+            _flickerCoroutine = StartCoroutine(FlickerCircle());
 
         if (dialogue == null || dialogue.lines.Length == 0)
         {
@@ -155,5 +170,22 @@ public class GameOverScreenManager : MonoBehaviour
     private void GoToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    /// <summary>
+    /// Cycles the circle image through the assigned flicker colors.
+    /// </summary>
+    private IEnumerator FlickerCircle()
+    {
+        int colorIndex = 0;
+        while (true)
+        {
+            if (circleImage != null && flickerColors.Length > 0)
+            {
+                circleImage.color = flickerColors[colorIndex];
+                colorIndex = (colorIndex + 1) % flickerColors.Length;
+            }
+            yield return new WaitForSeconds(flickerDuration);
+        }
     }
 }

@@ -680,11 +680,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fb1c4db25796b439d2e81ec35919dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: bdda25a81ee9d13499b5b810fbe5281b, type: 2}
+  dialogue: {fileID: 11400000, guid: 2104f89125f733b428373b27fd50849b, type: 2}
   dialogueText: {fileID: 25801672}
   typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}
   mainMenuButton: {fileID: 1495514386}
   buttonPopDuration: 0.1
+  circleImage: {fileID: 1005785057}
+  flickerColors:
+  - {r: 0.03529412, g: 0.03529412, b: 0.03529412, a: 1}
+  - {r: 0.10980392, g: 0.10980392, b: 0.10980392, a: 1}
+  flickerDuration: 1
+  startFlickering: 1
   mainMenuSceneName: MainMenu
 --- !u!4 &1254897088
 Transform:
