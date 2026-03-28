@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: UNKNOWN ???
   fishDescription: Ew. It looks like something took a bit out of this one.
-  fishSprite: {fileID: 21300000, guid: 2a47301973193f6498247a984bbcea9e, type: 3}
+  fishSprite: {fileID: 21300000, guid: 098652b9d6034fa41b11b97f3e06f2aa, type: 3}
   value: 1000
   rarity: 0
+  isUpgradeCurrency: 0
