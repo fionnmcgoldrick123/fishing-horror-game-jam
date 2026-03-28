@@ -12,6 +12,8 @@ public class DrSturgeonGameOver : MonoBehaviour
 
     public void MoveToJumpscarePosition()
     {
+        Debug.Log($"[DrSturgeonGameOver] Moving to position: {jumpscarePosition}");
         transform.position = jumpscarePosition;
+        Debug.Log($"[DrSturgeonGameOver] After move, actual position is: {transform.position}");
     }
 }
