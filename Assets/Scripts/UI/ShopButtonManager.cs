@@ -36,7 +36,6 @@ public class ShopButtonManager : MonoBehaviour
     {
         if (isOpen) return;
 
-        // Close dialogue first if it's active
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsActive)
             DialogueManager.Instance.ForceClose();
 
@@ -61,8 +60,6 @@ public class ShopButtonManager : MonoBehaviour
     {
         if (!isOpen) return;
 
-        // Block closing only when this is a quota visit AND the player can still afford to pay.
-        // If they cannot afford it, allow closing (shop exit stays available for the fail state).
         if (TimeOfDayManager.Instance != null && TimeOfDayManager.Instance.IsQuotaVisit
             && QuotaManager.Instance != null && QuotaManager.Instance.CanAffordQuota()) return;
 
@@ -79,11 +76,6 @@ public class ShopButtonManager : MonoBehaviour
         sellTotalText.text = FishInventory.Instance.TotalValue.ToString();
     }
 
-    /// <summary>
-    /// Called by the Meet Quota button. Checks if the player can afford the quota,
-    /// then closes the shop, deducts money, advances the day, and returns to world.
-    /// Plays a fail sound if the player cannot afford it.
-    /// </summary>
     public void OnMeetQuotaPressed()
     {
         if (QuotaManager.Instance == null || !QuotaManager.Instance.CanAffordQuota())
@@ -92,7 +84,6 @@ public class ShopButtonManager : MonoBehaviour
             return;
         }
 
-        // Disable immediately so the player cannot spam.
         if (meetQuotaButton != null)
             meetQuotaButton.interactable = false;
 
@@ -102,13 +93,8 @@ public class ShopButtonManager : MonoBehaviour
         StartCoroutine(MeetQuotaSequence());
     }
 
-    /// <summary>
-    /// Animates the shop closed, then hands off to DayLoader for the day transition.
-    /// </summary>
     private System.Collections.IEnumerator MeetQuotaSequence()
     {
-        // Pop out the shop panel (same visual as CloseShop but skips the quota guard
-        // and does NOT call ResumeDay — the day is already over).
         if (bgCoroutine != null) StopCoroutine(bgCoroutine);
         bgCoroutine = StartCoroutine(FadeBackground(1f, 0f, popOutDuration));
 
@@ -125,7 +111,6 @@ public class ShopButtonManager : MonoBehaviour
         if (shopBackground != null)
             shopBackground.gameObject.SetActive(false);
 
-        // Hand off to DayLoader. It calls TimeOfDayManager.MeetQuota() at the end.
         DayLoader dayLoader = FindFirstObjectByType<DayLoader>();
         if (dayLoader != null)
             dayLoader.StartTransition();
@@ -153,7 +138,6 @@ public class ShopButtonManager : MonoBehaviour
         if (shopBackground != null)
             shopBackground.gameObject.SetActive(false);
 
-        // Resume time AFTER the closing animation so it doesn't tick during the pop-out.
         TimeOfDayManager.Instance?.ResumeDay();
     }
 

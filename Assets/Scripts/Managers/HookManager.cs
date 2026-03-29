@@ -51,10 +51,6 @@ public class HookManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when the player enters the fishing Wait phase.
-    /// Starts a random countdown before a fish bites.
-    /// </summary>
     public void StartWaiting()
     {
         state = HookState.Waiting;
@@ -64,9 +60,6 @@ public class HookManager : MonoBehaviour
         if (alertUI != null) alertUI.SetActive(false);
     }
 
-    /// <summary>
-    /// Called when the player leaves fishing entirely. Resets everything.
-    /// </summary>
     public void StopWaiting()
     {
         state = HookState.Idle;
@@ -75,10 +68,6 @@ public class HookManager : MonoBehaviour
         if (alertUI != null) alertUI.SetActive(false);
     }
 
-    /// <summary>
-    /// Called by the fishing state when the player clicks during the alert.
-    /// Returns true if the click was during the alert window, then starts the minigame.
-    /// </summary>
     public bool TryHook()
     {
         if (state != HookState.Alerting) return false;
@@ -99,9 +88,6 @@ public class HookManager : MonoBehaviour
         state = HookState.Idle;
     }
 
-    /// <summary>
-    /// Called by CatchSkillCheck when the player wins the minigame.
-    /// </summary>
     public void OnMinigameWon()
     {
         fishingMinigameUI.SetActive(false);
@@ -115,9 +101,6 @@ public class HookManager : MonoBehaviour
         currentFish = null;
     }
 
-    /// <summary>
-    /// Called by CatchSkillCheck when the player fails the minigame.
-    /// </summary>
     public void OnMinigameLost()
     {
         fishingMinigameUI.SetActive(false);
@@ -131,7 +114,6 @@ public class HookManager : MonoBehaviour
         state = HookState.Alerting;
         timer = alertDuration;
 
-        // Determine which fish is on the line
         currentFish = fishingSystem.GetRandomFish();
 
         if (alertUI != null) alertUI.SetActive(true);
@@ -142,7 +124,6 @@ public class HookManager : MonoBehaviour
     {
         if (alertUI != null) alertUI.SetActive(false);
 
-        // Missed the bite — go back to waiting for another one
         StartWaiting();
     }
 }

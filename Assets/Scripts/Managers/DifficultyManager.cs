@@ -53,7 +53,6 @@ public class DifficultyManager : MonoBehaviour
             _ => new DifficultySettings(commonMinScore, commonMaxScore, commonMinHitSize, commonMaxHitSize, commonMinSpeed, commonMaxSpeed)
         };
 
-        // Apply ease upgrades
         float hitBonus = UpgradeManager.GetEaseHitSizeBonus();
         float speedReduction = UpgradeManager.GetEaseSpeedReduction();
         int scoreReduction = UpgradeManager.GetEaseScoreReduction();

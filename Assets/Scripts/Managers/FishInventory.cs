@@ -48,7 +48,6 @@ public class FishInventory : MonoBehaviour
         UpdateScoreText();
     }
 
-    /// <summary>Called by DayUI each scene load to re-bind the scene's money text.</summary>
     public void SetMoneyText(TextMeshProUGUI text)
     {
         moneyText = text;
@@ -89,14 +88,6 @@ public class FishInventory : MonoBehaviour
             }
         }
     }
-
-    // private int RecalculateValue()
-    // {
-    //     int val = 0;
-    //     foreach (var f in caughtFish)
-    //         val += f.value;
-    //     return val;
-    // }
 
     private IEnumerator CountUpRoutine(int from, int to)
     {

@@ -46,7 +46,6 @@ public class CatchSkillCheck : MonoBehaviour
 
         ApplyDifficulty();
 
-        // Force correct Image fill settings so the arc displays properly
         _hitZoneImg.type = Image.Type.Filled;
         _hitZoneImg.fillMethod = Image.FillMethod.Radial360;
         _hitZoneImg.fillOrigin = (int)Image.Origin360.Right;
@@ -55,7 +54,6 @@ public class CatchSkillCheck : MonoBehaviour
         requiredScoreTXT.text = $"{requiredScore}";
         GetRandomHitZone();
 
-        // Start reeling loop
         AudioManager.Instance?.StartReeling();
     }
 
@@ -112,7 +110,8 @@ public class CatchSkillCheck : MonoBehaviour
         @lock = false;
         hitZoneSize = Random.Range(minHitSize, maxHitSize);
         rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
-        direction *= -1;
+        if (Random.value > 0.3f)
+            direction *= -1;
         GetRandomHitZone();
     }
 
@@ -121,8 +120,6 @@ public class CatchSkillCheck : MonoBehaviour
         Debug.Log("Win!");
         AudioManager.Instance?.StopReeling();
         HookManager.Instance.OnMinigameWon();
-        // Don't call player.ExitFishing() here — FishCatchDisplay freezes the player
-        // and will unfreeze them when the catch panel is dismissed.
     }
 
     void GetRandomHitZone()
@@ -135,7 +132,6 @@ public class CatchSkillCheck : MonoBehaviour
     void UpdateHitZoneVisual()
     {
         _hitZoneImg.fillAmount = hitZoneSize / 360f;
-        // Rotate to the end angle so the clockwise fill sweeps back to _randomStartHitZone
         _hitZoneImg.rectTransform.localRotation = Quaternion.Euler(0, 0, randomStartHitZone + hitZoneSize);
     }
 

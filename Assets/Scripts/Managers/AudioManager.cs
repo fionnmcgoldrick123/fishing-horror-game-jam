@@ -50,8 +50,6 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // ───── One-shot sounds ─────
-
     public void PlayHookAlert() => Play(hookAlert);
     public void PlayBobberLand() => Play(bobberLand);
     public void PlayMinigameHit() => Play(minigameHit);
@@ -66,15 +64,10 @@ public class AudioManager : MonoBehaviour
     public void PlayUpgradeFail() => Play(upgradeFail);
     public void PlayDialogueTyping() => Play(dialogueTyping);
 
-    /// <summary>
-    /// Plays a DialogueData's custom typing sound if it has one, otherwise the default.
-    /// </summary>
     public void PlayDialogueTyping(AudioClip overrideClip)
     {
         Play(overrideClip != null ? overrideClip : dialogueTyping);
     }
-
-    // ───── Looping sounds ─────
 
     public void StartReeling()
     {
@@ -92,18 +85,12 @@ public class AudioManager : MonoBehaviour
         loopSource.clip = null;
     }
 
-    // ───── Core ─────
-
     private void Play(AudioClip clip)
     {
         if (sfxSource != null && clip != null)
             sfxSource.PlayOneShot(clip);
     }
 
-    /// <summary>
-    /// Plays a clip as a one-shot and returns its length in seconds (0 if unavailable).
-    /// Use the returned value to wait until playback is finished.
-    /// </summary>
     public float PlayClipGetLength(AudioClip clip)
     {
         if (sfxSource == null || clip == null) return 0f;

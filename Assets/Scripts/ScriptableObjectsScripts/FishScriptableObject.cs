@@ -8,7 +8,6 @@ public static class FishRarityWeights
     public const int Legendary = 5;
 }
 
-// Enum for rarity
 public enum Rarity
 {
     Common,

@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     public Sprite FishingIdleSprite => fishingIdleSprite;
     public Sprite FishingPrepSprite => fishingPrepSprite;
 
-    // States
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
     public PlayerTalkState TalkState { get; private set; }
@@ -56,7 +55,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Zero out movement while shop panel is open
         HorizontalInput = ShopButtonManager.IsOpen ? 0f : Input.GetAxisRaw("Horizontal");
         currentState?.Update();
         CheckInteractionInput();
@@ -66,7 +64,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
-        // Don't process scene/shop transitions while shop panel or dialogue is active
         if (ShopButtonManager.IsOpen) return;
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsActive) return;
 
@@ -108,7 +105,6 @@ public class PlayerController : MonoBehaviour
         scale.x *= -1f;
         transform.localScale = scale;
 
-        // Counter-flip the interaction prompt so it always faces forward
         if (interactionPrompt != null)
         {
             Vector3 promptScale = interactionPrompt.transform.localScale;
@@ -134,12 +130,10 @@ public class PlayerController : MonoBehaviour
         TimeOfDayManager.Instance?.ResumeDay();
     }
 
-    /// <summary>Locks the player in place (e.g. during a cutscene or game-over sequence).</summary>
     public void LockMovement() => ChangeState(TalkState);
 
     public void ShowInteractionPrompt()
     {
-        // Set text color to white for non-fishing zones
         if (interactionPrompt.TryGetComponent(out TextMeshProUGUI tmp))
         {
             tmp.color = Color.white;
@@ -149,7 +143,6 @@ public class PlayerController : MonoBehaviour
 
     public void ShowInteractionPromptBlack()
     {
-        // Set text color to black for fishing zones
         if (interactionPrompt.TryGetComponent(out TextMeshProUGUI tmp))
         {
             tmp.color = Color.black;

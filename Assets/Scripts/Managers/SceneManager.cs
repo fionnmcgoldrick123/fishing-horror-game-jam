@@ -55,7 +55,6 @@ public class SceneManager : MonoBehaviour
             player.Rb.position = _spawnOverridePosition;
     }
 
-    // get Active Scene Name (for debugging)
     public static string GetActiveScene()
     {
         return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;

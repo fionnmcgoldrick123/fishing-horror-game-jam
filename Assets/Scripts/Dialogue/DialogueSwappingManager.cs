@@ -53,17 +53,12 @@ public class DialogueSwappingManager : MonoBehaviour
         ApplyDialogueForCurrentDay();
     }
 
-    /// <summary>
-    /// Finds all NPCDialogueTrigger components in the active scene and assigns
-    /// the correct DialogueData for the current day. Called automatically on every
-    /// scene load, but you can also call it manually if needed.
-    /// </summary>
     public void ApplyDialogueForCurrentDay()
     {
         int currentDay = DayManager.Instance != null ? DayManager.Instance.CurrentDay : 1;
 
         DayDialogueEntry entry = GetEntryForDay(currentDay);
-        if (entry == null) return; // No override for this day — NPCs keep their default dialogue
+        if (entry == null) return;
 
         NPCDialogueTrigger[] triggers = FindObjectsByType<NPCDialogueTrigger>(FindObjectsSortMode.None);
         foreach (NPCDialogueTrigger trigger in triggers)
@@ -77,10 +72,6 @@ public class DialogueSwappingManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Returns the transition DialogueData for the given day.
-    /// Uses each day entry's transitionDialogue, falling back to defaultTransitionDialogue.
-    /// </summary>
     public DialogueData GetTransitionDialogue(int day)
     {
         DayDialogueEntry entry = GetEntryForDay(day);

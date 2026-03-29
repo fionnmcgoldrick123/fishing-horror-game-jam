@@ -21,19 +21,16 @@ public class PlayerFishingState : PlayerState
 
     public override void Update()
     {
-        // Track phase transitions and pause/resume accordingly
         if (phase != previousPhase)
         {
             bool wasMinigameActive = IsMinigamePhase(previousPhase);
             bool isMinigameActive = IsMinigamePhase(phase);
 
-            // Pause if transitioning INTO a minigame phase
             if (!wasMinigameActive && isMinigameActive)
             {
                 TimeOfDayManager.Instance?.PauseDay();
                 minigameActive = true;
             }
-            // Resume if transitioning OUT of a minigame phase
             else if (wasMinigameActive && !isMinigameActive)
             {
                 TimeOfDayManager.Instance?.ResumeDay();
@@ -92,7 +89,6 @@ public class PlayerFishingState : PlayerState
                     }
                     else
                     {
-                        // Clicked too early — reel in and go back to fishing idle
                         HookManager.Instance.StopWaiting();
                         player.Anim.enabled = false;
                         player.Sr.sprite = player.FishingIdleSprite;
@@ -118,7 +114,6 @@ public class PlayerFishingState : PlayerState
 
     public override void Exit()
     {
-        // Resume if currently in a minigame phase
         if (minigameActive)
             TimeOfDayManager.Instance?.ResumeDay();
 
@@ -130,6 +125,5 @@ public class PlayerFishingState : PlayerState
     }
 
 
-    // getter for state
     public bool isWaiting() => phase == Phase.Wait || phase == Phase.Catching;
 }

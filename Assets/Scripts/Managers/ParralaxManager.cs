@@ -39,7 +39,6 @@ public class ParralaxManager : MonoBehaviour
         _lastCameraX = cameraTransform.position.x;
     }
 
-    // LateUpdate ensures the camera has already moved this frame before we respond to it.
     private void LateUpdate()
     {
         float deltaX = cameraTransform.position.x - _lastCameraX;
@@ -54,7 +53,6 @@ public class ParralaxManager : MonoBehaviour
         {
             if (layer.layerTransform == null) continue;
 
-            // Cube the factor and scale down so even 1.0 is gentle
             float effective = layer.parallaxFactor * layer.parallaxFactor * layer.parallaxFactor * 0.1f;
 
             Vector3 pos = layer.layerTransform.position;

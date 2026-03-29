@@ -60,7 +60,6 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        // Reset the just-ended flag each frame
         _justEnded = false;
 
         if (!_isActive) return;
@@ -69,7 +68,6 @@ public class DialogueManager : MonoBehaviour
         {
             if (_isPanelAnimating)
             {
-                // Skip panel pop-in animation
                 if (_panelPopCoroutine != null) StopCoroutine(_panelPopCoroutine);
                 _panelPopCoroutine = null;
                 dialoguePanelRect.localScale = Vector3.one;
@@ -78,12 +76,10 @@ public class DialogueManager : MonoBehaviour
             }
             else if (_isTyping)
             {
-                // First click/E: skip to end of current line
                 SkipTyping();
             }
             else
             {
-                // Second click/E: advance to next line
                 AdvanceLine();
             }
         }

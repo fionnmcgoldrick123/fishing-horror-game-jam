@@ -62,11 +62,9 @@ public class FishCatchDisplay : MonoBehaviour
         currentFish = fish;
         currentStarCount = GetStarCount(fish.rarity);
 
-        // Freeze player
         if (player != null)
             player.ChangeState(player.TalkState);
 
-        // Start the pre-delay phase (panel stays hidden)
         phase = DisplayPhase.PreDelay;
         AudioManager.Instance?.PlayPreDelay();
         activeCoroutine = StartCoroutine(PreDelayRoutine());
@@ -81,7 +79,6 @@ public class FishCatchDisplay : MonoBehaviour
 
     private void BeginPanelPop()
     {
-        // Prepare UI content before showing
         fishPortrait.sprite = currentFish.fishSprite;
         fishNameText.text = currentFish.fishName;
         fishDescriptionText.text = "";

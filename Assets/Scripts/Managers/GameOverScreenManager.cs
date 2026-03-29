@@ -3,17 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Attach to a manager GameObject in the GameOver scene.
-/// Plays a DialogueData typewriter sequence (no portrait), then reveals a
-/// Main Menu button when finished.
-///
-/// Scene setup:
-///   - Assign a DialogueData asset (characterName and portrait are ignored).
-///   - Point dialogueText at a TextMeshProUGUI in the scene.
-///   - Point mainMenuButton at a Button that is DISABLED by default.
-///   - Set mainMenuSceneName to match your main menu scene name.
-/// </summary>
 public class GameOverScreenManager : MonoBehaviour
 {
     [Header("Dialogue")]
@@ -54,7 +43,6 @@ public class GameOverScreenManager : MonoBehaviour
         if (mainMenuButton != null)
         {
             mainMenuButton.gameObject.SetActive(false);
-            // Start with scale 0 so the pop animation works
             RectTransform btnRect = mainMenuButton.GetComponent<RectTransform>();
             if (btnRect != null)
                 btnRect.localScale = Vector3.zero;
@@ -103,7 +91,6 @@ public class GameOverScreenManager : MonoBehaviour
         {
             dialogueText.text += c;
             
-            // Use override sound if set, otherwise use sound from DialogueData
             AudioClip soundToPlay = typingSound != null ? typingSound : dialogue.typingSound;
             AudioManager.Instance?.PlayDialogueTyping(soundToPlay);
             
@@ -137,10 +124,8 @@ public class GameOverScreenManager : MonoBehaviour
     {
         if (mainMenuButton != null)
         {
-            // Hide dialogue text
             dialogueText.text = "";
-            
-            // Pop in the button
+
             mainMenuButton.gameObject.SetActive(true);
             RectTransform btnRect = mainMenuButton.GetComponent<RectTransform>();
             if (btnRect != null)
@@ -158,7 +143,6 @@ public class GameOverScreenManager : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / buttonPopDuration);
-            // Ease out: scale from 0 to 1 with a slight bounce
             float scale = t < 0.7f ? t / 0.7f : 1f + (t - 0.7f) / 0.3f * 0.1f;
             scale = Mathf.Clamp01(scale);
             btnRect.localScale = new Vector3(scale, scale, 1f);
@@ -172,9 +156,6 @@ public class GameOverScreenManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    /// <summary>
-    /// Cycles the circle image through the assigned flicker colors.
-    /// </summary>
     private IEnumerator FlickerCircle()
     {
         int colorIndex = 0;

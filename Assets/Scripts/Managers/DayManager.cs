@@ -1,8 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Tracks the current day number. Persists across scenes.
-/// </summary>
 public class DayManager : MonoBehaviour
 {
     public static DayManager Instance { get; private set; }

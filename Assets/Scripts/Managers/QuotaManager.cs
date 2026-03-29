@@ -52,7 +52,6 @@ public class QuotaManager : MonoBehaviour
         }
         else
         {
-            // Player failed to meet the quota, trigger game over
             GameOverManager.Instance.TriggerGameOver();
         }
     }

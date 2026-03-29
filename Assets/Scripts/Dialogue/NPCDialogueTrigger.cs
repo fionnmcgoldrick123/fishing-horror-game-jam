@@ -2,8 +2,6 @@ using UnityEngine;
 
 public enum CharacterID { DrSturgeon, Perch, Car}
 
-// Attach to an NPC GameObject with a Collider2D set to Is Trigger.
-// Assign a DialogueData asset in the Inspector.
 public class NPCDialogueTrigger : MonoBehaviour
 {
     [Tooltip("Which character this NPC is — used by DialogueSwappingManager to assign the correct day dialogue.")]
@@ -14,7 +12,6 @@ public class NPCDialogueTrigger : MonoBehaviour
 
     public CharacterID CharacterId => characterId;
 
-    /// <summary>Called by DialogueSwappingManager to swap this NPC's dialogue for the current day.</summary>
     public void SetDialogueData(DialogueData data) { dialogueData = data; }
 
     private PlayerController player;
@@ -31,7 +28,6 @@ public class NPCDialogueTrigger : MonoBehaviour
         if (!_playerInRange) return;
         if (DialogueManager.Instance == null) return;
 
-        // If dialogue just ended and this NPC should open the shop, do it now
         if (opensShopOnEnd && DialogueManager.Instance.JustEnded())
         {
             ShopButtonManager shopManager = FindFirstObjectByType<ShopButtonManager>();
