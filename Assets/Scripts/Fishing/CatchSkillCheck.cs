@@ -23,6 +23,8 @@ public class CatchSkillCheck : MonoBehaviour
     [SerializeField] private int maxScore;
     [SerializeField] private TextMeshProUGUI requiredScoreTXT;
 
+    [SerializeField] private float chanceToNotChangeDirection = 0.3f;
+
     private int direction = -1;
     private float randomStartHitZone;
     private float randomEndHitZone;
@@ -30,6 +32,11 @@ public class CatchSkillCheck : MonoBehaviour
     private float currentAngle = 0f;
     private bool @lock = false;
     private int requiredScore;
+
+    private float activeMinHitSize;
+    private float activeMaxHitSize;
+    private float activeMinSpeed;
+    private float activeMaxSpeed;
 
     private PlayerController player;
 
@@ -108,9 +115,9 @@ public class CatchSkillCheck : MonoBehaviour
         }
 
         @lock = false;
-        hitZoneSize = Random.Range(minHitSize, maxHitSize);
-        rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
-        if (Random.value > 0.3f)
+        hitZoneSize = Random.Range(activeMinHitSize, activeMaxHitSize);
+        rotationSpeed = Random.Range(activeMinSpeed, activeMaxSpeed);
+        if (Random.value > chanceToNotChangeDirection)
             direction *= -1;
         GetRandomHitZone();
     }
@@ -137,27 +144,27 @@ public class CatchSkillCheck : MonoBehaviour
 
     void ApplyDifficulty()
     {
-        float usedMinHitSize = minHitSize;
-        float usedMaxHitSize = maxHitSize;
+        activeMinHitSize = minHitSize;
+        activeMaxHitSize = maxHitSize;
         int usedMinScore = minScore;
         int usedMaxScore = maxScore;
-        float usedMinSpeed = minRotationSpeed;
-        float usedMaxSpeed = maxRotationSpeed;
+        activeMinSpeed = minRotationSpeed;
+        activeMaxSpeed = maxRotationSpeed;
 
         if (DifficultyManager.Instance != null && HookManager.Instance.CurrentFish != null)
         {
             DifficultySettings settings = DifficultyManager.Instance.GetSettings(HookManager.Instance.CurrentFish.rarity);
             usedMinScore = settings.MinScore;
             usedMaxScore = settings.MaxScore;
-            usedMinHitSize = settings.MinHitSize;
-            usedMaxHitSize = settings.MaxHitSize;
-            usedMinSpeed = settings.MinSpeed;
-            usedMaxSpeed = settings.MaxSpeed;
+            activeMinHitSize = settings.MinHitSize;
+            activeMaxHitSize = settings.MaxHitSize;
+            activeMinSpeed = settings.MinSpeed;
+            activeMaxSpeed = settings.MaxSpeed;
         }
 
-        hitZoneSize = Random.Range(usedMinHitSize, usedMaxHitSize);
+        hitZoneSize = Random.Range(activeMinHitSize, activeMaxHitSize);
         requiredScore = Random.Range(usedMinScore, usedMaxScore + 1);
-        rotationSpeed = Random.Range(usedMinSpeed, usedMaxSpeed);
+        rotationSpeed = Random.Range(activeMinSpeed, activeMaxSpeed);
     }
 
     void MoveArrow()

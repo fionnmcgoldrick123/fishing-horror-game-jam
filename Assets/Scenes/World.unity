@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishList:
-  - {fileID: 11400000, guid: c0b21076e0e2a1d44a156522dc8d75c4, type: 2}
+  - {fileID: 11400000, guid: 0e922ba1f66c7db40aae312fc0b50519, type: 2}
 --- !u!1 &92973264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
-  fishingSystem: {fileID: 753496175}
+  fishingSystem: {fileID: 5611684}
   minWaitTime: 4
   maxWaitTime: 12
   alertDuration: 0.8
@@ -2258,6 +2258,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 0
   sceneName: Shop
+  fishingSpriteRenderer: {fileID: 0}
   exitSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &985430599 stripped
 GameObject:
@@ -2330,8 +2331,8 @@ MonoBehaviour:
   legendaryMaxScore: 35
   legendaryMinHitSize: 25
   legendaryMaxHitSize: 30
-  legendaryMinSpeed: 300
-  legendaryMaxSpeed: 380
+  legendaryMinSpeed: 700
+  legendaryMaxSpeed: 700
 --- !u!1 &1026565536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 210366144248033736, guid: d19f15549e8717e45a4af13107cadf55, type: 3}
@@ -3829,6 +3830,7 @@ MonoBehaviour:
   minScore: 3
   maxScore: 10
   requiredScoreTXT: {fileID: 1618066796}
+  chanceToNotChangeDirection: 0.22
 --- !u!1 &1754305291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,7 +3919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 0
+  startingQuota: 1
   quotaIncreaseRate: 1.25
 --- !u!4 &1818468032
 Transform:
@@ -4297,6 +4299,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 2
   sceneName: World
+  fishingSpriteRenderer: {fileID: 2052437063}
   exitSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &2052437063
 SpriteRenderer:
@@ -5598,7 +5601,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
-      value: 600
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue
