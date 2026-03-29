@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
+  m_Name: car-day8
+  m_EditorClassIdentifier: 
+  characterName: Fiat Panda (1st generation)
+  characterPortrait: {fileID: 21300000, guid: 31721af7b265fac4fa93e891e3387e8b, type: 3}
+  lines:
+  - Perch whispered something in my side mirror last night.
+  - 'Oh my god... '
+  - I can't even repeat it.
+  - I am going to be sick.
+  - Just fuck off you cuck.
+  textSpeed: 20
+  typingSound: {fileID: 8300000, guid: 69912e74084c13e488affa45286cd117, type: 3}
