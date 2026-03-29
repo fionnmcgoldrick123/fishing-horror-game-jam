@@ -13,6 +13,9 @@ public class DayDialogueEntry
 
     [Tooltip("DialogueData asset for Perch on this day.")]
     public DialogueData perchDialogue;
+
+    [Tooltip("Dialogue shown on the day-transition screen when this day begins (used by DayLoader).")]
+    public DialogueData transitionDialogue;
 }
 
 public class DialogueSwappingManager : MonoBehaviour
@@ -21,6 +24,9 @@ public class DialogueSwappingManager : MonoBehaviour
 
     [Tooltip("One entry per day where dialogue should change. Days not listed keep whatever DialogueData is assigned directly on the NPCDialogueTrigger.")]
     [SerializeField] private DayDialogueEntry[] dayEntries;
+
+    [Tooltip("Fallback transition dialogue used by DayLoader when no day-specific entry exists.")]
+    [SerializeField] private DialogueData defaultTransitionDialogue;
 
     void Awake()
     {
@@ -64,6 +70,18 @@ public class DialogueSwappingManager : MonoBehaviour
             else if (trigger.CharacterId == CharacterID.Character2 && entry.perchDialogue != null)
                 trigger.SetDialogueData(entry.perchDialogue);
         }
+    }
+
+    /// <summary>
+    /// Returns the transition DialogueData for the given day.
+    /// Uses each day entry's transitionDialogue, falling back to defaultTransitionDialogue.
+    /// </summary>
+    public DialogueData GetTransitionDialogue(int day)
+    {
+        DayDialogueEntry entry = GetEntryForDay(day);
+        if (entry != null && entry.transitionDialogue != null)
+            return entry.transitionDialogue;
+        return defaultTransitionDialogue;
     }
 
     private DayDialogueEntry GetEntryForDay(int day)

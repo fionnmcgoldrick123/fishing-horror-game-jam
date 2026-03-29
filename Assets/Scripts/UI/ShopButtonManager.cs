@@ -18,6 +18,8 @@ public class ShopButtonManager : MonoBehaviour
 
     [Header("Quota")]
     [SerializeField] private TextMeshProUGUI quotaAmountText;
+    [Tooltip("The Meet Quota button — assign so it can be disabled immediately on press to prevent spam.")]
+    [SerializeField] private UnityEngine.UI.Button meetQuotaButton;
 
     public static bool IsOpen { get; private set; }
 
@@ -90,10 +92,44 @@ public class ShopButtonManager : MonoBehaviour
             return;
         }
 
+        // Disable immediately so the player cannot spam.
+        if (meetQuotaButton != null)
+            meetQuotaButton.interactable = false;
+
         isOpen = false;
         IsOpen = false;
 
-        if (TimeOfDayManager.Instance != null)
+        StartCoroutine(MeetQuotaSequence());
+    }
+
+    /// <summary>
+    /// Animates the shop closed, then hands off to DayLoader for the day transition.
+    /// </summary>
+    private System.Collections.IEnumerator MeetQuotaSequence()
+    {
+        // Pop out the shop panel (same visual as CloseShop but skips the quota guard
+        // and does NOT call ResumeDay — the day is already over).
+        if (bgCoroutine != null) StopCoroutine(bgCoroutine);
+        bgCoroutine = StartCoroutine(FadeBackground(1f, 0f, popOutDuration));
+
+        float elapsed = 0f;
+        while (elapsed < popOutDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / popOutDuration);
+            shopPanel.localScale = new Vector3(Mathf.Lerp(1f, 0f, t * t), Mathf.Lerp(1f, 0f, t * t), 1f);
+            yield return null;
+        }
+        shopPanel.localScale = Vector3.zero;
+        shopPanel.gameObject.SetActive(false);
+        if (shopBackground != null)
+            shopBackground.gameObject.SetActive(false);
+
+        // Hand off to DayLoader. It calls TimeOfDayManager.MeetQuota() at the end.
+        DayLoader dayLoader = FindFirstObjectByType<DayLoader>();
+        if (dayLoader != null)
+            dayLoader.StartTransition();
+        else if (TimeOfDayManager.Instance != null)
             TimeOfDayManager.Instance.MeetQuota();
     }
 
