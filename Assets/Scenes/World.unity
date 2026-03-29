@@ -2311,28 +2311,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonMinScore: 5
   commonMaxScore: 10
-  commonMinHitSize: 80
+  commonMinHitSize: 60
   commonMaxHitSize: 120
-  commonMinSpeed: 150
-  commonMaxSpeed: 200
+  commonMinSpeed: 300
+  commonMaxSpeed: 350
   rareMinScore: 10
   rareMaxScore: 15
-  rareMinHitSize: 70
-  rareMaxHitSize: 110
-  rareMinSpeed: 200
-  rareMaxSpeed: 250
+  rareMinHitSize: 50
+  rareMaxHitSize: 100
+  rareMinSpeed: 300
+  rareMaxSpeed: 400
   epicMinScore: 15
-  epicMaxScore: 25
-  epicMinHitSize: 40
-  epicMaxHitSize: 70
-  epicMinSpeed: 250
-  epicMaxSpeed: 300
-  legendaryMinScore: 25
-  legendaryMaxScore: 35
-  legendaryMinHitSize: 25
-  legendaryMaxHitSize: 30
-  legendaryMinSpeed: 700
-  legendaryMaxSpeed: 700
+  epicMaxScore: 20
+  epicMinHitSize: 45
+  epicMaxHitSize: 80
+  epicMinSpeed: 350
+  epicMaxSpeed: 450
+  legendaryMinScore: 20
+  legendaryMaxScore: 30
+  legendaryMinHitSize: 40
+  legendaryMaxHitSize: 60
+  legendaryMinSpeed: 400
+  legendaryMaxSpeed: 500
 --- !u!1 &1026565536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 210366144248033736, guid: d19f15549e8717e45a4af13107cadf55, type: 3}
@@ -5127,6 +5127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4424031786318268001, guid: 98362c35472ab784682579852ce2949b, type: 3}
+      propertyPath: scoreTick
+      value: 
+      objectReference: {fileID: 8300000, guid: 608b030764d404b47b015d5d654b7cb7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
