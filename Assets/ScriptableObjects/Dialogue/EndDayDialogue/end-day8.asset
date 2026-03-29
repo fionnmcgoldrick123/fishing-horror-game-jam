@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
+  m_Name: end-day8
+  m_EditorClassIdentifier: 
+  characterName: Null
+  characterPortrait: {fileID: 21300000, guid: f36fbf6dee429ca41a4cab3318474059, type: 3}
+  lines:
+  - The creatures in the water stink like corpses.
+  - Signs of rotting all over their bodies.
+  - Their eyes look lifeless, but not soulless. I hate it.
+  - 'The rumours were not wrong. '
+  - 'The fish here are definitely unique. '
+  textSpeed: 30
+  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}

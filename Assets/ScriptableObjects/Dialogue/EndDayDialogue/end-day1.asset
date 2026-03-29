@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
+  m_Name: end-day1
+  m_EditorClassIdentifier: 
+  characterName: Null
+  characterPortrait: {fileID: 21300000, guid: f36fbf6dee429ca41a4cab3318474059, type: 3}
+  lines:
+  - First day. I made it.
+  - This town is not right. Not right at all.
+  - A smell that makes you gag is oozing from every corner.
+  - But the lake... the stench coming from there is even undescribable.
+  - But my cut was huge. I made lots of money. I must push forward for my family.
+  textSpeed: 30
+  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}

@@ -780,29 +780,44 @@ MonoBehaviour:
   - day: 1
     drSturgeonDialogue: {fileID: 11400000, guid: bdda25a81ee9d13499b5b810fbe5281b, type: 2}
     perchDialogue: {fileID: 11400000, guid: 48b42561e84e4a342a2dc80308dd15b7, type: 2}
-    transitionDialogue: {fileID: 0}
+    transitionDialogue: {fileID: 11400000, guid: da0c696723899eb43956bb6e19304e2d, type: 2}
     carDialogue: {fileID: 11400000, guid: dd850fa3c17458a44b519d6d91201c45, type: 2}
   - day: 2
     drSturgeonDialogue: {fileID: 11400000, guid: 7a1236b1bb842f343abe3091a4b5a802, type: 2}
     perchDialogue: {fileID: 11400000, guid: 00006523817d5e742b6bf4b2e8a14148, type: 2}
-    transitionDialogue: {fileID: 0}
-    carDialogue: {fileID: 11400000, guid: 7a1236b1bb842f343abe3091a4b5a802, type: 2}
+    transitionDialogue: {fileID: 11400000, guid: f4d6325d687bfb64bbea8883aa9216e1, type: 2}
+    carDialogue: {fileID: 11400000, guid: 6b0aaa098ebe44d4a93e98fdef2008fc, type: 2}
   - day: 3
     drSturgeonDialogue: {fileID: 11400000, guid: 626ffe0f7ebd9364a8634329912469b0, type: 2}
     perchDialogue: {fileID: 11400000, guid: 14d063b9a49f69c43a7e7135d59a59b7, type: 2}
-    transitionDialogue: {fileID: 0}
-    carDialogue: {fileID: 0}
+    transitionDialogue: {fileID: 11400000, guid: ca1bc68b9343ce843bbd4003634feed0, type: 2}
+    carDialogue: {fileID: 11400000, guid: 5205f7939af9c8c42ba5a3ed06b8c18b, type: 2}
   - day: 4
     drSturgeonDialogue: {fileID: 11400000, guid: a86a999fd16fa1546a10037d4cc499a3, type: 2}
     perchDialogue: {fileID: 11400000, guid: 43762f4b449d07345aec6dc0531ef4c2, type: 2}
-    transitionDialogue: {fileID: 0}
-    carDialogue: {fileID: 0}
+    transitionDialogue: {fileID: 11400000, guid: 6d53bc20759ef5047acf11c91a16b9aa, type: 2}
+    carDialogue: {fileID: 11400000, guid: e594f12bf5afa6b428b1e723529c0ed7, type: 2}
   - day: 5
     drSturgeonDialogue: {fileID: 11400000, guid: 695fa2d37cc17a4458e82aea22c64ff2, type: 2}
     perchDialogue: {fileID: 11400000, guid: f7ba9d4048635f14db59f75532ea04ff, type: 2}
-    transitionDialogue: {fileID: 0}
-    carDialogue: {fileID: 0}
-  defaultTransitionDialogue: {fileID: 0}
+    transitionDialogue: {fileID: 11400000, guid: b6fc8d7ac7a4f2d49a83909f46e4d42f, type: 2}
+    carDialogue: {fileID: 11400000, guid: 61fde8fdb12543740abd3ee4aa028fac, type: 2}
+  - day: 6
+    drSturgeonDialogue: {fileID: 11400000, guid: 6575e5227583a534cbb8b6eae6a04af6, type: 2}
+    perchDialogue: {fileID: 11400000, guid: f1b7ae9e9d13f2742bf9114a1f14705a, type: 2}
+    transitionDialogue: {fileID: 11400000, guid: 35cd95f36d39ebf479e7cc83ae159cbb, type: 2}
+    carDialogue: {fileID: 11400000, guid: 80b14e62b6db15f489a6f6a092107632, type: 2}
+  - day: 7
+    drSturgeonDialogue: {fileID: 11400000, guid: 1630e8f9b14b41b4d9b5873936b2c688, type: 2}
+    perchDialogue: {fileID: 11400000, guid: c1f9e5fd8a79ad049a5d44e07091a7d0, type: 2}
+    transitionDialogue: {fileID: 11400000, guid: a74226bef7c40164788c05f3a0285c31, type: 2}
+    carDialogue: {fileID: 11400000, guid: 3560a1de0df29354892e45e9a0a63762, type: 2}
+  - day: 8
+    drSturgeonDialogue: {fileID: 11400000, guid: 5049def497675b54a93b006480149ef6, type: 2}
+    perchDialogue: {fileID: 11400000, guid: cf73d4bc14be4524bacec5d06372bdf3, type: 2}
+    transitionDialogue: {fileID: 11400000, guid: 55eaca0b4c8a5dc4285817fbc1f55311, type: 2}
+    carDialogue: {fileID: 11400000, guid: 56ae27126478dbb4c9a84b206dd3eeba, type: 2}
+  defaultTransitionDialogue: {fileID: 11400000, guid: 824fc797d43341047a3851167c693091, type: 2}
 --- !u!4 &530340588
 Transform:
   m_ObjectHideFlags: 0
