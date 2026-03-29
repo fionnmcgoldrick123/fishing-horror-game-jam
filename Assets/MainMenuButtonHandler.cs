@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MainMenuButtonHandler : MonoBehaviour
 {
     [SerializeField] private Button startButton;
-    [SerializeField] private string sceneToLoad = "Opening";
+    [SerializeField] private string sceneToLoad = "Tutorial";
 
     void Start()
     {
@@ -13,6 +13,6 @@ public class MainMenuButtonHandler : MonoBehaviour
 
     private void OnStartButtonClicked()
     {
-        SceneManager.Instance.LoadScene("Opening");
+        SceneManager.Instance.LoadScene(sceneToLoad);
     }
 }

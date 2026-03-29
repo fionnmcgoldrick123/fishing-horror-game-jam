@@ -14,6 +14,7 @@ public class InteractionZone : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private InteractionType interactionType;
     [SerializeField] private string sceneName;
+    [SerializeField] private SpriteRenderer fishingSpriteRenderer;
 
     [Header("Exit Shop Spawn (only used for ExitShop type)")]
     [SerializeField] private Vector3 exitSpawnPosition;
@@ -42,6 +43,8 @@ public class InteractionZone : MonoBehaviour
             case InteractionType.FishingZone:
                 player.CanFish = true;
                 player.ShowInteractionPromptBlack();
+                if (fishingSpriteRenderer != null)
+                    fishingSpriteRenderer.enabled = false;
                 break;
         }
     }
@@ -67,6 +70,8 @@ public class InteractionZone : MonoBehaviour
             case InteractionType.FishingZone:
                 player.CanFish = false;
                 player.HideInteractionPrompt();
+                if (fishingSpriteRenderer != null)
+                    fishingSpriteRenderer.enabled = true;
                 break;
         }
     }

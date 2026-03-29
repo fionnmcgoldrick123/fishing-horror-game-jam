@@ -1652,19 +1652,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1365123967}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1329793710}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1365123967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,6 +2303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1815403600}
   - component: {fileID: 1815403599}
+  - component: {fileID: 1815403601}
   m_Layer: 0
   m_Name: MenuSong
   m_TagString: Untagged
@@ -2335,7 +2324,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 94217d53db71e0e45b5adbfcb43622b5, type: 3}
   m_Resource: {fileID: 8300000, guid: 94217d53db71e0e45b5adbfcb43622b5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2434,6 +2423,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1815403601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815403598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aeb04f7c5a4804ca19511c6c6532a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1897085981
 GameObject:
   m_ObjectHideFlags: 0

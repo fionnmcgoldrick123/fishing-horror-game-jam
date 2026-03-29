@@ -49,7 +49,8 @@ public class TutorialManager : MonoBehaviour
 
     private void OnWarningClick()
     {
-        SceneManager.Instance.LoadScene(openingSceneName);
+        MainMenuMusic.Instance?.DestroyMusic();
+        global::SceneManager.Instance.LoadScene(openingSceneName);
     }
 
     private IEnumerator AnimateWarningPanel()

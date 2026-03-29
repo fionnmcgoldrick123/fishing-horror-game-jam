@@ -7,7 +7,6 @@ public class PauseManager : MonoBehaviour
 
     [Header("Pause Panel")]
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private Button resumeButton;
 
     [Header("Audio")]
     [SerializeField] private AudioClip pauseSound;
@@ -56,7 +55,7 @@ public class PauseManager : MonoBehaviour
         {
             if (IsPaused)
                 Resume();
-            else
+            else if (DialogueManager.Instance == null || !DialogueManager.Instance.IsActive)
                 Pause();
         }
     }
