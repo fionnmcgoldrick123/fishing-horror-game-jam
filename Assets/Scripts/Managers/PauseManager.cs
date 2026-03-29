@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour
 
     [Header("Pause Panel")]
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private Button resumeButton;
 
     [Header("Audio")]
     [SerializeField] private AudioClip pauseSound;

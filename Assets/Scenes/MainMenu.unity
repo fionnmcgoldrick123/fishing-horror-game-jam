@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056447758588372815, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 5056447758588372815, guid: de19ca24b6fb2f645b459c0a7ba56681, type: 3}
       propertyPath: m_LocalPosition.y
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 559399230}
   - component: {fileID: 559399229}
   m_Layer: 5
-  m_Name: SelfPrompTXT
+  m_Name: SelfPromoTXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 1365123966}
-  sceneToLoad: Opening
+  sceneToLoad: Tutorial
 --- !u!4 &1329793712
 Transform:
   m_ObjectHideFlags: 0
@@ -2335,7 +2335,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 94217d53db71e0e45b5adbfcb43622b5, type: 3}
   m_Resource: {fileID: 8300000, guid: 94217d53db71e0e45b5adbfcb43622b5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
