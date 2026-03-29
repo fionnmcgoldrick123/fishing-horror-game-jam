@@ -54,15 +54,15 @@ public class DifficultyManager : MonoBehaviour
         };
 
         float hitBonus = UpgradeManager.GetEaseHitSizeBonus();
-        float speedReduction = UpgradeManager.GetEaseSpeedReduction();
-        int scoreReduction = UpgradeManager.GetEaseScoreReduction();
+        float speedMultiplier = UpgradeManager.GetEaseSpeedMultiplier();
+        float scoreMultiplier = UpgradeManager.GetEaseScoreMultiplier();
 
         settings.MinHitSize += hitBonus;
         settings.MaxHitSize += hitBonus;
-        settings.MinSpeed = Mathf.Max(50f, settings.MinSpeed - speedReduction);
-        settings.MaxSpeed = Mathf.Max(60f, settings.MaxSpeed - speedReduction);
-        settings.MinScore = Mathf.Max(1, settings.MinScore - scoreReduction);
-        settings.MaxScore = Mathf.Max(1, settings.MaxScore - scoreReduction);
+        settings.MinSpeed = Mathf.Max(50f, settings.MinSpeed * speedMultiplier);
+        settings.MaxSpeed = Mathf.Max(60f, settings.MaxSpeed * speedMultiplier);
+        settings.MinScore = Mathf.Max(1, Mathf.RoundToInt(settings.MinScore * scoreMultiplier));
+        settings.MaxScore = Mathf.Max(1, Mathf.RoundToInt(settings.MaxScore * scoreMultiplier));
 
         return settings;
     }

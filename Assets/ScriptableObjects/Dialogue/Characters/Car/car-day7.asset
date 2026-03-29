@@ -16,5 +16,5 @@ MonoBehaviour:
   characterPortrait: {fileID: 21300000, guid: 31721af7b265fac4fa93e891e3387e8b, type: 3}
   lines:
   - I wish I had hands to stroke my gear stick to your wife.
-  textSpeed: 30
-  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}
+  textSpeed: 25
+  typingSound: {fileID: 8300000, guid: 5756190df87ba7c4885ee4a84209c98d, type: 3}

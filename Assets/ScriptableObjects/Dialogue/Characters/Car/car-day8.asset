@@ -20,5 +20,5 @@ MonoBehaviour:
   - I can't even repeat it.
   - I am going to be sick.
   - Just fuck off you cuck.
-  textSpeed: 20
-  typingSound: {fileID: 8300000, guid: 69912e74084c13e488affa45286cd117, type: 3}
+  textSpeed: 25
+  typingSound: {fileID: 8300000, guid: 5756190df87ba7c4885ee4a84209c98d, type: 3}

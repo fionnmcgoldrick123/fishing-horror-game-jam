@@ -40,13 +40,13 @@ public static class UpgradeManager
         return true;
     }
 
-    public static float GetLuckMultiplier() => 1f + _luckLevel * 0.25f;
+    public static float GetLuckMultiplier() => 1f + _luckLevel * 0.4f;
 
     public static float GetWaitTimeMultiplier() => 1f - _catchSpeedLevel * 0.12f;
 
-    public static float GetEaseHitSizeBonus() => _easeLevel * 8f;
+    public static float GetEaseHitSizeBonus() => _easeLevel * 12f;
 
-    public static float GetEaseSpeedReduction() => _easeLevel * 15f;
+    public static float GetEaseSpeedMultiplier() => 1f - _easeLevel * 0.06f;
 
-    public static int GetEaseScoreReduction() => _easeLevel;
+    public static float GetEaseScoreMultiplier() => 1f - _easeLevel * 0.08f;
 }

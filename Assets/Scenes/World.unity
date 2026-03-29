@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishList:
-  - {fileID: 11400000, guid: 0e922ba1f66c7db40aae312fc0b50519, type: 2}
+  - {fileID: 11400000, guid: 9cf0db9a2f7db9a47b5a0c50498295d2, type: 2}
 --- !u!1 &92973264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,8 +1961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
   fishingSystem: {fileID: 5611684}
-  minWaitTime: 4
-  maxWaitTime: 12
+  minWaitTime: 5
+  maxWaitTime: 15
   alertDuration: 0.8
   alertUI: {fileID: 2131606880}
 --- !u!4 &927404862

@@ -18,5 +18,5 @@ MonoBehaviour:
   - No, we are not going home.
   - Not after what Perch told me.
   - No. No way.
-  textSpeed: 30
-  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}
+  textSpeed: 25
+  typingSound: {fileID: 8300000, guid: 5756190df87ba7c4885ee4a84209c98d, type: 3}
