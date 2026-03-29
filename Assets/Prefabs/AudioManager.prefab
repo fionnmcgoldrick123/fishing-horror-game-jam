@@ -55,7 +55,7 @@ MonoBehaviour:
   minigameMiss: {fileID: 8300000, guid: 5e34646bf0bd0f14183819b06bc93b54, type: 3}
   preDelay: {fileID: 8300000, guid: bdf591c3bd5b40e4e8b695c82e2e8281, type: 3}
   fishCaught: {fileID: 8300000, guid: 69912e74084c13e488affa45286cd117, type: 3}
-  moneyTick: {fileID: 8300000, guid: 1a28197da768c274c9dc558dbc2616cc, type: 3}
+  moneyTick: {fileID: 8300000, guid: 608b030764d404b47b015d5d654b7cb7, type: 3}
   starPop: {fileID: 8300000, guid: 69912e74084c13e488affa45286cd117, type: 3}
   scoreTick: {fileID: 8300000, guid: 1a28197da768c274c9dc558dbc2616cc, type: 3}
   sellFish: {fileID: 0}

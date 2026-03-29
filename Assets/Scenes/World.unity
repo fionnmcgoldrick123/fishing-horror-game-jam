@@ -1764,6 +1764,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e7ae408feef89243b67556c4014d3c8, type: 2}
   - {fileID: 11400000, guid: b434c37086d40334290f27cb61b27379, type: 2}
   - {fileID: 11400000, guid: c0b21076e0e2a1d44a156522dc8d75c4, type: 2}
+  - {fileID: 11400000, guid: aaf88b0aa94de3f419102a2f4cf15d62, type: 2}
+  - {fileID: 11400000, guid: 692fb1e99cd5a454d909bbcc990b8a6a, type: 2}
+  - {fileID: 11400000, guid: 942d7b97b786fdc43b16360690ed0dff, type: 2}
+  - {fileID: 11400000, guid: 982cd4933bf3c0442a293ba405a79839, type: 2}
 --- !u!1 &896187815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,9 +1964,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingMinigameUI: {fileID: 1752401748}
-  fishingSystem: {fileID: 5611684}
+  fishingSystem: {fileID: 753496175}
   minWaitTime: 5
-  maxWaitTime: 15
+  maxWaitTime: 12
   alertDuration: 0.8
   alertUI: {fileID: 2131606880}
 --- !u!4 &927404862
@@ -2312,19 +2316,19 @@ MonoBehaviour:
   commonMinScore: 5
   commonMaxScore: 10
   commonMinHitSize: 60
-  commonMaxHitSize: 120
+  commonMaxHitSize: 100
   commonMinSpeed: 300
   commonMaxSpeed: 350
   rareMinScore: 10
   rareMaxScore: 15
   rareMinHitSize: 50
-  rareMaxHitSize: 100
+  rareMaxHitSize: 80
   rareMinSpeed: 300
   rareMaxSpeed: 400
   epicMinScore: 15
   epicMaxScore: 20
   epicMinHitSize: 45
-  epicMaxHitSize: 80
+  epicMaxHitSize: 75
   epicMinSpeed: 350
   epicMaxSpeed: 450
   legendaryMinScore: 20
@@ -3919,8 +3923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 1
-  quotaIncreaseRate: 1.25
+  startingQuota: 12000
+  quotaIncreaseRate: 1.5
 --- !u!4 &1818468032
 Transform:
   m_ObjectHideFlags: 0
@@ -5605,7 +5609,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d611782190733046aa8510828d68de3, type: 2}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: dayDurationSeconds
-      value: 360
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7146441462475666175, guid: 21696f667b037e44eac2b19e82c6332e, type: 3}
       propertyPath: cantAffordQuotaDialogue

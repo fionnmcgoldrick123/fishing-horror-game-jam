@@ -936,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &240574939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3414,6 +3414,7 @@ MonoBehaviour:
     m_Bits: 64
   interactionType: 1
   sceneName: World
+  fishingSpriteRenderer: {fileID: 0}
   exitSpawnPosition: {x: 2, y: -3.3, z: 0}
 --- !u!114 &1467899961
 MonoBehaviour:
@@ -4237,7 +4238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ease
+  m_text: Easier Minigame
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
   m_sharedMaterial: {fileID: 2993087047706068046, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
@@ -4264,8 +4265,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
