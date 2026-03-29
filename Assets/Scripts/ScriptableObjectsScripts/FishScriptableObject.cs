@@ -2,10 +2,10 @@ using UnityEngine;
 
 public static class FishRarityWeights
 {
-    public const int Common    = 50;
-    public const int Rare      = 10;
-    public const int Epic      = 3;
-    public const int Legendary = 1;
+    public const int Common    = 60;
+    public const int Rare      = 25;
+    public const int Epic      = 10;
+    public const int Legendary = 5;
 }
 
 // Enum for rarity
