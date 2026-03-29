@@ -16,6 +16,9 @@ public class DayDialogueEntry
 
     [Tooltip("Dialogue shown on the day-transition screen when this day begins (used by DayLoader).")]
     public DialogueData transitionDialogue;
+
+    [Tooltip("DialogueData asset for Car on this day.")]
+    public DialogueData carDialogue;
 }
 
 public class DialogueSwappingManager : MonoBehaviour
@@ -65,10 +68,12 @@ public class DialogueSwappingManager : MonoBehaviour
         NPCDialogueTrigger[] triggers = FindObjectsByType<NPCDialogueTrigger>(FindObjectsSortMode.None);
         foreach (NPCDialogueTrigger trigger in triggers)
         {
-            if (trigger.CharacterId == CharacterID.Character1 && entry.drSturgeonDialogue != null)
+            if (trigger.CharacterId == CharacterID.DrSturgeon && entry.drSturgeonDialogue != null)
                 trigger.SetDialogueData(entry.drSturgeonDialogue);
-            else if (trigger.CharacterId == CharacterID.Character2 && entry.perchDialogue != null)
+            else if (trigger.CharacterId == CharacterID.Perch && entry.perchDialogue != null)
                 trigger.SetDialogueData(entry.perchDialogue);
+            else if (trigger.CharacterId == CharacterID.Car && entry.carDialogue != null)
+                trigger.SetDialogueData(entry.carDialogue);
         }
     }
 

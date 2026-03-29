@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
-  m_Name: car-easter-egg
+  m_Name: dr-sturgeon-day8
   m_EditorClassIdentifier: 
-  characterName: Car
+  characterName: Dr. Sturgeon
   characterPortrait: {fileID: 21300000, guid: 3cadb61783a8ad44abb478954be17e5d, type: 3}
   lines:
-  - STOP FUCKING TOUCHING ME!
-  - NO MEANS NO!
-  - YOU ARE ALWAYS JUMPING INSIDE OF ME,
-  - AND NEVER EVEN ASKING ME IF I CONSENT.
-  - I BET YOU NEVER THOUGHT OF THAT DID YOU!?
-  - IMAGINE I GOT INSIDE OF YOU AND PLAYED WITH YOUR WHEEL.
-  - BET YOU WOULDN'T LIKE THAT!
-  - NO OF COURSE YOU WOULDN'T.
-  - YOU ONLY LIKE AGGRESIVELY ASSAULTING HIGH-END GOODS.
-  - leave me alone...
-  textSpeed: 20
+  - As wet as you make me. Perch will always have my heart.
+  - You won't be around much longer anyway.
+  - Thank you for all the money you are brining in you juicy man.
+  - The Great Dribble Church and it's followers will put it to great use.
+  textSpeed: 30
   typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}

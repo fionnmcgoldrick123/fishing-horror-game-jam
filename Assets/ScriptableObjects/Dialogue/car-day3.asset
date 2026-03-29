@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f8cf7b38af34783332bb400a06b8, type: 3}
+  m_Name: car-day3
+  m_EditorClassIdentifier: 
+  characterName: Fiat Panda (1st generation)
+  characterPortrait: {fileID: 21300000, guid: 31721af7b265fac4fa93e891e3387e8b, type: 3}
+  lines:
+  - I have done a lot more thinking...
+  - About your smoking hot wife.
+  - Gweenith could suck on this exhaust pipe until my engine bursts.
+  - You can sit on a little wooden chair and watch.
+  - You filthy little cuck.
+  - Stay away from my seats. Your wife is the only one allowed inside me now.
+  textSpeed: 30
+  typingSound: {fileID: 8300000, guid: f5d143911732a1f43b570748ed2458a4, type: 3}

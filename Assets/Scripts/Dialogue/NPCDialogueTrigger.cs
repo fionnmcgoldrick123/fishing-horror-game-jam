@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum CharacterID { Character1, Character2 }
+public enum CharacterID { DrSturgeon, Perch, Car}
 
 // Attach to an NPC GameObject with a Collider2D set to Is Trigger.
 // Assign a DialogueData asset in the Inspector.
