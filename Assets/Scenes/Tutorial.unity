@@ -604,7 +604,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Use the Escape key to pause the game. You can change the VOLUME here!'
+  m_text: '- Use the Escape or TAB key to pause the game. You can change the VOLUME
+    here!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}
   m_sharedMaterial: {fileID: 2993087047706068046, guid: 316dbfb36bd1750478c64cb9b7179c32, type: 2}

@@ -3924,8 +3924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 8000
-  quotaIncreaseRate: 1.25
+  startingQuota: 10000
+  quotaIncreaseRate: 1.3
 --- !u!4 &1818468032
 Transform:
   m_ObjectHideFlags: 0

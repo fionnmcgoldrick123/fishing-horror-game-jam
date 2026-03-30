@@ -124,6 +124,12 @@ public class PlayerFishingState : PlayerState
         HookManager.Instance.StopMinigame();
     }
 
+    public void ResetAfterMinigameLoss()
+    {
+        phase = Phase.Idle;
+        player.Sr.sprite = player.FishingIdleSprite;
+        player.Anim.enabled = false;
+    }
 
     public bool isWaiting() => phase == Phase.Wait || phase == Phase.Catching;
 }

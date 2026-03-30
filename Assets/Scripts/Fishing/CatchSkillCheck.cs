@@ -98,7 +98,7 @@ public class CatchSkillCheck : MonoBehaviour
         AudioManager.Instance?.StopReeling();
         AudioManager.Instance?.PlayMinigameMiss();
         HookManager.Instance.OnMinigameLost();
-        player.ExitFishing();
+        player.FishingState.ResetAfterMinigameLoss();
     }
 
     void HandleHit()
