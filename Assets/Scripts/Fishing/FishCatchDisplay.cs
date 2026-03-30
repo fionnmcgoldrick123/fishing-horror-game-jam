@@ -64,6 +64,7 @@ public class FishCatchDisplay : MonoBehaviour
 
         if (player != null)
             player.ChangeState(player.TalkState);
+        TimeOfDayManager.Instance?.PauseDay();
 
         phase = DisplayPhase.PreDelay;
         AudioManager.Instance?.PlayPreDelay();
@@ -196,8 +197,9 @@ public class FishCatchDisplay : MonoBehaviour
 
         currentFish = null;
 
+        TimeOfDayManager.Instance?.ResumeDay();
         if (player != null)
-            player.ExitFishing();
+            player.ChangeState(player.FishingState);
     }
 
     private int GetStarCount(Rarity rarity)

@@ -89,6 +89,15 @@ public class FishInventory : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        if (countUpCoroutine != null) StopCoroutine(countUpCoroutine);
+        countUpCoroutine = null;
+        caughtFish.Clear();
+        totalValue = 0;
+        UpdateScoreText();
+    }
+
     private IEnumerator CountUpRoutine(int from, int to)
     {
         float elapsed = 0f;

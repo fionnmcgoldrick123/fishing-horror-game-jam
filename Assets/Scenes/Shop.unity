@@ -551,6 +551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DayTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 2603075757235604411, guid: 1cf00018e1008214785e195f478ab315, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4603468020414762269, guid: 1cf00018e1008214785e195f478ab315, type: 3}
       propertyPath: m_Pivot.x
       value: 0

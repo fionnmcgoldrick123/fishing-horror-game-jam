@@ -153,6 +153,9 @@ public class GameOverScreenManager : MonoBehaviour
 
     private void GoToMainMenu()
     {
+        FishInventory.Instance?.Reset();
+        TimeOfDayManager.Instance?.StartDay();
+        QuotaManager.Instance?.Reset();
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
     }
 

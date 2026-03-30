@@ -16,7 +16,7 @@ MonoBehaviour:
   characterPortrait: {fileID: 21300000, guid: f36fbf6dee429ca41a4cab3318474059, type: 3}
   lines:
   - It is so hard to sleep in this car at night.
-  - I hear footsteps around my vehicle all night.
+  - I hear footsteps around my vehicle.
   - Lots of them. I don't know where they even come from.
   - The town is so dead during the day except those two creeps.
   - But I have this feeling that this place is not empty.
