@@ -1768,6 +1768,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 692fb1e99cd5a454d909bbcc990b8a6a, type: 2}
   - {fileID: 11400000, guid: 942d7b97b786fdc43b16360690ed0dff, type: 2}
   - {fileID: 11400000, guid: 982cd4933bf3c0442a293ba405a79839, type: 2}
+  - {fileID: 11400000, guid: aa0960401bd5dc640b5fcd99b70a1e6a, type: 2}
 --- !u!1 &896187815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,8 +3924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caac114d6d418c4b9c26ab71a2123ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuota: 12000
-  quotaIncreaseRate: 1.5
+  startingQuota: 8000
+  quotaIncreaseRate: 1.25
 --- !u!4 &1818468032
 Transform:
   m_ObjectHideFlags: 0

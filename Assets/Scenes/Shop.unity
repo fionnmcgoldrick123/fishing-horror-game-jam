@@ -646,7 +646,7 @@ PrefabInstance:
     - target: {fileID: 7193361511520810555, guid: 1cf00018e1008214785e195f478ab315, type: 3}
       propertyPath: dayCompleteSound
       value: 
-      objectReference: {fileID: 8300000, guid: d2ba617ea1acab144993cac4d343c9bd, type: 3}
+      objectReference: {fileID: 8300000, guid: 8b1dbb4890e059f40a6587037d61530a, type: 3}
     - target: {fileID: 7193361511520810555, guid: 1cf00018e1008214785e195f478ab315, type: 3}
       propertyPath: fallbackDialogue
       value: 
@@ -936,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &240574939
 RectTransform:
   m_ObjectHideFlags: 0
