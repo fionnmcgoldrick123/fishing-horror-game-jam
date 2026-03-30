@@ -13,13 +13,15 @@ public class FishInventory : MonoBehaviour
     [SerializeField] private float countUpDuration = 0.6f;
 
     private readonly List<FishScriptableObject> caughtFish = new List<FishScriptableObject>();
+    private static readonly HashSet<FishScriptableObject> _caughtOnceItems = new HashSet<FishScriptableObject>();
     private int totalValue;
     private Coroutine countUpCoroutine;
 
     public IReadOnlyList<FishScriptableObject> CaughtFish => caughtFish;
     public int TotalValue => totalValue;
 
-
+    /// <summary>Returns true if this catch-once fish has already been caught this run.</summary>
+    public static bool HasBeenCaughtOnce(FishScriptableObject fish) => _caughtOnceItems.Contains(fish);
 
     private void Awake()
     {
@@ -56,6 +58,9 @@ public class FishInventory : MonoBehaviour
 
     public void AddFish(FishScriptableObject fish)
     {
+        if (fish.catchOnce)
+            _caughtOnceItems.Add(fish);
+
         caughtFish.Add(fish);
         int previousValue = totalValue;
         totalValue += fish.value;
@@ -94,6 +99,7 @@ public class FishInventory : MonoBehaviour
         if (countUpCoroutine != null) StopCoroutine(countUpCoroutine);
         countUpCoroutine = null;
         caughtFish.Clear();
+        _caughtOnceItems.Clear();
         totalValue = 0;
         UpdateScoreText();
     }

@@ -18,4 +18,9 @@ public class DayManager : MonoBehaviour
         QuotaManager.Instance.IncreaseQuota();
         CurrentDay++;
     }
+
+    public void Reset()
+    {
+        CurrentDay = 1;
+    }
 }

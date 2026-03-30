@@ -25,6 +25,8 @@ public class FishScriptableObject : ScriptableObject
     public int value;
     public Rarity rarity;
     public bool isUpgradeCurrency;
+    [Tooltip("If ticked, this item can only be caught once per run. A retry resets it.")]
+    public bool catchOnce;
 
     public int rarityWeight => rarity switch
     {

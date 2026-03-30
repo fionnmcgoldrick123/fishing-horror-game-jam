@@ -15,6 +15,8 @@ public class GameOverScreenManager : MonoBehaviour
     [Header("UI")]
     [Tooltip("The button shown after dialogue ends. Disable it in the scene by default.")]
     [SerializeField] private Button mainMenuButton;
+    [Tooltip("Button that restarts from day 1, resetting all state.")]
+    [SerializeField] private Button retryButton;
     [Tooltip("Duration of the button pop-in animation.")]
     [SerializeField] private float buttonPopDuration = 0.4f;
 
@@ -32,6 +34,7 @@ public class GameOverScreenManager : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
+    [SerializeField] private string worldSceneName = "World";
 
     private int _lineIndex;
     private bool _isTyping;
@@ -47,6 +50,15 @@ public class GameOverScreenManager : MonoBehaviour
             if (btnRect != null)
                 btnRect.localScale = Vector3.zero;
             mainMenuButton.onClick.AddListener(GoToMainMenu);
+        }
+
+        if (retryButton != null)
+        {
+            retryButton.gameObject.SetActive(false);
+            RectTransform btnRect = retryButton.GetComponent<RectTransform>();
+            if (btnRect != null)
+                btnRect.localScale = Vector3.zero;
+            retryButton.onClick.AddListener(RetryGame);
         }
 
         if (startFlickering && circleImage != null && flickerColors.Length > 0)
@@ -134,6 +146,17 @@ public class GameOverScreenManager : MonoBehaviour
                 StartCoroutine(PopInButton(btnRect));
             }
         }
+
+        if (retryButton != null)
+        {
+            retryButton.gameObject.SetActive(true);
+            RectTransform btnRect = retryButton.GetComponent<RectTransform>();
+            if (btnRect != null)
+            {
+                btnRect.localScale = Vector3.zero;
+                StartCoroutine(PopInButton(btnRect));
+            }
+        }
     }
 
     private System.Collections.IEnumerator PopInButton(RectTransform btnRect)
@@ -153,10 +176,25 @@ public class GameOverScreenManager : MonoBehaviour
 
     private void GoToMainMenu()
     {
-        FishInventory.Instance?.Reset();
-        TimeOfDayManager.Instance?.StartDay();
-        QuotaManager.Instance?.Reset();
+        ResetAllGameState();
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    private void RetryGame()
+    {
+        ResetAllGameState();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(worldSceneName);
+    }
+
+    private void ResetAllGameState()
+    {
+        // Must clear GameOverPending BEFORE loading World, otherwise GameOverManager
+        // will see the pending flag when the scene loads and trigger the sequence again.
+        TimeOfDayManager.Instance?.FullReset();
+        FishInventory.Instance?.Reset();
+        QuotaManager.Instance?.Reset();
+        UpgradeManager.Reset();
+        DayManager.Instance?.Reset();
     }
 
     private IEnumerator FlickerCircle()

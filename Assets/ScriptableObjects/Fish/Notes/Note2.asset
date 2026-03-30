@@ -16,6 +16,7 @@ MonoBehaviour:
   fishDescription: Helo? My name is teddy. If anywun finds thiz pleez help me. theze
     men skary.
   fishSprite: {fileID: 21300000, guid: 9775ff0903dc42644a4c0f6f9fd17c3f, type: 3}
-  value: 0
+  value: 300
   rarity: 0
   isUpgradeCurrency: 0
+  catchOnce: 1

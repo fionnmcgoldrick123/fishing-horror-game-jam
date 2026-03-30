@@ -16,6 +16,7 @@ MonoBehaviour:
   fishDescription: My name's Robin. I am making the quotas but I can tell they are
     plotting something. SEND HELP.
   fishSprite: {fileID: 21300000, guid: 9775ff0903dc42644a4c0f6f9fd17c3f, type: 3}
-  value: 0
+  value: 300
   rarity: 0
   isUpgradeCurrency: 0
+  catchOnce: 1

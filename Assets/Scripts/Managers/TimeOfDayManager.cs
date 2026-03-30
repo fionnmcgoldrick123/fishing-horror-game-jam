@@ -251,4 +251,14 @@ public class TimeOfDayManager : MonoBehaviour
         DayManager.Instance.AdvanceDay();
         SceneManager.Instance.LoadScene("World");
     }
+
+    /// <summary>
+    /// Fully resets all day/game-over state for a fresh run (used by the retry button).
+    /// </summary>
+    public void FullReset()
+    {
+        GameOverPending = false;
+        IsQuotaVisit = false;
+        StartDay();
+    }
 }

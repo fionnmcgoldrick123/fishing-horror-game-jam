@@ -49,4 +49,11 @@ public static class UpgradeManager
     public static float GetEaseSpeedMultiplier() => 1f - _easeLevel * 0.06f;
 
     public static float GetEaseScoreMultiplier() => 1f - _easeLevel * 0.08f;
+
+    public static void Reset()
+    {
+        _luckLevel = 0;
+        _catchSpeedLevel = 0;
+        _easeLevel = 0;
+    }
 }
